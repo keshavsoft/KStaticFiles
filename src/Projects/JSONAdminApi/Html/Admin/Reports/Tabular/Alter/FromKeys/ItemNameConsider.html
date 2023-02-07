@@ -57,7 +57,7 @@
                         </a>
                     </li>,
                     <li>
-                        <a href="../FromKeys/ColumnNameToPick.html" class="nav-link text-white ColumnNameToPickAClass">
+                        <a href="../FromKeys/ColumnNameToPick.html" class="nav-link text-white TogglesAClass">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi d-block mx-auto mb-1" viewBox="0 0 16 16">
                                 <path d="M8.188 10H7V6.5h1.188a1.75 1.75 0 1 1 0 3.5z"></path>
                                 <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zM7 5.5a1 1 0 0 0-1 1V13a.5.5 0 0 0 1 0v-2h1.188a2.75 2.75 0 0 0 0-5.5H7z">
@@ -68,13 +68,13 @@
                     </li>
 
                     <li>
-                        <a href="../FromKeys/ItemNameConsider.html" class="nav-link text-white TogglesAClass">
+                        <a href="../FromKeys/ItemNameConsider.html" class="nav-link text-white ItemNameConsiderAClass">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi d-block mx-auto mb-1" viewBox="0 0 16 16">
                                 <path d="M8.188 10H7V6.5h1.188a1.75 1.75 0 1 1 0 3.5z"></path>
                                 <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zM7 5.5a1 1 0 0 0-1 1V13a.5.5 0 0 0 1 0v-2h1.188a2.75 2.75 0 0 0 0-5.5H7z">
                                 </path>
                             </svg>
-                        ItemNameConsider
+                            ItemNameConsider
                         </a>
                     </li>
 
@@ -232,7 +232,7 @@
                     <th>Vouchers Name</th>
                     <th>Folders Name</th>
                     <th>Files Name</th>
-                    <th>ColumnNameToPick</th>
+                    <th>Active</th>
                 </tr>
             </thead>
             <tbody>
@@ -251,7 +251,13 @@
                         <input class="form-control" type="text" name="FileName" value="{{FileName}}">
                     </td>
                     <td>
-                        <input class="form-control" type="text" name="ColumnNameToPick" value="{{ColumnNameToPick}}">
+                        <div class="form-check  form-switch">
+                            {{#if Active}}
+                            <input class="form-check-input" type="checkbox" name="Active" checked>
+                            {{else}}
+                            <input class="form-check-input" type="checkbox" name="Active">
+                            {{/if}}
+                        </div>
                     </td>
                     <td>
                         <button type="button" class="btn btn-outline-info UpdateButtonClass"  data-Item="{{@../key}}" data-Voucher="{{@key}}">
@@ -305,7 +311,7 @@
         jFChangeHeaderActiveClass();
     </script>
 
-    <script src="../../../../../../Js/Reports/Tabular/Alter/FromKeys/ColumnNameToPick/ColumnNameToPick.js" type="module"></script>
+    <script src="../../../../../../Js/Reports/Tabular/Alter/FromKeys/Toggles/Toggles.js" type="module"></script>
 
 </body>
 

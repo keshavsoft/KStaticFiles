@@ -15,19 +15,19 @@ let jFLocalClickFunc = (event) => {
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
     let jVarLocalFolderName = jVarLocalColsestTr.querySelector('[name="FolderName"]');
     let jVarLocalFileName = jVarLocalColsestTr.querySelector('[name="FileName"]');
-    let jVarLocalColumnNameToPick = jVarLocalColsestTr.querySelector('[name="ColumnNameToPick"]');
+    let jVarLocalActive = jVarLocalColsestTr.querySelector('[name="Active"]');
 
     let jVarLocalFolderNameValue = jVarLocalFolderName.value;
     let jVarLocalFileNameValue = jVarLocalFileName.value;
-    let jVarLocalColumnNameToPickValue = jVarLocalColumnNameToPick.value;
+    let jVarLocalActiveValue = jVarLocalActive.checked;
 
     let BodyAsJson = {
         FolderName: jVarLocalFolderNameValue,
         FileName: jVarLocalFileNameValue,
-        ColumnNameToPick: jVarLocalColumnNameToPickValue
+        Active: jVarLocalActiveValue
     };
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromKeys/ColumnNameToPick";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromKeys/FromFolder";
 
     let response = fetch(jFetchUrl, {
         method: "PATCH",

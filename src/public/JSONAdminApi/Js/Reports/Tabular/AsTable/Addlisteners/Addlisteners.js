@@ -1,33 +1,20 @@
-let jFUpdateFunc = () => {
-    let jVarLocalUpdateClassName = document.getElementsByClassName("UpdateButtonClass");
+let jFCloneFunc = () => {
+    let jVarLocalCloneClassName = document.getElementsByClassName("CloneButtonClass");
 
-    for (let i = 0; i < jVarLocalUpdateClassName.length; i++) {
-        jVarLocalUpdateClassName[i].addEventListener("click", jFLocalClickFunc)
+    for (let i = 0; i < jVarLocalCloneClassName.length; i++) {
+        jVarLocalCloneClassName[i].addEventListener("click", jFLocalClickFunc)
     };
 
 };
 let jFLocalClickFunc = (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
-    let jVarLocalItemName = jVarLocalCurrentTarget.dataset.item;
-
-    let jVarLocalvoucherName = jVarLocalCurrentTarget.dataset.voucher;
-
+    let jVarLocalvoucherName = jVarLocalCurrentTarget.dataset.report;
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
-    let jVarLocalFolderName = jVarLocalColsestTr.querySelector('[name="FolderName"]');
-    let jVarLocalFileName = jVarLocalColsestTr.querySelector('[name="FileName"]');
-    let jVarLocalActive = jVarLocalColsestTr.querySelector('[name="Active"]');
+    let jVarLocalReportItem = jVarLocalColsestTr.querySelector('[name="ReportItem"]');
 
-    let jVarLocalFolderNameValue = jVarLocalFolderName.value;
-    let jVarLocalFileNameValue = jVarLocalFileName.value;
-    let jVarLocalActiveValue = jVarLocalActive.checked;
+    let jVarLocalReportItemValue = jVarLocalReportItem.value;
 
-    let BodyAsJson = {
-        FolderName: jVarLocalFolderNameValue,
-        FileName: jVarLocalFileNameValue,
-        Active: jVarLocalActiveValue
-    };
-
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromKeys/Toggles";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/AsTable";
 
     let response = fetch(jFetchUrl, {
         method: "PATCH",
@@ -36,15 +23,14 @@ let jFLocalClickFunc = (event) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            ItemName: jVarLocalItemName,
-            voucher: jVarLocalvoucherName,
-            BodyAsJson
+            ReportName: jVarLocalvoucherName,
+            CloneName: jVarLocalReportItemValue,
         })
     });
 
     switch (response.status) {
         case 200:
-            window.location = "";
+            Swal.fire('Dublicated')
 
             break;
 
@@ -56,4 +42,4 @@ let jFLocalClickFunc = (event) => {
     };
 };
 
-export { jFUpdateFunc };
+export { jFCloneFunc };

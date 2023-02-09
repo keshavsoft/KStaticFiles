@@ -108,6 +108,8 @@
                 <tr>
                     <th>#</th>
                     <th>Vouchers Name</th>
+                    <th>Dublicale Name</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -119,6 +121,14 @@
                     </td>
                     <td>
                         {{@key}}
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="ReportItem" >
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-info CloneButtonClass" data-report="{{@key}}">
+                            Dublicale
+                        </button>
                     </td>
                     
                 </tr>

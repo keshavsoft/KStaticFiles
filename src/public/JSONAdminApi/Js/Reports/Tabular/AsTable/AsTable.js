@@ -1,6 +1,6 @@
-import { jFUpdateFunc as jFUpdateFuncAddlisteners } from "./Addlisteners/Addlisteners.js";
 import { jFCreateFoldersToDom } from "./ShowOnDom/ShowOnDom.js";
+import { jFCloneFunc as jFCloneFuncAddlisteners } from "./Addlisteners/Addlisteners.js";
 
 jFCreateFoldersToDom().then(FromjFCreateFoldersToDom => {
-    jFUpdateFuncAddlisteners();
+    jFCloneFuncAddlisteners();
 });

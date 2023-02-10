@@ -113,20 +113,19 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each JsonData}}
-                {{log "this" this}}
+                {{#each JsonObject}}
                 <tr>
                     <td class="text-center">
                         {{ForSNo @index}}
                     </td>
                     <td>
-                        {{@key}}
+                        {{ReportName}}
                     </td>
                     <td>
                         <input class="form-control" type="text" name="ReportItem" >
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-info CloneButtonClass" data-report="{{@key}}">
+                        <button type="button" class="btn btn-outline-info CloneButtonClass" data-report="{{ReportName}}">
                             Dublicale
                         </button>
                     </td>

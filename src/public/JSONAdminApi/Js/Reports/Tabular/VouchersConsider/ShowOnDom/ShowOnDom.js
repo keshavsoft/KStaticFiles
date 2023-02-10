@@ -6,8 +6,8 @@ let jFCreateFoldersToDom = async () => {
 
     let jVarLocalFromFetch = await fetch(jVarLocalFetchUrl);
     let dataFromApiJsonData = await jVarLocalFromFetch.json();
-    let dataFromApi = dataFromApiJsonData.JsonData;
-
+    let dataFromApi = dataFromApiJsonData;
+console.log("dataFromApi",dataFromApi);
     if (dataFromApi !== null) {
         // ApplyClassesStartFunc({ inDataFromApi: dataFromApi });
 

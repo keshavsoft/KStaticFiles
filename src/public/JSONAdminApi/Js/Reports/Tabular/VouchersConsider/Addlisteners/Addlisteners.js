@@ -8,13 +8,11 @@ let jFCloneFunc = () => {
 };
 let jFLocalClickFunc = (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
-    let jVarLocalvoucherName = jVarLocalCurrentTarget.dataset.report;
-    let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
-    let jVarLocalReportItem = jVarLocalColsestTr.querySelector('[name="ReportItem"]');
+    let jVarLocalreportName = jVarLocalCurrentTarget.dataset.reportName;
+    let jVarLocalpk = jVarLocalCurrentTarget.dataset.pk;
 
-    let jVarLocalReportItemValue = jVarLocalReportItem.value;
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/AsTable";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/VouchersConsider";
 
     let response = fetch(jFetchUrl, {
         method: "PATCH",
@@ -23,8 +21,8 @@ let jFLocalClickFunc = (event) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            ReportName: jVarLocalvoucherName,
-            CloneName: jVarLocalReportItemValue,
+            ReportName: jVarLocalreportName,
+            pk: jVarLocalpk
         })
     });
 

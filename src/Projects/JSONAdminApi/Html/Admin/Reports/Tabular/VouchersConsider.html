@@ -102,41 +102,86 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
+    
     <script id="HbsTemplateForFoldersOnly" type="text/x-handlebars">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Vouchers Name</th>
-                    <th>Dublicale Name</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each JsonData}}
-                {{log "this" this}}
-                <tr>
-                    <td class="text-center">
-                        {{ForSNo @index}}
-                    </td>
-                    <td>
-                        {{@key}}
-                    </td>
-                    <td>
-                        <input class="form-control" type="text" name="ReportItem" >
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-outline-info CloneButtonClass" data-report="{{@key}}">
-                            Dublicale
-                        </button>
-                    </td>
-                    
-                </tr>
-                {{/each}}
-            </tbody>
-       
-        </table>
-      </script>
+        <ul class="nav nav-tabs" role="tablist">
+            {{#each ReportsObject }}
+            <li class="nav-item" role="presentation">
+                <button class="nav-link {{this.MenuClass}}" id="{{this.Reports}}-tab" data-bs-toggle="tab"
+                    data-bs-target="#Report-{{@key}}" type="button" role="tab" aria-controls="{{this.Reports}}"
+                    aria-selected="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z" />
+                    </svg>
+                    {{@key}}</button>
+            </li>
+            {{/each}}
+        </ul>
+        <div class="tab-content">
+            {{#each ReportsObject}}
+            <div class="tab-pane fade {{this.TabPageClass}}" id="Report-{{@key}}" role="tabpanel"
+                aria-labelledby="{{this.Reports}}-tab">
+                {{> HbsTemplateForVouchers}}
+            </div>
+            {{/each}}
+        </div>
+        
+            </script>
+        
+        
+            <script id="HbsTemplateForVouchers" type="text/x-handlebars">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>PK</th>
+                            <th>Folders Name</th>
+                            <th>Files Name</th>
+                            <th>Item Name</th>
+                            <th>Active</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each this.VouchersConsiderObject}}
+                        {{log "this" this}}
+                        <tr>
+                            <td class="text-center">
+                                {{ForSNo @index}}
+                            </td>
+                            <td>
+                                {{@key}}
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" name="FolderName" value="{{FolderName}}" disabled>
+                            </td>
+                            <td>
+                                  <input class="form-control" type="text" name="FileName" value="{{FileName}}" Disabled>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" name="ItemName" value="{{ItemName}}" Disabled>
+                          </td>
+                            <td>
+                                <div class="form-check  form-switch">
+                                    {{#if Active}}
+                                    <input class="form-check-input" type="checkbox" name="Active" checked>
+                                    {{else}}
+                                    <input class="form-check-input" type="checkbox" name="Active">
+                                    {{/if}}
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-outline-info CloneButtonClass"  data-reportName="{{@../key}}" data-pk="{{@key}}">
+                                    Dublicate
+                                </button>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+               
+                </table>
+              </script>
 
 
     <script>
@@ -178,7 +223,7 @@
         jFChangeHeaderActiveClass();
     </script>
 
-<script src="../../../../Js/Reports/Tabular/AsTable/AsTable.js" type="module"></script>
+<script src="../../../../Js/Reports/Tabular/VouchersConsider/VouchersConsider.js" type="module"></script>
 
 </body>
 

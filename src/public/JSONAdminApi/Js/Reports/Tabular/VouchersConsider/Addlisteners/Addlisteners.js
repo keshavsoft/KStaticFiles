@@ -8,7 +8,7 @@ let jFCloneFunc = () => {
 };
 let jFLocalClickFunc = (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
-    let jVarLocalreportName = jVarLocalCurrentTarget.dataset.reportName;
+    let jVarLocalreportName = jVarLocalCurrentTarget.dataset.reportname;
     let jVarLocalpk = jVarLocalCurrentTarget.dataset.pk;
 
 

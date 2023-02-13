@@ -6,7 +6,7 @@ let jFCloneFunc = () => {
     };
 
 };
-let jFLocalClickFunc = (event) => {
+let jFLocalClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
     let jVarLocalreportName = jVarLocalCurrentTarget.dataset.reportname;
     let jVarLocalpk = jVarLocalCurrentTarget.dataset.pk;
@@ -14,7 +14,7 @@ let jFLocalClickFunc = (event) => {
 
     let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/VouchersConsider";
 
-    let response = fetch(jFetchUrl, {
+    let jVarLocalRequestHeader = {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
@@ -24,11 +24,21 @@ let jFLocalClickFunc = (event) => {
             ReportName: jVarLocalreportName,
             pk: jVarLocalpk
         })
-    });
+    };
+
+    let response = await fetch(jFetchUrl, jVarLocalRequestHeader);
+    // console.log("response.status", response.status);
+
+    // const ResponseData = await response.json();
+
 
     switch (response.status) {
         case 200:
-            Swal.fire('Dublicated')
+            // Swal.fire('Dublicated')
+            let jVarLocalNewLocation = "";
+            jVarLocalNewLocation += `?inReportName=${jVarLocalreportName}`
+            jVarLocalNewLocation += `&inRowPK=${jVarLocalpk}`
+            window.location = jVarLocalNewLocation;
 
             break;
 

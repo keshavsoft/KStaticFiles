@@ -1,4 +1,4 @@
-// import { StartFunc as ApplyClassesStartFunc } from "../../../../ApplyClasses.js";
+import { StartFunc as ApplyClassesStartFunc } from "../ApplyClasses/ApplyClasses.js";
 
 let jFCreateFoldersToDom = async () => {
     let jVarLocalRoute = window.location.pathname.split("/")[1];
@@ -9,7 +9,7 @@ let jFCreateFoldersToDom = async () => {
     let dataFromApi = dataFromApiJsonData;
 
     if (dataFromApi !== null) {
-        // ApplyClassesStartFunc({ inDataFromApi: dataFromApi });
+        ApplyClassesStartFunc({ inDataFromApi: dataFromApi });
 
         let jVarLocalRawTemplate = document.getElementById("HbsTemplateForFoldersOnly").innerHTML;
         document.getElementById("KCont1").innerHTML = Handlebars.compile(jVarLocalRawTemplate)(dataFromApi);

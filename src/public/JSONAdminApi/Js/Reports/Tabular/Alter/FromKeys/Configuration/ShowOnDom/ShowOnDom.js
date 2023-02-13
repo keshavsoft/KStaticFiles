@@ -1,4 +1,4 @@
-import { StartFunc as ApplyClassesStartFunc } from "../../../../ApplyClasses.js";
+import { StartFunc as ApplyClassesStartFunc } from "../../ApplayClasses/ApplyClasses.js";
 
 let jFCreateFoldersToDom = async () => {
     console.log("dataFromApi");

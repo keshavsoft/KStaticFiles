@@ -44,12 +44,15 @@ let jFLocalClickFunc = (event) => {
 
     switch (response.status) {
         case 200:
-            window.location = "";
+            let jVarLocalNewLocation = "";
+            jVarLocalNewLocation += `?inReportName=${jVarLocalItemName}`
+            jVarLocalNewLocation += `&inRowPK=${jVarLocalvoucherName}`
+            window.location = jVarLocalNewLocation;
 
             break;
 
         case 204:
-            Swal.fire('Not Update Data')
+            Swal.fire('Not Update Data...&#128531')
             break;
         default:
         // code block

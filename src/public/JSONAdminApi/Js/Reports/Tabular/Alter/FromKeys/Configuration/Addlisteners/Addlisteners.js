@@ -6,7 +6,7 @@ let jFUpdateFunc = () => {
     };
 
 };
-let jFLocalClickFunc = (event) => {
+let jFLocalClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
     let jVarLocalItemName = jVarLocalCurrentTarget.dataset.item;
 
@@ -15,7 +15,7 @@ let jFLocalClickFunc = (event) => {
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
     let jVarLocalFolderName = jVarLocalColsestTr.querySelector('[name="FolderName"]');
     let jVarLocalFileName = jVarLocalColsestTr.querySelector('[name="FileName"]');
-    let jVarLocalItemNames = jVarLocalColsestTr.querySelector('[name="ItemNames"]');
+    let jVarLocalItemNames = jVarLocalColsestTr.querySelector('[name="ItemName"]');
 
     let jVarLocalFolderNameValue = jVarLocalFolderName.value;
     let jVarLocalFileNameValue = jVarLocalFileName.value;
@@ -28,8 +28,7 @@ let jFLocalClickFunc = (event) => {
     };
 
     let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromKeys/Configuration";
-
-    let response = fetch(jFetchUrl, {
+    let jVarLocalRequestHeader = {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
@@ -40,16 +39,20 @@ let jFLocalClickFunc = (event) => {
             voucher: jVarLocalvoucherName,
             BodyAsJson
         })
-    });
+    }
+    let response = await fetch(jFetchUrl, jVarLocalRequestHeader);
 
     switch (response.status) {
         case 200:
-            window.location = "";
+            let jVarLocalNewLocation = "";
+            jVarLocalNewLocation += `?inReportName=${jVarLocalItemName}`
+            jVarLocalNewLocation += `&inRowPK=${jVarLocalvoucherName}`
+            window.location = jVarLocalNewLocation;
 
             break;
 
         case 204:
-            Swal.fire('Not Update Data')
+            Swal.fire('Not Update Data...&#128531')
             break;
         default:
         // code block

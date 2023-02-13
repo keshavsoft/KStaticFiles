@@ -6,7 +6,7 @@ let jFCloneFunc = () => {
     };
 
 };
-let jFLocalClickFunc = (event) => {
+let jFLocalClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
     let jVarLocalvoucherName = jVarLocalCurrentTarget.dataset.report;
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
@@ -15,8 +15,7 @@ let jFLocalClickFunc = (event) => {
     let jVarLocalReportItemValue = jVarLocalReportItem.value;
 
     let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/AsTable";
-
-    let response = fetch(jFetchUrl, {
+    let jVarLocalRequestHeader = {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
@@ -26,12 +25,13 @@ let jFLocalClickFunc = (event) => {
             ReportName: jVarLocalvoucherName,
             CloneName: jVarLocalReportItemValue,
         })
-    });
+    };
+    let response = await fetch(jFetchUrl, jVarLocalRequestHeader);
 
     switch (response.status) {
         case 200:
-            Swal.fire('Dublicated')
-
+            let jVarLocalNewLocation = `?inReportName=${jVarLocalvoucherName}`
+            window.location = jVarLocalNewLocation;
             break;
 
         case 204:

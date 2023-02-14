@@ -8,7 +8,7 @@ let StartFunc = ({ inDataFromApi }) => {
             indataFromApi: jVarLocaldataFromApi,
             inQueryParamsAsObject: jVarLocalQueryParams
         });
-        Swal.fire('Dublicated Sucessfully')
+        Swal.fire('Duplicated Sucessfully..&#128522')
 
     } else {
         LocalForApplyClasses({ indataFromApi: jVarLocaldataFromApi });

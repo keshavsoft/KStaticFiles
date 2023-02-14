@@ -45,6 +45,7 @@ let LocalForApplyClasses = ({ indataFromApi }) => {
 };
 
 let LocalForClassesFromUrl = ({ indataFromApi, inQueryParamsAsObject }) => {
+    console.log("inQueryParamsAsObject",inQueryParamsAsObject);
     let jVarLocalReportName = inQueryParamsAsObject.inReportName;
     console.log("indataFromApi--", indataFromApi.Reports);
     let jVarLocalFileName = inQueryParamsAsObject.inRowPK;
@@ -52,6 +53,8 @@ let LocalForClassesFromUrl = ({ indataFromApi, inQueryParamsAsObject }) => {
         if (jVarLocalReportName in indataFromApi.Reports) {
             indataFromApi.Reports[jVarLocalReportName].TabPageClass = " show active";
             indataFromApi.Reports[jVarLocalReportName].MenuClass = " active";
+            indataFromApi.Reports[jVarLocalReportName].VouchersConsider[jVarLocalFileName].RowClass = "table-success";
+
 
         };
     };

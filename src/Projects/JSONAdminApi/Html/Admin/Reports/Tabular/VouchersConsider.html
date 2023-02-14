@@ -136,7 +136,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>PK</th>
+                            <th width="70">Voucher Consider PK</th>
                             <th>Folders Name</th>
                             <th>Files Name</th>
                             <th>Item Name</th>
@@ -144,8 +144,7 @@
                     </thead>
                     <tbody>
                         {{#each this.VouchersConsiderObject}}
-                        {{log "this" this}}
-                        <tr>
+                        <tr class="{{RowClass}}">
                             <td class="text-center">
                                 {{ForSNo @index}}
                             </td>

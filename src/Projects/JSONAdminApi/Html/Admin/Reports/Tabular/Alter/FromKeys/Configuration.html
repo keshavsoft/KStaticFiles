@@ -229,7 +229,7 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Vouchers Name</th>
+                    <th width="70">Voucher Consider PK</th>
                     <th>Folders Name</th>
                     <th>Files Name</th>
                     <th>ItemName</th>
@@ -237,7 +237,7 @@
             </thead>
             <tbody>
                 {{#each this.VouchersConsider}}
-                <tr>
+                <tr class="{{RowClass}}">
                     <td class="text-center">
                         {{ForSNo @index}}
                     </td>

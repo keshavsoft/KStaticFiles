@@ -3,7 +3,7 @@ let StartFunc = ({ inDataFromApi }) => {
 
     if (Object.keys(jVarLocalQueryParams).length > 0) {
 
-        Swal.fire('Dublicated Sucessfully..')
+        Swal.fire('Duplicated Sucessfully..&#128522')
 
     }
 };

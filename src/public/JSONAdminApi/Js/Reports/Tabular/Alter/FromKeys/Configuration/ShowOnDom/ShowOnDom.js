@@ -3,7 +3,7 @@ import { StartFunc as ApplyClassesStartFunc } from "../../ApplayClasses/ApplyCla
 let jFCreateFoldersToDom = async () => {
     console.log("dataFromApi");
     let jVarLocalRoute = window.location.pathname.split("/")[1];
-    let jVarLocalFetchUrl = `/${jVarLocalRoute}/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromKeys/Configuration`;
+    let jVarLocalFetchUrl = `/${jVarLocalRoute}/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromKeys/Configuration`;
 
     let jVarLocalFromFetch = await fetch(jVarLocalFetchUrl);
     let dataFromApiJsonData = await jVarLocalFromFetch.json();

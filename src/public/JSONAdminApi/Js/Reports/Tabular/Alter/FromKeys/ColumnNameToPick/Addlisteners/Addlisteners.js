@@ -27,7 +27,7 @@ let jFLocalClickFunc = async (event) => {
         ColumnNameToPick: jVarLocalColumnNameToPickValue
     };
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromKeys/ColumnNameToPick";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromKeys/ColumnNameToPick";
     let jVarLocalRequestHeader = {
         method: "PATCH",
         headers: {

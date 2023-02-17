@@ -27,7 +27,7 @@ let jFLocalClickFunc = async (event) => {
         Active: jVarLocalActiveValue
     };
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromKeys/Toggles";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromKeys/Toggles";
     let jVarLocalRequestHeader = {
         method: "PATCH",
         headers: {

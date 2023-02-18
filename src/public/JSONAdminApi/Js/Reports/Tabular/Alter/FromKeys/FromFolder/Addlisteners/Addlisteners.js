@@ -13,23 +13,19 @@ let jFLocalClickFunc = (event) => {
     let jVarLocalvoucherName = jVarLocalCurrentTarget.dataset.voucher;
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
-    let jVarLocalFolderName = jVarLocalColsestTr.querySelector('[name="FolderName"]');
-    let jVarLocalFileName = jVarLocalColsestTr.querySelector('[name="FileName"]');
-    let jVarLocalActive = jVarLocalColsestTr.querySelector('[name="Active"]');
+    let jVarLocalFolderName = jVarLocalColsestTr.querySelector('[name="FromFolder"]');
+    let jVarLocalFileName = jVarLocalColsestTr.querySelector('[name="ItemNameConsider"]');
 
-    let jVarLocalFolderNameValue = jVarLocalFolderName.value;
-    let jVarLocalFileNameValue = jVarLocalFileName.value;
-    let jVarLocalActiveValue = jVarLocalActive.checked;
+    let jVarLocalFolderNameValue = jVarLocalFolderName.checked;
+    let jVarLocalFileNameValue = jVarLocalFileName.checked;
 
     let BodyAsJson = {
-        FolderName: jVarLocalFolderNameValue,
-        FileName: jVarLocalFileNameValue,
-        Active: jVarLocalActiveValue
+        FromFolder: jVarLocalFolderNameValue,
+        ItemNameConsider: jVarLocalFileNameValue
     };
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromKeys/FromFolder";
-
-    let response = fetch(jFetchUrl, {
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromKeys/FromFolder";
+    let jVarLocalRequestHeader = {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
@@ -40,11 +36,15 @@ let jFLocalClickFunc = (event) => {
             voucher: jVarLocalvoucherName,
             BodyAsJson
         })
-    });
+    }
+    let response = fetch(jFetchUrl, jVarLocalRequestHeader);
 
     switch (response.status) {
         case 200:
-            window.location = "";
+            let jVarLocalNewLocation = "";
+            jVarLocalNewLocation += `?inReportName=${jVarLocalItemName}`
+            jVarLocalNewLocation += `&inRowPK=${jVarLocalvoucherName}`
+            window.location = jVarLocalNewLocation;
 
             break;
 

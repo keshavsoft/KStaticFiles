@@ -2,7 +2,7 @@ import { StartFunc as ApplyClassesStartFunc } from "../ApplyClasses/ApplyClasses
 
 let jFCreateFoldersToDom = async () => {
     let jVarLocalRoute = window.location.pathname.split("/")[1];
-    let jVarLocalFetchUrl = `/${jVarLocalRoute}/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/VouchersConsider`;
+    let jVarLocalFetchUrl = `/${jVarLocalRoute}/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/Duplicate`;
 
     let jVarLocalFromFetch = await fetch(jVarLocalFetchUrl);
     let dataFromApiJsonData = await jVarLocalFromFetch.json();
@@ -11,6 +11,8 @@ let jFCreateFoldersToDom = async () => {
         ApplyClassesStartFunc({ inDataFromApi: dataFromApi });
 
         let jVarLocalRawTemplate = document.getElementById("HbsTemplateForFoldersOnly").innerHTML;
+        console.log("neeraj",jVarLocalRawTemplate);
+
         document.getElementById("KCont1").innerHTML = Handlebars.compile(jVarLocalRawTemplate)(dataFromApi);
     };
 

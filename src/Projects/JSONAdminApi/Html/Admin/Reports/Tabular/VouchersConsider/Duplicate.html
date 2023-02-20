@@ -180,7 +180,7 @@
 
     <script id="HbsTemplateForFoldersOnly" type="text/x-handlebars">
 <ul class="nav nav-tabs" role="tablist">
-    {{#each Reports}}
+    {{#each JsonData.Reports}}
 
     <li class="nav-item" role="presentation">
         <button class="nav-link {{this.MenuClass}}" id="{{this.Reports}}-tab" data-bs-toggle="tab"
@@ -196,7 +196,7 @@
     {{/each}}
 </ul>
 <div class="tab-content">
-    {{#each Reports}}
+    {{#each JsonData.Reports}}
     <div class="tab-pane fade {{this.TabPageClass}}" id="Report-{{@key}}" role="tabpanel"
         aria-labelledby="{{this.Reports}}-tab">
         {{> HbsTemplateForVouchers}}

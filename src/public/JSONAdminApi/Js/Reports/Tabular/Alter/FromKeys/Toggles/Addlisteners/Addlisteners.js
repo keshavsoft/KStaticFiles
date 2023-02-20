@@ -16,15 +16,23 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalFolderName = jVarLocalColsestTr.querySelector('[name="FolderName"]');
     let jVarLocalFileName = jVarLocalColsestTr.querySelector('[name="FileName"]');
     let jVarLocalActive = jVarLocalColsestTr.querySelector('[name="Active"]');
+    let jVarLocalFromFolder = jVarLocalColsestTr.querySelector('[name="jVarLocalFromFolder"]');
+
+    let jVarLocalItemNameConsider= jVarLocalColsestTr.querySelector('[name="jVarLocalItemNameConsider"]');
+
 
     let jVarLocalFolderNameValue = jVarLocalFolderName.value;
     let jVarLocalFileNameValue = jVarLocalFileName.value;
     let jVarLocalActiveValue = jVarLocalActive.checked;
+    let jVarLocalFromFolderValue = jVarLocalFromFolder.checked;
+    let jVarLocalItemNameConsiderValue = jVarLocalItemNameConsider.checked;
 
     let BodyAsJson = {
         FolderName: jVarLocalFolderNameValue,
         FileName: jVarLocalFileNameValue,
-        Active: jVarLocalActiveValue
+        Active: jVarLocalActiveValue,
+        FromFolder :jVarLocalFromFolderValue,
+        ItemNameConsiderValue : jVarLocalItemNameConsiderValue
     };
 
     let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromKeys/Toggles";

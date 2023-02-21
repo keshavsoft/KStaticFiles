@@ -1,5 +1,5 @@
 let jFCloneFunc = () => {
-    let jVarLocalCloneClassName = document.getElementsByClassName("CloneButtonClass");
+    let jVarLocalCloneClassName = document.getElementsByClassName("UpdateButtonClass");
 
     for (let i = 0; i < jVarLocalCloneClassName.length; i++) {
         jVarLocalCloneClassName[i].addEventListener("click", jFLocalClickFunc)
@@ -8,11 +8,31 @@ let jFCloneFunc = () => {
 };
 let jFLocalClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
-    let jVarLocalvoucherName = jVarLocalCurrentTarget.dataset.report;
-    let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
-    let jVarLocalReportItem = jVarLocalColsestTr.querySelector('[name="ReportItem"]');
+    let jVarLocalreportname = jVarLocalCurrentTarget.dataset.reportname;
+    let jVarLocalvoucherconsiderpk = jVarLocalCurrentTarget.dataset.voucherconsiderpk;
+    let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.columnpk;
 
-    let jVarLocalReportItemValue = jVarLocalReportItem.value;
+    let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
+    let jVarLocalDisplayColumn = jVarLocalColsestTr.querySelector('[name="DisplayColumn"]');
+    let jVarLocalTransformType = jVarLocalColsestTr.querySelector('[name="TransformType"]');
+    let jVarLocalDefaultValue = jVarLocalColsestTr.querySelector('[name="DefaultValue"]');
+    let jVarLocalConsiderJoinTable = jVarLocalColsestTr.querySelector('[name="ConsiderJoinTable"]');
+    let jVarLocalTransformTF = jVarLocalColsestTr.querySelector('[name="TransformTF"]');
+
+    let jVarLocalDisplayColumnValue = jVarLocalDisplayColumn.value;
+    let jVarLocalTransformTypeValue = jVarLocalTransformType.value;
+    let jVarLocalDefaultValueValue = jVarLocalDefaultValue.value;
+    let jVarLocalConsiderJoinTableValue = jVarLocalConsiderJoinTable.checked;
+    let jVarLocalTransformTFValue = jVarLocalTransformTF.checked;
+
+
+    let BodyAsJson = {
+        DisplayColumn: jVarLocalDisplayColumnValue,
+        TransformType: jVarLocalTransformTypeValue,
+        DefaultValue: jVarLocalDefaultValueValue,
+        ConsiderJoinTable: jVarLocalConsiderJoinTableValue,
+        TransformTF: jVarLocalTransformTFValue
+    };
 
     let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/AsTable";
     let jVarLocalRequestHeader = {
@@ -22,15 +42,20 @@ let jFLocalClickFunc = async (event) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            ReportName: jVarLocalvoucherName,
-            CloneName: jVarLocalReportItemValue,
+            reportname: jVarLocalreportname,
+            voucherconsiderpk: jVarLocalvoucherconsiderpk,
+            columnpk: jVarLocalColumnPk,
+            BodyAsJson
         })
     };
     let response = await fetch(jFetchUrl, jVarLocalRequestHeader);
 
     switch (response.status) {
         case 200:
-            let jVarLocalNewLocation = `?inReportName=${jVarLocalvoucherName}`
+            let jVarLocalNewLocation; 
+            jVarLocalNewLocation = `?inReportName=${jVarLocalreportname}`
+            jVarLocalNewLocation = `&voucherconsiderpk=${jVarLocalvoucherconsiderpk}`
+            jVarLocalNewLocation = `&columnpk=${jVarLocalColumnPk}`
             window.location = jVarLocalNewLocation;
             break;
 

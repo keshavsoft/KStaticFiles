@@ -101,14 +101,18 @@
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
- 
+
     <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
         <table class="table" >
             <thead>
                 <tr>
                     <th width="5%">S.No</th>
+                    <th width="6%">pk</th>
                     <th width="">DisplayColumn</th>
-                    <th width="">ConsiderJoinTable</th>
+                    <th width="">TransformType</th>
+                    <th width="">DefaultValue</th>
+                    <th width="">ConsiderJoin Table</th>
+                    <th width="">TransformTF</th>
                     <th></th>
                 </tr>
             </thead>
@@ -119,19 +123,39 @@
     {{ForSNo @index}}
     </td>
     <td>
-            <input class="form-control" type="text" name="DisplayColumn"  value="{{DisplayColumn}}">
+        {{pk}}
+</td>
+    <td>
+        {{DisplayColumn}}
     </td>
+    <td>
+        {{TransformType}}
+</td>
+<td>
+    {{DefaultValue}}
+</td>
     <td>
         <div class="form-check  form-switch">
             {{#if ConsiderJoinTable}}
-            <input class="form-check-input" type="checkbox" name="ConsiderJoinTable" checked>
+            <input class="form-check-input" type="checkbox" name="ConsiderJoinTable" checked disabled>
             {{else}}
-            <input class="form-check-input" type="checkbox" name="ConsiderJoinTable">
+            <input class="form-check-input" type="checkbox" name="ConsiderJoinTable" disabled>
             {{/if}}
         </div>
     </td>
     <td>
-        <button type="button" class="btn btn-outline-info DuplicateButtonClass" data-reportname="{{@../../key}}" data-voucherconsiderpk="{{@../key}}" data-ColumnPk="{{@key}}">Duplicate</button>
+        <div class="form-check  form-switch">
+            {{#if TransformTF}}
+            <input class="form-check-input" type="checkbox" name="TransformTF" checked  disabled>
+            {{else}}
+            <input class="form-check-input" type="checkbox" name="TransformTF"  disabled>
+            {{/if}}
+        </div>
+    </td>
+    <td>
+        <button type="button" class="btn btn-outline-info UpdateButtonClass"  data-reportname="{{@../../key}}" data-voucherconsiderpk="{{@../key}}" data-ColumnPk="{{@key}}">
+            Update
+        </button> 
     </td>
     </tr>
     
@@ -172,7 +196,7 @@
 </script>
 
 
-<script id="HbsTemplateForFilesOnly" type="text/x-handlebars">
+    <script id="HbsTemplateForFilesOnly" type="text/x-handlebars">
     <div class="d-flex align-items-start row">
       <div class="nav flex-column nav-pills col-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           {{#each this.VouchersConsiderObject}}
@@ -338,7 +362,8 @@
         jFChangeHeaderActiveClass();
     </script>
 
-<script src="../../../../../../Js/Reports/Tabular/VouchersConsider/Columns/Duplicate/Duplicate.js" type="module"></script>
+    <script src="../../../../../../Js/Reports/Tabular/VouchersConsider/Columns/Duplicate/Duplicate.js"
+        type="module"></script>
 
 </body>
 

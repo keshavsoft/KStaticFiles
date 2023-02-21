@@ -10,10 +10,10 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
     let jVarLocalreportname = jVarLocalCurrentTarget.dataset.reportname;
     let jVarLocalvoucherconsiderpk = jVarLocalCurrentTarget.dataset.voucherconsiderpk;
-    let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.ColumnPk;
+    let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.columnpk;
 
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromVoucherConsider/Columns/Duplicate";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/VouchersConsider/Columns/Duplicate";
     let jVarLocalRequestHeader = {
         method: "PATCH",
         headers: {
@@ -30,8 +30,8 @@ let jFLocalClickFunc = async (event) => {
 
     switch (response.status) {
         case 200:
-            // let jVarLocalNewLocation = `?inReportName=${jVarLocalvoucherName}`
-            // window.location = jVarLocalNewLocation;
+            let jVarLocalNewLocation = `?inReportName=${jVarLocalreportname}`
+            window.location = jVarLocalNewLocation;
             break;
 
         case 204:

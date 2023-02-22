@@ -9,7 +9,7 @@ let jFCloneFunc = () => {
 let jFLocalClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
     let jVarLocalreportName = jVarLocalCurrentTarget.dataset.reportname;
-    let jVarLocalpk = jVarLocalCurrentTarget.dataset.pk;
+    let jVarLocalVouchersConsiderPK = jVarLocalCurrentTarget.dataset.pk;
 
 
     let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/Duplicate";
@@ -22,22 +22,17 @@ let jFLocalClickFunc = async (event) => {
         },
         body: JSON.stringify({
             ReportName: jVarLocalreportName,
-            pk: jVarLocalpk
+            VouchersConsiderPK: jVarLocalVouchersConsiderPK
         })
     };
 
     let response = await fetch(jFetchUrl, jVarLocalRequestHeader);
-    // console.log("response.status", response.status);
-
-    // const ResponseData = await response.json();
-
 
     switch (response.status) {
         case 200:
-            // Swal.fire('Dublicated')
             let jVarLocalNewLocation = "";
             jVarLocalNewLocation += `?inReportName=${jVarLocalreportName}`
-            jVarLocalNewLocation += `&inRowPK=${jVarLocalpk}`
+            jVarLocalNewLocation += `&inRowPK=${jVarLocalVouchersConsiderPK}`
             window.location = jVarLocalNewLocation;
 
             break;

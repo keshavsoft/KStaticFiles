@@ -53,10 +53,10 @@ let jFLocalClickFunc = async (event) => {
 
     switch (response.status) {
         case 200:
-            let jVarLocalNewLocation; 
-            jVarLocalNewLocation = `?inReportName=${jVarLocalreportname}`
-            jVarLocalNewLocation = `&voucherconsiderpk=${jVarLocalvoucherconsiderpk}`
-            jVarLocalNewLocation = `&columnpk=${jVarLocalColumnPk}`
+            let jVarLocalNewLocation = "";
+            jVarLocalNewLocation += `?inReportName=${jVarLocalreportname}`
+            jVarLocalNewLocation += `&voucherconsiderpk=${jVarLocalvoucherconsiderpk}`
+            jVarLocalNewLocation += `&columnpk=${jVarLocalColumnPk}`
             window.location = jVarLocalNewLocation;
             break;
 

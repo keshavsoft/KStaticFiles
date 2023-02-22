@@ -23,14 +23,19 @@ let jFLocalClickFunc = async (event) => {
         body: JSON.stringify({
             ReportName: jVarLocalreportname,
             VoucherConsiderPK: jVarLocalvoucherconsiderpk,
-            ColumnPk:jVarLocalColumnPk
+            ColumnPk: jVarLocalColumnPk
         })
     };
     let response = await fetch(jFetchUrl, jVarLocalRequestHeader);
 
+
     switch (response.status) {
         case 200:
-            let jVarLocalNewLocation = `?inReportName=${jVarLocalreportname}`
+
+            let jVarLocalNewLocation = "";
+            jVarLocalNewLocation += `?inReportName=${jVarLocalreportname}`
+            jVarLocalNewLocation += `&voucherconsiderpk=${jVarLocalvoucherconsiderpk}`
+            jVarLocalNewLocation += `&columnpk=${jVarLocalColumnPk}`
             window.location = jVarLocalNewLocation;
             break;
 

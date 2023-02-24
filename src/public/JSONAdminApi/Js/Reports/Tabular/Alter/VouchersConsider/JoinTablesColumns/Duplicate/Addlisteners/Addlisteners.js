@@ -1,5 +1,5 @@
 let jFCloneFunc = () => {
-    let jVarLocalCloneClassName = document.getElementsByClassName("CloneButtonClass");
+    let jVarLocalCloneClassName = document.getElementsByClassName("DuplicateButtonClass");
 
     for (let i = 0; i < jVarLocalCloneClassName.length; i++) {
         jVarLocalCloneClassName[i].addEventListener("click", jFLocalClickFunc)
@@ -8,12 +8,12 @@ let jFCloneFunc = () => {
 };
 let jFLocalClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
-    let jVarLocalreportName = jVarLocalCurrentTarget.dataset.reportname;
-    let jVarLocalpk = jVarLocalCurrentTarget.dataset.pk;
+    let jVarLocalreportname = jVarLocalCurrentTarget.dataset.reportname;
+    let jVarLocalvoucherconsiderpk = jVarLocalCurrentTarget.dataset.voucherconsiderpk;
+    let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.columnpk;
 
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/VouchersConsider";
-
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromJoinTablesColumns/Duplicate";
     let jVarLocalRequestHeader = {
         method: "PATCH",
         headers: {
@@ -21,25 +21,22 @@ let jFLocalClickFunc = async (event) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            ReportName: jVarLocalreportName,
-            pk: jVarLocalpk
+            inReportName: jVarLocalreportname,
+            inVouchersConsiderPK: jVarLocalvoucherconsiderpk,
+            JoinTablesColumnsPK: jVarLocalColumnPk
         })
     };
-
     let response = await fetch(jFetchUrl, jVarLocalRequestHeader);
-    // console.log("response.status", response.status);
-
-    // const ResponseData = await response.json();
 
 
     switch (response.status) {
         case 200:
-            // Swal.fire('Dublicated')
-            let jVarLocalNewLocation = "";
-            jVarLocalNewLocation += `?inReportName=${jVarLocalreportName}`
-            jVarLocalNewLocation += `&inRowPK=${jVarLocalpk}`
-            window.location = jVarLocalNewLocation;
 
+            let jVarLocalNewLocation = "";
+            jVarLocalNewLocation += `?inReportName=${jVarLocalreportname}`
+            jVarLocalNewLocation += `&voucherconsiderpk=${jVarLocalvoucherconsiderpk}`
+            jVarLocalNewLocation += `&columnpk=${jVarLocalColumnPk}`
+            window.location = jVarLocalNewLocation;
             break;
 
         case 204:

@@ -27,7 +27,7 @@
         </symbol>
     </svg>
 
-    <include src="./src/components/Templates/Admin/Reports/Tabular/VouchersConsider/Columns/Header.html"></include>
+    <include src="./src/components/Templates/Admin/Reports/Tabular/Alter/VouchersConsider/JoinTablesColumns/Header.html"></include>
 
 
     <main>
@@ -101,22 +101,23 @@
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+   
     <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
         <table class="table" >
             <thead>
                 <tr>
                     <th width="5%">S.No</th>
                     <th width="6%">pk</th>
+                    <th width="">Name</th>
                     <th width="">DisplayColumn</th>
                     <th width="">TransformType</th>
-                    <th width="">DefaultValue</th>
+                    <th width="">JoinTable</th>
                     <th width="">ConsiderJoin Table</th>
-                    <th width="">TransformTF</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                {{#each ColumnsObject}}
+                {{#each JoinTablesColumns}}
     <tr class="{{RowClass}}">
     <td class="text-center">
     {{ForSNo @index}}
@@ -125,13 +126,16 @@
         <input class="form-control" type="text" name="pk"  value="{{pk}}">
 </td>
     <td>
-            <input class="form-control" type="text" name="DisplayColumn"  value="{{DisplayColumn}}">
+            <input class="form-control" type="text" name="Name"  value="{{Name}}">
     </td>
     <td>
-        <input class="form-control" type="text" name="TransformType"  value="{{TransformType}}">
+        <input class="form-control" type="text" name="DisplayColumn"  value="{{DisplayColumn}}">
 </td>
 <td>
-    <input class="form-control" type="text" name="DefaultValue"  value="{{DefaultValue}}">
+    <input class="form-control" type="text" name="TransformType"  value="{{TransformType}}">
+</td>
+<td>
+    <input class="form-control" type="text" name="JoinTable"  value="{{JoinTable}}">
 </td>
     <td>
         <div class="form-check  form-switch">
@@ -142,15 +146,7 @@
             {{/if}}
         </div>
     </td>
-    <td>
-        <div class="form-check  form-switch">
-            {{#if TransformTF}}
-            <input class="form-check-input" type="checkbox" name="TransformTF" checked>
-            {{else}}
-            <input class="form-check-input" type="checkbox" name="TransformTF">
-            {{/if}}
-        </div>
-    </td>
+    
     <td>
         <button type="button" class="btn btn-primary UpdateButtonClass" data-reportname="{{@../../key}}" data-voucherconsiderpk="{{@../key}}" data-ColumnPk="{{@key}}">
             Update</button>
@@ -162,7 +158,6 @@
         </table>
     
         </script>
-
 
     <script id="HbsTemplateForFoldersOnly" type="text/x-handlebars">
 
@@ -360,8 +355,8 @@
         jFChangeHeaderActiveClass();
     </script>
 
-    <script src="../../../../../../Js/Reports/Tabular/VouchersConsider/Columns/DisplayColumn/DisplayColumn.js"
-        type="module"></script>
+<script src="../../../../../../../Js/Reports/Tabular/Alter/VouchersConsider/JoinTablesColumns/DisplayColumn/DisplayColumn.js" type="module"></script>
+
 
 </body>
 

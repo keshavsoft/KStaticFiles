@@ -2,11 +2,13 @@ import { StartFunc as ApplyClassesStartFunc } from "../ApplyClasses/ApplyClasses
 
 let jFCreateFoldersToDom = async () => {
     let jVarLocalRoute = window.location.pathname.split("/")[1];
-    let jVarLocalFetchUrl = `/${jVarLocalRoute}/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/VouchersConsider`;
+    let jVarLocalFetchUrl = `/${jVarLocalRoute}/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromJoinTablesColumns/Duplicate`;
 
     let jVarLocalFromFetch = await fetch(jVarLocalFetchUrl);
     let dataFromApiJsonData = await jVarLocalFromFetch.json();
     let dataFromApi = dataFromApiJsonData;
+    console.log("dataFromApi",dataFromApi);
+
     if (dataFromApi !== null) {
         ApplyClassesStartFunc({ inDataFromApi: dataFromApi });
 

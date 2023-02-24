@@ -68,14 +68,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./DisplayToggles.html" class="nav-link text-white DisplayTogglesAClass">
+                            <a href="./DisplayToggles.html" class="nav-link text-white DisplayToggelsAClass">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi d-block mx-auto mb-1" viewBox="0 0 16 16">
                                     <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z">
                                     </path>
                                     <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z">
                                     </path>
                                 </svg>
-                                DisplayToggles
+                                DisplayToggels
                             </a>
                         </li>
                         <li class="nav-item">
@@ -196,11 +196,9 @@
             <thead>
                 <tr>
                     <th width="">S.No</th>
-                    <th width="">pk</th>
-                    <th width="">Name</th>
-                    <th width="">DisplayColumn</th>
-                    <th width="">TransformType</th>
-                    <th width=" ">DefaultValue</th>
+                    <th width="10%">pk</th>
+                    <th width="">ConsiderJoin Table</th>
+                    <th width="">TransformTF</th>
                     <th></th>
                 </tr>
             </thead>
@@ -213,18 +211,24 @@
     <td>
         <input class="form-control" type="text" name="pk"  value="{{pk}}">
 </td>
-<td>
-    <input class="form-control" type="text" name="Name"  value="{{Name}}">
-</td>
     <td>
-            <input class="form-control" type="text" name="DisplayColumn"  value="{{DisplayColumn}}">
+        <div class="form-check  form-switch">
+            {{#if ConsiderJoinTable}}
+            <input class="form-check-input" type="checkbox" name="ConsiderJoinTable" checked>
+            {{else}}
+            <input class="form-check-input" type="checkbox" name="ConsiderJoinTable">
+            {{/if}}
+        </div>
     </td>
     <td>
-        <input class="form-control" type="text" name="TransformType"  value="{{TransformType}}">
-</td>
-<td>
-    <input class="form-control" type="text" name="DefaultValue"  value="{{DefaultValue}}">
-</td>       
+        <div class="form-check  form-switch">
+            {{#if TransformTF}}
+            <input class="form-check-input" type="checkbox" name="TransformTF" checked>
+            {{else}}
+            <input class="form-check-input" type="checkbox" name="TransformTF">
+            {{/if}}
+        </div>
+    </td>
     <td>
         <button type="button" class="btn btn-primary UpdateButtonClass" data-reportname="{{@../../key}}" data-voucherconsiderpk="{{@../key}}" data-ColumnPk="{{@key}}">
             Update</button>
@@ -434,7 +438,7 @@
         jFChangeHeaderActiveClass();
     </script>
 
-    <script src="../../../../../../Js/Reports/Tabular/VouchersConsider/Columns/DisplayColumn/DisplayColumn.js" type="module"></script>
+    <script src="../../../../../../Js/Reports/Tabular/VouchersConsider/Columns/DisplayToggles/DisplayToggles.js" type="module"></script>
 
 </body>
 

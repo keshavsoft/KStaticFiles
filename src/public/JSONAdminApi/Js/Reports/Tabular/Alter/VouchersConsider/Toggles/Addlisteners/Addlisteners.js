@@ -10,7 +10,7 @@ let jFLocalUpdateClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
     let jVarLocalItemName = jVarLocalCurrentTarget.dataset.item;
 
-    let jVarLocalvoucherName = jVarLocalCurrAentTarget.dataset.voucher;
+    let jVarLocalvoucherName = jVarLocalCurrentTarget.dataset.voucher;
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
     let jVarLocalFolderName = jVarLocalColsestTr.querySelector('[name="FolderName"]');

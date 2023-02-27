@@ -13,19 +13,18 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.columnpk;
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
-    let jVarLocalDisplayColumn = jVarLocalColsestTr.querySelector('[name="DisplayColumn"]');
-    let jVarLocalTransformType = jVarLocalColsestTr.querySelector('[name="TransformType"]');
-    let jVarLocalDefaultValue = jVarLocalColsestTr.querySelector('[name="DefaultValue"]');
+    let jVarLocalConsiderJoinTable = jVarLocalColsestTr.querySelector('[name="ConsiderJoinTable"]');
+    let jVarLocalTransformTF = jVarLocalColsestTr.querySelector('[name="TransformTF"]');
 
-    let jVarLocalDisplayColumnValue = jVarLocalDisplayColumn.value;
-    let jVarLocalTransformTypeValue = jVarLocalTransformType.value;
-    let jVarLocalDefaultValueValue = jVarLocalDefaultValue.value;
+
+    let jVarLocalConsiderJoinTableValue = jVarLocalConsiderJoinTable.checked;
+    let jVarLocalTransformTFValue = jVarLocalTransformTF.checked;
 
 
     let BodyAsJson = {
-        DisplayColumn: jVarLocalDisplayColumnValue,
-        TransformType: jVarLocalTransformTypeValue,
-        DefaultValue: jVarLocalDefaultValueValue,
+
+        ConsiderJoinTable: jVarLocalConsiderJoinTableValue,
+        TransformTF: jVarLocalTransformTFValue
     };
 
     // let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/AsTable";

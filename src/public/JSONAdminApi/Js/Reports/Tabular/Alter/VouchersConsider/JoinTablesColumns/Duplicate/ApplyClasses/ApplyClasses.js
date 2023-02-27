@@ -55,7 +55,7 @@ let LocalForApplyClasses = ({ indataFromApi }) => {
 };
 
 let LocalForClassesFromUrl = ({ indataFromApi, inQueryParamsAsObject }) => {
-    console.log("inQueryParamsAsObject", inQueryParamsAsObject);
+    console.log("inQueryParamsAsObject", indataFromApi);
 
     let jVarLocalReportName = inQueryParamsAsObject.inReportName;
     let jVarLocalVoucherConsiderPk = inQueryParamsAsObject.voucherconsiderpk;
@@ -72,7 +72,7 @@ let LocalForClassesFromUrl = ({ indataFromApi, inQueryParamsAsObject }) => {
                 if (jVarLocalVoucherConsiderPk in indataFromApi.ReportsObject[jVarLocalReportName].VouchersConsiderObject) {
                     indataFromApi.ReportsObject[jVarLocalReportName].VouchersConsiderObject[jVarLocalVoucherConsiderPk].TabPaneClass = " show active";
                     indataFromApi.ReportsObject[jVarLocalReportName].VouchersConsiderObject[jVarLocalVoucherConsiderPk].ButtonClass = " active";
-                    indataFromApi.ReportsObject[jVarLocalReportName].VouchersConsiderObject[jVarLocalVoucherConsiderPk].JoinTablesColumns[jVarLocalcolumnpk].RowClass = "table-success";
+                    indataFromApi.ReportsObject[jVarLocalReportName].VouchersConsiderObject[jVarLocalVoucherConsiderPk].JoinTablesColumnsObject[jVarLocalcolumnpk].RowClass = "table-success";
 
                 };
             };

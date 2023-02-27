@@ -13,22 +13,22 @@ let jFLocalUpdateClickFunc = async (event) => {
     let jVarLocalvoucherName = jVarLocalCurrentTarget.dataset.voucher;
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
-    let jVarLocalFolderName = jVarLocalColsestTr.querySelector('[name="FolderName"]');
-    let jVarLocalFileName = jVarLocalColsestTr.querySelector('[name="FileName"]');
+
+    let jVarLocalItemNameConsider = jVarLocalColsestTr.querySelector('[name="ItemNameConsider"]');
     let jVarLocalActive = jVarLocalColsestTr.querySelector('[name="Active"]');
-    let jVarLocalColumnNameToPick = jVarLocalColsestTr.querySelector('[name="ColumnNameToPick"]');
+    let jVarLocalFromFolder = jVarLocalColsestTr.querySelector('[name="FromFolder"]');
 
 
-    let jVarLocalFolderNameValue = jVarLocalFolderName.value;
-    let jVarLocalFileNameValue = jVarLocalFileName.value;
+   
+    let jVarLocalItemNameConsiderValue = jVarLocalItemNameConsider.value;
     let jVarLocalActiveValue = jVarLocalActive.checked;
-    let jVarLocalColumnNameToPickValue = jVarLocalColumnNameToPick.value;
+    let jVarLocalFromFolderValue = jVarLocalFromFolder.value;
 
     let BodyAsJson = {
-        FolderName: jVarLocalFolderNameValue,
-        FileName: jVarLocalFileNameValue,
+       
+        FileName: jVarLocalItemNameConsiderValue,
         Active: jVarLocalActiveValue,
-        ColumnNameToPick: jVarLocalColumnNameToPickValue
+        ItemNameConsider: jVarLocalFromFolderValue
 
     };
 

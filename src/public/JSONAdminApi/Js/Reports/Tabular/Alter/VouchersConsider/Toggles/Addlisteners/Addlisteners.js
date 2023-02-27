@@ -2,11 +2,11 @@ let jFUpdateFunc = () => {
     let jVarLocalUpdateClassName = document.getElementsByClassName("UpdateButtonClass");
 
     for (let i = 0; i < jVarLocalUpdateClassName.length; i++) {
-        jVarLocalUpdateClassName[i].addEventListener("click", jFLocalClickFunc)
+        jVarLocalUpdateClassName[i].addEventListener("click", jFLocalUpdateClickFunc)
     };
 
 };
-let jFLocalClickFunc = async (event) => {
+let jFLocalUpdateClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
     let jVarLocalItemName = jVarLocalCurrentTarget.dataset.item;
 

@@ -10,7 +10,8 @@ let jFLocalUpdateClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
     let jVarLocalreportname = jVarLocalCurrentTarget.dataset.reportname;
     let jVarLocalvoucherconsiderpk = jVarLocalCurrentTarget.dataset.voucherconsiderpk;
-    let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.Jointablescolumnspk;
+    let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.jointablescolumnspk;
+    console.log("ddddddddddd",jVarLocalColumnPk);
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
     let jVarLocalDisplayColumn = jVarLocalColsestTr.querySelector('[name="Name"]');

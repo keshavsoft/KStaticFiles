@@ -14,29 +14,23 @@ let jFLocalUpdateClickFunc = async (event) => {
     console.log("ddddddddddd",jVarLocalColumnPk);
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
-    let jVarLocalDisplayColumn = jVarLocalColsestTr.querySelector('[name="Name"]');
-    let jVarLocalTransformType = jVarLocalColsestTr.querySelector('[name="DisplayColumn"]');
-    let jVarLocalDefaultValue = jVarLocalColsestTr.querySelector('[name="TransformType"]');
-    let jVarLocalConsiderJoinTable = jVarLocalColsestTr.querySelector('[name="JoinTable"]');
-    let jVarLocalTransformTF = jVarLocalColsestTr.querySelector('[name="ConsiderJoinTable"]');
+    let jVarLocalDisplayColumn = jVarLocalColsestTr.querySelector('[name="PullKey"]');
+    let jVarLocalTransformType = jVarLocalColsestTr.querySelector('[name="JoinFromCondition"]');
+    let jVarLocalDefaultValue = jVarLocalColsestTr.querySelector('[name="JoinToCondition"]');
 
     let jVarLocalDisplayColumnValue = jVarLocalDisplayColumn.value;
     let jVarLocalTransformTypeValue = jVarLocalTransformType.value;
     let jVarLocalDefaultValueValue = jVarLocalDefaultValue.value;
-    let jVarLocalConsiderJoinTableValue = jVarLocalConsiderJoinTable.value;
-    let jVarLocalTransformTFValue = jVarLocalTransformTF.checked;
 
 
     let BodyAsJson = {
-        Name: jVarLocalDisplayColumnValue,
-        DisplayColumn: jVarLocalTransformTypeValue,
-        TransformType: jVarLocalDefaultValueValue,
-        JoinTable: jVarLocalConsiderJoinTableValue,
-        ConsiderJoinTable: jVarLocalTransformTFValue
+        PullKey: jVarLocalDisplayColumnValue,
+        JoinFromCondition: jVarLocalTransformTypeValue,
+        JoinToCondition: jVarLocalDefaultValueValue
     };
 
     // let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/AsTable";
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromJoinTablesColumns/DisplayColumn";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromJoinTablesColumns/JointConditions";
     let jVarLocalRequestHeader = {
         method: "PATCH",
         headers: {

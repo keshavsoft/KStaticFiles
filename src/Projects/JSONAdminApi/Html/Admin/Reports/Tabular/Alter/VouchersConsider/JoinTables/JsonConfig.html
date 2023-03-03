@@ -106,47 +106,30 @@
         <table class="table" >
             <thead>
                 <tr>
-                    <th width="5%">S.No</th>
-                    <th width="6%">pk</th>
-                    <th width="">Name</th>
-                    <th width="">DisplayColumn</th>
-                    <th width="">TransformType</th>
-                    <th width="">JoinTable</th>
-                    <th width="">ConsiderJoin Table</th>
+                    <th width="5%">#</th>
+                    <th width="">UserFolderName</th>
+                    <th width="">inFolderName</th>
+                    <th width="">inJsonFileName</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                {{#each JoinTablesColumnsObject}}
+                {{#each this}}
     <tr class="{{RowClass}}">
     <td class="text-center">
     {{ForSNo @index}}
     </td>
+   
     <td>
-        <input class="form-control" type="text" name="pk"  value="{{pk}}">
-</td>
-    <td>
-            <input class="form-control" type="text" name="Name"  value="{{Name}}">
+            <input class="form-control" type="text" name="UserFolderName"  value="{{UserFolderName}}">
     </td>
     <td>
-        <input class="form-control" type="text" name="DisplayColumn"  value="{{DisplayColumn}}">
+        <input class="form-control" type="text" name="inFolderName"  value="{{inFolderName}}">
 </td>
 <td>
-    <input class="form-control" type="text" name="TransformType"  value="{{TransformType}}">
+    <input class="form-control" type="text" name="inJsonFileName"  value="{{inJsonFileName}}">
 </td>
-<td>
-    <input class="form-control" type="text" name="JoinTable"  value="{{JoinTable}}">
-</td>
-    <td>
-        <div class="form-check  form-switch">
-            {{#if ConsiderJoinTable}}
-            <input class="form-check-input" type="checkbox" name="ConsiderJoinTable" checked>
-            {{else}}
-            <input class="form-check-input" type="checkbox" name="ConsiderJoinTable">
-            {{/if}}
-        </div>
-    </td>
-    
+
     <td>
         <button type="button" class="btn btn-primary UpdateButtonClass" data-reportname="{{@../../key}}" data-voucherconsiderpk="{{@../key}}" data-Jointablescolumnspk="{{@key}}">
             Update</button>
@@ -160,7 +143,6 @@
         </script>
 
     <script id="HbsTemplateForFoldersOnly" type="text/x-handlebars">
-
 
 <ul class="nav nav-tabs" role="tablist">    
     {{#each ReportsObject}}
@@ -193,7 +175,6 @@
     <div class="d-flex align-items-start row">
       <div class="nav flex-column nav-pills col-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           {{#each this.VouchersConsiderObject}}
-          {{log "this" this}}
           <button class="nav-link {{ButtonClass}}" id="v-pills-{{@../key}}-{{@key}}-tab" data-bs-toggle="pill"
               data-bs-target="#v-pills-{{@../key}}-{{@key}}" type="button" role="tab"
               aria-controls="v-pills-{{@../key}}-{{@key}}" aria-selected="true">
@@ -213,7 +194,7 @@
           {{#each this.VouchersConsiderObject}}
           <div class="tab-pane fade {{TabPaneClass}}" id="v-pills-{{@../key}}-{{@key}}" role="tabpanel" aria-labelledby="v-pills-{{this.FileNameId}}-tab">
               <div class="accordion">
-                {{> HbsTemplateForTableColumnsForTogglesOnly}}
+                {{> HbsTemplateForItemsOnly}}
                 </div>
           </div>
           {{/each}}
@@ -222,53 +203,25 @@
   </script>
 
     <script id="HbsTemplateForItemsOnly" type="text/x-handlebars">
-    <div class="card text-dark bg-light">
-        <div class="card-header">
-            <div class="row">
-                <div class="col">
-                    <h4>{{FileName}}</h4>
-                </div>
 
-                <div class="col">
-                    <input type="text" class="form-control" name="" placeholder="Type to search..."
-                        onkeyup="jFTableSearch(event)" autofocus>
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-            {{#each this.ColumnsObject}}
+        {{#each this.JoinTablesObject}}
+        <div class="accordion" id="accordionExample">
             <div class="accordion-item">
-              <h2 class="accordion-header" id="heading-{{@../../key}}-{{@../key}}-{{@key}}">
-                {{#if ColumnsObject}}
-                {{log "this" this}}
-        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-        data-bs-target="#collapse-{{@../../key}}-{{@../key}}-{{@key}}" aria-expanded="true" aria-controls="collapse-{{this.ItemNameForHtmlId}}">
-        {{@key}}
-        </button>
-        {{else}}
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-        data-bs-target="#collapse-{{@../../key}}-{{@../key}}-{{@key}}" aria-expanded="false aria-controls="collapse-{{this.ItemNameForHtmlId}}">
-        {{ItemName}}
-        </button>
-        {{/if}}
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-{{@../key}}-{{@key}}" aria-expanded="true" aria-controls="collapseOne">
+                  {{@key}}
+                </button>
               </h2>
-              {{#if ShowOnLoad}}
-              <div id="collapse-{{@../../key}}-{{@../key}}-{{@key}}" class="accordion-collapse collapse show" aria-labelledby="heading-{{this.ItemNameForHtmlId}}">
+              <div id="collapseOne-{{@../key}}-{{@key}}" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    {{>HbsTemplateForScreensOnly}}
+                    {{>HbsTemplateForTableColumnsForTogglesOnly}}
                 </div>
               </div>
-              {{else}}
-              <div id="collapse-{{@../../key}}-{{@../key}}-{{@key}}" class="accordion-collapse collapse" aria-labelledby="heading-{{this.ItemNameForHtmlId}}">
-                <div class="accordion-body">
-                    {{>HbsTemplateForScreensOnly}}
-                </div>
-              </div>
-              {{/if}}
             </div>
-            {{/each}}
-        </div>
-    </div>
+           
+          </div>
+          {{/each}}
+
             </script>
     <script>
         //HbsTemplateForScreensWithSubTableColumnsOnly

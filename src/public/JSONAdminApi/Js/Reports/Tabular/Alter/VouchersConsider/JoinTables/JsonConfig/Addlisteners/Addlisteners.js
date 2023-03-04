@@ -10,33 +10,26 @@ let jFLocalUpdateClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
     let jVarLocalreportname = jVarLocalCurrentTarget.dataset.reportname;
     let jVarLocalvoucherconsiderpk = jVarLocalCurrentTarget.dataset.voucherconsiderpk;
-    let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.jointablescolumnspk;
-    console.log("ddddddddddd",jVarLocalColumnPk);
+    let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.Jointableskey;
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
-    let jVarLocalDisplayColumn = jVarLocalColsestTr.querySelector('[name="Name"]');
-    let jVarLocalTransformType = jVarLocalColsestTr.querySelector('[name="DisplayColumn"]');
-    let jVarLocalDefaultValue = jVarLocalColsestTr.querySelector('[name="TransformType"]');
-    let jVarLocalConsiderJoinTable = jVarLocalColsestTr.querySelector('[name="JoinTable"]');
-    let jVarLocalTransformTF = jVarLocalColsestTr.querySelector('[name="ConsiderJoinTable"]');
+    let jVarLocalDisplayColumn = jVarLocalColsestTr.querySelector('[name="UserFolderName"]');
+    let jVarLocalTransformType = jVarLocalColsestTr.querySelector('[name="inFolderName"]');
+    let jVarLocalDefaultValue = jVarLocalColsestTr.querySelector('[name="inJsonFileName"]');
 
     let jVarLocalDisplayColumnValue = jVarLocalDisplayColumn.value;
     let jVarLocalTransformTypeValue = jVarLocalTransformType.value;
     let jVarLocalDefaultValueValue = jVarLocalDefaultValue.value;
-    let jVarLocalConsiderJoinTableValue = jVarLocalConsiderJoinTable.value;
-    let jVarLocalTransformTFValue = jVarLocalTransformTF.checked;
 
 
     let BodyAsJson = {
-        Name: jVarLocalDisplayColumnValue,
-        DisplayColumn: jVarLocalTransformTypeValue,
-        TransformType: jVarLocalDefaultValueValue,
-        JoinTable: jVarLocalConsiderJoinTableValue,
-        ConsiderJoinTable: jVarLocalTransformTFValue
+        UserFolderName: jVarLocalDisplayColumnValue,
+        inFolderName: jVarLocalTransformTypeValue,
+        inJsonFileName: jVarLocalDefaultValueValue
     };
 
     // let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/AsTable";
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromJoinTablesColumns/DisplayColumn";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromJoinTables/JsonConfig";
     let jVarLocalRequestHeader = {
         method: "PATCH",
         headers: {

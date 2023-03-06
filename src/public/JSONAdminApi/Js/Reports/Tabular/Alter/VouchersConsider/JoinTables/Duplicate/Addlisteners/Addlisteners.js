@@ -13,7 +13,7 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.columnpk;
 
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromJoinTablesColumns/Duplicate";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromJoinTables/Duplicate";
     let jVarLocalRequestHeader = {
         method: "PATCH",
         headers: {

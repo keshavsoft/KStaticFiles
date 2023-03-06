@@ -101,46 +101,56 @@
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
-   
+     
     <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
-        <table class="table" >
-            <thead>
-                <tr>
-                    <th width="5%">#</th>
-                    <th width="">UserFolderName</th>
-                    <th width="">inFolderName</th>
-                    <th width="">inJsonFileName</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each this}}
-    <tr class="{{RowClass}}">
-    <td class="text-center">
-    {{ForSNo @index}}
-    </td>
-   
-    <td>
-            <input class="form-control" type="text" name="UserFolderName"  value="{{UserFolderName}}">
-    </td>
-    <td>
-        <input class="form-control" type="text" name="inFolderName"  value="{{inFolderName}}">
-</td>
-<td>
-    <input class="form-control" type="text" name="inJsonFileName"  value="{{inJsonFileName}}">
-</td>
-
-    <td>
-        <button type="button" class="btn btn-primary UpdateButtonClass" data-reportname="{{@../../../key}}" data-voucherconsiderpk="{{@../../key}}" data-Jointableskey="{{@../key}}" data-Jointable="{{@key}}">
-            Update</button>
-    </td>
-    </tr>
-    
-                {{/each}}
-            </tbody>
-        </table>
-    
-        </script>
+        {{log "ssssss tgble " this}}
+        <input class="form-control" type="text" name="inFolderName"  value="{{JsonConfig.inFolderName}}">  
+            
+                </script>
+        
+                  
+            <script id="HbsTemplateForTableColumnsForTogglesOnly1" type="text/x-handlebars">
+                {{log "ssssss tgble " this}}
+                
+                        <table class="table" >
+                            <thead>
+                                <tr>
+                                    <th width="5%">#</th>
+                                    <th width="">UserFolderName</th>
+                                    <th width="">inFolderName</th>
+                                    <th width="">inJsonFileName</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each this}}
+                    <tr class="{{RowClass}}">
+                    <td class="text-center">
+                    {{ForSNo @index}}
+                    </td>
+                   
+                    <td>
+                            <input class="form-control" type="text" name="UserFolderName"  value="{{UserFolderName}}">
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="inFolderName"  value="{{inFolderName}}">
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="inJsonFileName"  value="{{inJsonFileName}}">
+                </td>
+                
+                    <td>
+                        <button type="button" class="btn btn-primary UpdateButtonClass" data-reportname="{{@../../../key}}" data-voucherconsiderpk="{{@../../key}}" data-Jointableskey="{{@../key}}" data-Jointable="{{@key}}">
+                            Update</button>
+                    </td>
+                    </tr>
+                    
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    
+                        </script>
+                
 
     <script id="HbsTemplateForFoldersOnly" type="text/x-handlebars">
 
@@ -202,8 +212,8 @@
   </div>
   </script>
 
-    <script id="HbsTemplateForItemsOnly" type="text/x-handlebars">
-
+    <script id="HbsTemplateForItemsOnly1" type="text/x-handlebars">
+{{log "ssssssssss" JoinTablesObject key}}
         {{#each this.JoinTablesObject}}
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -223,6 +233,40 @@
           {{/each}}
 
             </script>
+
+            <script id="HbsTemplateForItemsOnly" type="text/x-handlebars">
+                {{log "ssssssssss" this @key @../key JoinTables}}
+        
+                {{#each JoinTables}}
+                {{log "iiii" this}}
+                {{#each this}}
+                {{log "mmmmm" this}}
+        
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-{{@../key}}-{{@key}}" aria-expanded="true" aria-controls="collapseOne">
+                          {{@key}}
+                        </button>
+                      </h2>
+                      <div id="collapseOne-{{@../key}}-{{@key}}" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            {{>HbsTemplateForTableColumnsForTogglesOnly}}
+                        </div>
+                      </div>
+                    </div>
+                   
+                  </div>
+        
+                {{/each}}
+        
+                {{/each}}
+        
+                {{#each this.JoinTablesObject}}
+             
+                  {{/each}}
+        
+                    </script>
     <script>
         //HbsTemplateForScreensWithSubTableColumnsOnly
         class jClassForHbs {

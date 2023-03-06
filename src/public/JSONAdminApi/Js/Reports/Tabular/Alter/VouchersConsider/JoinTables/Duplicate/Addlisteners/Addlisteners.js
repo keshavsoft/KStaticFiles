@@ -10,7 +10,7 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
     let jVarLocalreportname = jVarLocalCurrentTarget.dataset.reportname;
     let jVarLocalvoucherconsiderpk = jVarLocalCurrentTarget.dataset.voucherconsiderpk;
-    let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.jointableskey;
+    let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.jointable;
     console.log("jVarLocalColumnPk",jVarLocalColumnPk);
 
 

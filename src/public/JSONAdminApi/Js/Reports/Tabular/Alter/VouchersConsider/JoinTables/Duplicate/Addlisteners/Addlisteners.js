@@ -10,7 +10,8 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
     let jVarLocalreportname = jVarLocalCurrentTarget.dataset.reportname;
     let jVarLocalvoucherconsiderpk = jVarLocalCurrentTarget.dataset.voucherconsiderpk;
-    let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.columnpk;
+    let jVarLocalColumnPk = jVarLocalCurrentTarget.dataset.jointableskey;
+    console.log("jVarLocalColumnPk",jVarLocalColumnPk);
 
 
     let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromJoinTables/Duplicate";
@@ -23,7 +24,7 @@ let jFLocalClickFunc = async (event) => {
         body: JSON.stringify({
             inReportName: jVarLocalreportname,
             inVouchersConsiderPK: jVarLocalvoucherconsiderpk,
-            JoinTablesColumnsPK: jVarLocalColumnPk
+            inJointableskey: jVarLocalColumnPk
         })
     };
     let response = await fetch(jFetchUrl, jVarLocalRequestHeader);

@@ -17,28 +17,25 @@ let jFLocalUpdateClickFunc = async (event) => {
     let jVarLocalDisplayName = jVarLocalColsestTr.querySelector('[name="DisplayName"]');
     let jVarLocalCreateNew = jVarLocalColsestTr.querySelector('[name="CreateNew"]');
     let jVarLocalInsert = jVarLocalColsestTr.querySelector('[name="Insert"]');
-    let jVarLocalActive = jVarLocalColsestTr.querySelector('[name="Active"]');
     let jVarLocalShowInTable = jVarLocalColsestTr.querySelector('[name="ShowInTable"]');
 
 
     let jVarLocalDataAttributeValue = jVarLocalDataAttribute.value;
     let jVarLocalDisplayNameValue = jVarLocalDisplayName.value;
-    let jVarLocalCreateNewValue = jVarLocalCreateNew.value;
-    let jVarLocalInsertValue = jVarLocalInsert.value;
-    let jVarLocalActiveValue = jVarLocalActive.checked;
-    let jVarLocalShowInTableValue = jVarLocalShowInTable.value;
+    let jVarLocalCreateNewValue = jVarLocalCreateNew.checked;
+    let jVarLocalInsertValue = jVarLocalInsert.checked;
+    let jVarLocalShowInTableValue = jVarLocalShowInTable.checked;
 
     let BodyAsJson = {
         DataAttribute: jVarLocalDataAttributeValue,
         DisplayName: jVarLocalDisplayNameValue,
         CreateNew: jVarLocalCreateNewValue,
         Insert: jVarLocalInsertValue,
-        Active: jVarLocalActiveValue,
         ShowInTable: jVarLocalShowInTableValue
 
     };
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromVoucherConsider/FromKeys/Toggles";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ReportsFolder/LedgerAutoJsonFile/FromReports/FromTableColumns/FromKeys/Toggles";
     let jVarLocalRequestHeader = {
         method: "PATCH",
         headers: {

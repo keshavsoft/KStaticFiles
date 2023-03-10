@@ -249,7 +249,7 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each this.VouchersConsider}}
+                {{#each this.TableColumns}}
                 {{log "this" this}}
                 <tr class="{{RowClass}}">
                     <td class="text-center">
@@ -259,48 +259,39 @@
                         {{@key}}
                     </td>
                     <td>
-                        <input class="form-control" type="text" name="FolderName" value="{{DataAttribute}}" disabled>
+                        <input class="form-control" type="text" name="DataAttribute" value="{{DataAttribute}}" >
                     </td>
                     <td>
-                          <input class="form-control" type="text" name="FileName" value="{{DisplayName}}" Disabled>
+                          <input class="form-control" type="text" name="DisplayName" value="{{DisplayName}}" >
                     </td>
                       <td>
                         <div class="form-check  form-switch">
                             {{#if CreateNew}}
-                            <input class="form-check-input" type="checkbox" name="CreateNew" checked Disabled>
+                            <input class="form-check-input" type="checkbox" name="CreateNew" checked >
                             {{else}}
-                            <input class="form-check-input" type="checkbox" name="CreateNew" Disabled>
+                            <input class="form-check-input" type="checkbox" name="CreateNew" >
                             {{/if}}
                         </div>
                     </td>
                     <td>
                         <div class="form-check  form-switch">
                             {{#if Insert}}
-                            <input class="form-check-input" type="checkbox" name="Insert" checked Disabled>
+                            <input class="form-check-input" type="checkbox" name="Insert" checked >
                             {{else}}
-                            <input class="form-check-input" type="checkbox" name="Insert" Disabled>
+                            <input class="form-check-input" type="checkbox" name="Insert" >
                             {{/if}}
                         </div>
                     </td>
                     <td>
                         <div class="form-check  form-switch">
                             {{#if ShowInTable}}
-                            <input class="form-check-input" type="checkbox" name="ShowInTable" checked Disabled>
+                            <input class="form-check-input" type="checkbox" name="ShowInTable" checked >
                             {{else}}
-                            <input class="form-check-input" type="checkbox" name="ShowInTable" Disabled>
+                            <input class="form-check-input" type="checkbox" name="ShowInTable"  >
                             {{/if}}
                         </div>
                     </td>
 
-                    <td>
-                        <div class="form-check  form-switch">
-                            {{#if Active}}
-                            <input class="form-check-input" type="checkbox" name="Active" checked>
-                            {{else}}
-                            <input class="form-check-input" type="checkbox" name="Active">
-                            {{/if}}
-                        </div>
-                    </td>
                     <td>
                         <button type="button" class="btn btn-outline-info UpdateButtonClass"  data-Item="{{@../key}}" data-Voucher="{{@key}}">
                             Update

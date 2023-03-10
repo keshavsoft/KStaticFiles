@@ -53,7 +53,7 @@ let LocalForClassesFromUrl = ({ indataFromApi, inQueryParamsAsObject }) => {
         if (jVarLocalReportName in indataFromApi.Reports) {
             indataFromApi.Reports[jVarLocalReportName].TabPageClass = " show active";
             indataFromApi.Reports[jVarLocalReportName].MenuClass = " active";
-            indataFromApi.Reports[jVarLocalReportName].VouchersConsider[jVarLocalFileName].RowClass = "table-success";
+            indataFromApi.Reports[jVarLocalReportName].TableColumns[jVarLocalFileName].RowClass = "table-success";
 
 
         };

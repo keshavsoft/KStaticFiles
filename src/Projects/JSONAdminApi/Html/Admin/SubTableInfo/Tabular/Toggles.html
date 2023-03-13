@@ -128,11 +128,12 @@
 
 
       
+     
       <script id="HbsTemplateForSubTableColumns" type="text/x-handlebars">
 
 
         <ul class="nav nav-tabs" role="tablist">
-            {{#each SubTableColumnsObject}}
+            {{#each SubTableInfo}}
           
             <li class="nav-item" role="presentation">
                 <button class="nav-link {{this.MenuClass}}" id="{{this.FolderName}}-tab" data-bs-toggle="tab"
@@ -148,7 +149,7 @@
             {{/each}}
         </ul>
         <div class="tab-content">
-            {{#each SubTableColumnsObject}}
+            {{#each SubTableInfo}}
             <div class="tab-pane fade {{this.TabPageClass}}" id="{{@key}}-{{@../key}}-{{@../../key}}-{{@../../../key}}-{{@../../../../key}}" role="tabpanel"
                 aria-labelledby="{{this.FolderName}}-tab">
                 {{> HbsTemplateForTableColumnsForTogglesOnly}}
@@ -304,77 +305,70 @@
 
 
                         <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>ScreenName</th>
-                        <th>ScreenName ForHtmlId</th>
-                        <th>ColumnReOrder</th>
-                        <th>ShowFooter</th>
-                        <th>CreateNew</th>
-                        <th>DataAttributes FromTableDataRow</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each this.Screens}}
-                    <tr>
-                        <td class="text-center">
-                            {{ForSNo @index}}
-                        </td>
-                        <td>
-                            {{this.ScreenName}}
-                        </td>
-                        <td>
-                            {{this.ScreenNameForHtmlId}}
-                        </td>
-                        <td>
-                            <div class="form-check  form-switch">
-                                {{#if TableInfoObject.ColumnReOrder}}
-                                <input class="form-check-input" type="checkbox" name="ColumnReOrder" checked>
-                                {{else}}
-                                <input class="form-check-input" type="checkbox" name="ColumnReOrder">
-                                {{/if}}
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-check  form-switch">
-                                {{#if TableInfoObject.ShowFooter}}
-                                <input class="form-check-input" type="checkbox" name="ShowFooter" checked>
-                                {{else}}
-                                <input class="form-check-input" type="checkbox" name="ShowFooter">
-                                {{/if}}
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-check  form-switch">
-                                {{#if TableInfoObject.DataAttributesFromTableInfo}}
-                                <input class="form-check-input" type="checkbox" name="DataAttributesFromTableInfo" checked>
-                                {{else}}
-                                <input class="form-check-input" type="checkbox" name="DataAttributesFromTableInfo">
-                                {{/if}}
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-check  form-switch">
-                                {{#if TableInfoObject.DataAttributesFromTableDataRow}}
-                                <input class="form-check-input" type="checkbox" name="DataAttributesFromTableDataRow" checked>
-                                {{else}}
-                                <input class="form-check-input" type="checkbox" name="DataAttributesFromTableDataRow">
-                                {{/if}}
-                            </div>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../key}}" data-filename="{{@../../key}}" data-itemname="{{@../key}}" data-screenname="{{ScreenName}}">
-                                Update
-                            </button>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-           
-            </table>
-          </script>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>ColumnReOrder</th>
+                                        <th>ShowFooter</th>
+                                        <th>CreateNew</th>
+                                        <th>DataAttributes FromTable DataRow</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each this}}
+                                    <tr>
+                                        <td class="text-center">
+                                            {{ForSNo @index}}
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="form-check  form-switch">
+                                                {{#if ColumnReOrder}}
+                                                <input class="form-check-input" type="checkbox" name="ColumnReOrder" checked>
+                                                {{else}}
+                                                <input class="form-check-input" type="checkbox" name="ColumnReOrder">
+                                                {{/if}}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-check  form-switch">
+                                                {{#if ShowFooter}}
+                                                <input class="form-check-input" type="checkbox" name="ShowFooter" checked>
+                                                {{else}}
+                                                <input class="form-check-input" type="checkbox" name="ShowFooter">
+                                                {{/if}}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-check  form-switch">
+                                                {{#if DataAttributesFromTableInfo}}
+                                                <input class="form-check-input" type="checkbox" name="DataAttributesFromTableInfo" checked>
+                                                {{else}}
+                                                <input class="form-check-input" type="checkbox" name="DataAttributesFromTableInfo">
+                                                {{/if}}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-check  form-switch">
+                                                {{#if DataAttributesFromTableDataRow}}
+                                                <input class="form-check-input" type="checkbox" name="DataAttributesFromTableDataRow" checked>
+                                                {{else}}
+                                                <input class="form-check-input" type="checkbox" name="DataAttributesFromTableDataRow">
+                                                {{/if}}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../key}}" data-filename="{{@../../key}}" data-itemname="{{@../key}}" data-screenname="{{ScreenName}}">
+                                                Update
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                           
+                            </table>
+                          </script>
 
 
 

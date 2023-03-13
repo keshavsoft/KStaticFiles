@@ -26,7 +26,7 @@ let jFLocalClickFunc = async (event) => {
 
     let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/SubTableColumns/SubKeys/Widths";
 
-    let response = await fetch(jFetchUrl, {
+    let jFetchBody = {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
@@ -41,18 +41,20 @@ let jFLocalClickFunc = async (event) => {
             subtablecolumnkey: jVarLocalsubtablecolumnkey,
             BodyAsJson
         })
-    });
+    }
+
+    let response = await fetch(jFetchUrl, jFetchBody);
 
     switch (response.status) {
         case 200:
-           
+
             let jVarLocalNewLocation = "";
             jVarLocalNewLocation += `?inFolderName=${jVarLocalFolderName}`
             jVarLocalNewLocation += `&inFileName=${jVarLocalfilename}`
             jVarLocalNewLocation += `&inItemName=${jVarLocalitemname}`
             jVarLocalNewLocation += `&inScreenName=${jVarLocalscreenname}`
             jVarLocalNewLocation += `&subtablecolumnkey=${jVarLocalsubtablecolumnkey}`;
-            jVarLocalNewLocation += `&inColumnName=${jVarLocalDataAttributeValue}`;
+            jVarLocalNewLocation += `&inColumnName=${jVarLocaltablecolumnkey}`;
             window.location = jVarLocalNewLocation;
 
             break;

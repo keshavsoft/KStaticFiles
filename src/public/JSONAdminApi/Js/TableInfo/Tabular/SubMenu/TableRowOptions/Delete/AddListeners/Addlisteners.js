@@ -14,26 +14,17 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalscreenname = jVarLocalCurrentTarget.dataset.screenname;
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
-    let jVarLocalKTF = jVarLocalColsestTr.querySelector('[name="KTF"]');
-    // let jVarLocalDisplayText = jVarLocalColsestTr.querySelector('[name="DisplayText"]');
-    // let jVarLocalColClass = jVarLocalColsestTr.querySelector('[name="ColClass"]');
+    let jVarLocalSimple = jVarLocalColsestTr.querySelector('[name="Simple"]');
 
-    let jVarLocalKTFValue = jVarLocalKTF.checked;
-    // let jVarLocalDisplayTextValue = jVarLocalDisplayText.value;
-    // let jVarLocalColClassValue = jVarLocalColClass.value;
+    let jVarLocalSimpleValue = jVarLocalSimple.checked;
 
     let BodyAsJson = {
-        KTF: jVarLocalKTFValue,
-        // DisplayText: jVarLocalDisplayTextValue,
-        // ColClass: jVarLocalColClassValue
+        Simple: jVarLocalSimpleValue
     }
 
-    //let jVarLocalFetchUrl = `/${jVarLocalRoute}/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableInfo/SubMenu/SearchRowArray/Label`;
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableInfo/SubMenu/TableRowOptions/Delete";
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableInfo/SubMenu/SearchRowArray/Label";
-    console.log("jFetchUrl-----------", jFetchUrl);
-
-    let response = await fetch(jFetchUrl, {
+    let FetchBody = {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
@@ -46,7 +37,9 @@ let jFLocalClickFunc = async (event) => {
             ScreenName: jVarLocalscreenname,
             BodyAsJson
         })
-    });
+    }
+
+    let response = await fetch(jFetchUrl, FetchBody);
 
     switch (response.status) {
         case 200:

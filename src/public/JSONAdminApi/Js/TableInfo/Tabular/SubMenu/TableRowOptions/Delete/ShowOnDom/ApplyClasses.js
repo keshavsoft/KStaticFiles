@@ -1,4 +1,5 @@
 let jFStartFunc = ({ inDataFromApi }) => {
+    console.log("inDataFromApi---:",inDataFromApi);
     let jVarLocalQueryParams = jFgetUrlQueryParams();
     let jVarLocaldataFromApi = inDataFromApi;
 

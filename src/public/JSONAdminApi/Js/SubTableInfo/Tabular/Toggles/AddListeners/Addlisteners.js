@@ -12,10 +12,11 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalfilename = jVarLocalCurrentTarget.dataset.filename;
     let jVarLocalitemname = jVarLocalCurrentTarget.dataset.itemname;
     let jVarLocalscreenname = jVarLocalCurrentTarget.dataset.screenname;
+    let jVarLocalGridName = jVarLocalCurrentTarget.dataset.gridname;
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
-    let jVarLocalColumnReOrder = jVarLocalColsestTr.querySelector('[name="ColumnReOrder"]');
-    let jVarLocalShowFooter = jVarLocalColsestTr.querySelector('[name="ShowFooter"]');
+    let jVarLocalColumnReOrder = jVarLocalColsestTr.querySelector('[name="ShowFooter"]');
+    let jVarLocalShowFooter = jVarLocalColsestTr.querySelector('[name="HeadRowSearch"]');
     let jVarLocalDataAttributesFromTableInfo = jVarLocalColsestTr.querySelector('[name="DataAttributesFromTableInfo"]');
     let jVarLocalDataAttributesFromTableDataRow = jVarLocalColsestTr.querySelector('[name="DataAttributesFromTableDataRow"]');
 
@@ -31,9 +32,8 @@ let jFLocalClickFunc = async (event) => {
         DataAttributesFromTableDataRow: jVarLocalDataAttributesFromTableDataRowValue
     }
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableInfo/Toggles";
-
-    let response = await fetch(jFetchUrl, {
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/SubTableInfo/Toggles";
+    let jFetchObject = {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
@@ -44,9 +44,11 @@ let jFLocalClickFunc = async (event) => {
             FileName: jVarLocalfilename,
             ItemName: jVarLocalitemname,
             ScreenName: jVarLocalscreenname,
+            GridName: jVarLocalGridName,
             BodyAsJson
         })
-    });
+    }
+    let response = await fetch(jFetchUrl, jFetchObject);
 
     switch (response.status) {
         case 200:
@@ -56,7 +58,8 @@ let jFLocalClickFunc = async (event) => {
             jVarLocalNewLocation += `&inFileName=${jVarLocalfilename}`
             jVarLocalNewLocation += `&inItemName=${jVarLocalitemname}`
             jVarLocalNewLocation += `&inScreenName=${jVarLocalscreenname}`;
-          //  window.location = jVarLocalNewLocation;
+            jVarLocalNewLocation += `&inGridName=${jVarLocalGridName}`;
+            //  window.location = jVarLocalNewLocation;
 
             break;
 

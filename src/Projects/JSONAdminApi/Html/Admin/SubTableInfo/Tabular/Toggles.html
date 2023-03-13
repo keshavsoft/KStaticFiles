@@ -309,14 +309,13 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>ColumnReOrder</th>
                                         <th>ShowFooter</th>
-                                        <th>CreateNew</th>
+                                        <th>HeadRowSearch</th>
+                                        <th>DataAttributes FromTableInfo</th>
                                         <th>DataAttributes FromTable DataRow</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{#each this}}
                                     <tr>
                                         <td class="text-center">
                                             {{ForSNo @index}}
@@ -324,19 +323,19 @@
                                         
                                         <td>
                                             <div class="form-check  form-switch">
-                                                {{#if ColumnReOrder}}
-                                                <input class="form-check-input" type="checkbox" name="ColumnReOrder" checked>
+                                                {{#if ShowFooter}}
+                                                <input class="form-check-input" type="checkbox" name="ShowFooter" checked>
                                                 {{else}}
-                                                <input class="form-check-input" type="checkbox" name="ColumnReOrder">
+                                                <input class="form-check-input" type="checkbox" name="ShowFooter">
                                                 {{/if}}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-check  form-switch">
-                                                {{#if ShowFooter}}
-                                                <input class="form-check-input" type="checkbox" name="ShowFooter" checked>
+                                                {{#if HeadRowSearch}}
+                                                <input class="form-check-input" type="checkbox" name="HeadRowSearch" checked>
                                                 {{else}}
-                                                <input class="form-check-input" type="checkbox" name="ShowFooter">
+                                                <input class="form-check-input" type="checkbox" name="HeadRowSearch">
                                                 {{/if}}
                                             </div>
                                         </td>
@@ -359,12 +358,11 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../key}}" data-filename="{{@../../key}}" data-itemname="{{@../key}}" data-screenname="{{ScreenName}}">
+                                            <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../../key}}" data-filename="{{@../../../key}}" data-itemname="{{@../../key}}" data-screenname="{{@../key}}" data-gridname="{{@key}}">
                                                 Update
                                             </button>
                                         </td>
                                     </tr>
-                                    {{/each}}
                                 </tbody>
                            
                             </table>

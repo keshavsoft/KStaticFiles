@@ -1,10 +1,56 @@
 let jFCloneFunc = () => {
     let jVarLocalUploadId = document.getElementById("UploadData");
 
-    jVarLocalUploadId.addEventListener("click", jFLocalClickFunc)
+    jVarLocalUploadId.addEventListener("click", jFLocalButtonClickFunc)
+};
 
+let jFLocalButtonClickFunc = async () => {
+    let jVarLocalSelectFileId = document.getElementById("SelectFileId");
+    let jVarLocalSelectedFile = jVarLocalSelectFileId.files[0];
+    fileValidation(jVarLocalSelectedFile);
+    let jVarLocalFromFile = await jVarLocalreadFileAsync(jVarLocalSelectedFile);
+    console.log("jVarLocalFromFile ", JSON.parse(jVarLocalFromFile));
+};
+
+let fileValidation = (file) => {
+    console.log("file", file, file.type, file.type === "application/json");
+
+    if ((file.type === "application/json") === false) {
+        alert('Invalid file type');
+        return false;
+    }
+};
+
+let jVarLocalreadFileAsync = (file) => {
+    return new Promise((resolve, reject) => {
+        let reader = new FileReader();
+
+        reader.onload = () => {
+            resolve(reader.result);
+        };
+
+        reader.onerror = reject;
+
+        reader.readAsText(file);
+    })
+};
+
+let readFile = (file) => {
+    // Check if the file is an image.
+    // if (file.type && !file.type.startsWith('image/')) {
+    //     console.log('File is not an image.', file.type, file);
+    //     return;
+    // }
+
+    const reader = new FileReader();
+    reader.addEventListener('load', (event) => {
+
+        return event.target.result;
+    });
+    reader.readAsText(file);
 
 };
+
 let jFLocalClickFunc = async (event) => {
     let jvarLoclReportItemId = document.getElementById("ReportItem");
 

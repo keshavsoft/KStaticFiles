@@ -59,7 +59,7 @@ let jFLocalClickFunc = async (event) => {
             jVarLocalNewLocation += `&inItemName=${jVarLocalitemname}`
             jVarLocalNewLocation += `&inScreenName=${jVarLocalscreenname}`;
             jVarLocalNewLocation += `&inGridName=${jVarLocalGridName}`;
-            //  window.location = jVarLocalNewLocation;
+             window.location = jVarLocalNewLocation;
 
             break;
 

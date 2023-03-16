@@ -1,3 +1,5 @@
+import { StartFunc as ShowOnDomStartFunc } from '../ShowOnDom/ShowOnDom.js';
+
 let jFCloneFunc = () => {
     let jVarLocalUploadId = document.getElementById("UploadData");
 
@@ -5,11 +7,16 @@ let jFCloneFunc = () => {
 };
 
 let jFLocalButtonClickFunc = async () => {
+    let jvarLocalJSONData = {};
     let jVarLocalSelectFileId = document.getElementById("SelectFileId");
     let jVarLocalSelectedFile = jVarLocalSelectFileId.files[0];
     fileValidation(jVarLocalSelectedFile);
     let jVarLocalFromFile = await jVarLocalreadFileAsync(jVarLocalSelectedFile);
-    console.log("jVarLocalFromFile ", JSON.parse(jVarLocalFromFile));
+    jvarLocalJSONData.JsonReports = JSON.parse(jVarLocalFromFile);
+    jVarGlobalPresentiveData = jvarLocalJSONData.JsonReports;
+
+    ShowOnDomStartFunc({ JsonData: jvarLocalJSONData });
+    // console.log("jVarLocalFromFile ", JSON.parse(jVarLocalFromFile));
 };
 
 let fileValidation = (file) => {

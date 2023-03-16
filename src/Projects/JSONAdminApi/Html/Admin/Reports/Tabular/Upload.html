@@ -33,10 +33,61 @@
     <main>
 
         <div class="container">
-            <input class="form-control" type="file" id="SelectFileId">
-            <input class="btn btn-success" type="button" value="Upload" id="UploadData">
+            <div class="row">
+                <div class="col-9">
+                    <div class="row">
+                        <input class="form-control" type="file" id="SelectFileId">
+
+                    </div>
+                </div>
+                <div class="col-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
+                        <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
+                      </svg>
+                </div>
+                <div class="col-2">
+                    <div class="row">
+                        <input class="btn btn-success" type="button" value="Show" id="UploadData">
+                    </div>
+                </div>
+            </div>
+            <div id="KCont1">
+            </div>
         </div>
     </main>
+    <script id="HbsTemplateForFoldersOnly" type="text/x-handlebars">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Vouchers Name</th>
+                    <th></th>
+                    <th>Upload Report</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each JsonReports}}
+                <tr class="{{RowClass}}">
+                    <td class="text-center">
+                        {{ForSNo @index}}
+                    </td>
+                    <td>
+                        {{@key}}
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-info UploadButtonClass" data-report="{{@key}}">
+                            Upload
+                        </button>
+                    </td>
+                    
+                </tr>
+                {{/each}}
+            </tbody>
+       
+        </table>
+      </script>
 
     <footer class="footer mt-auto py-3 bg-light fixed-bottom">
         <div class="container">
@@ -107,29 +158,30 @@
         };
     </script>
 
-    <script>
-        let jFChangeHeaderActiveClass = () => {
-            let jVarLocalPathArray = window.location.pathname.split("/");
-            let jVarLocalHTMLName = jVarLocalPathArray[jVarLocalPathArray.length - 1];
-            jFChangeNavAnchorClass({ inClassName: jVarLocalHTMLName.split(".")[0] });
-        };
+<script>
+    let jVarGlobalPresentiveData;
+    let jFChangeHeaderActiveClass = () => {
+        let jVarLocalPathArray = window.location.pathname.split("/");
+        let jVarLocalHTMLName = jVarLocalPathArray[jVarLocalPathArray.length - 1];
+        jFChangeNavAnchorClass({ inClassName: jVarLocalHTMLName.split(".")[0] });
+    };
 
-        let jFChangeNavAnchorClass = ({ inClassName }) => {
-            let jVarLocalNavBarId = document.getElementById("NavBarId");
-            let jVarLocalAnchorNeeded = jVarLocalNavBarId.querySelector(`.${inClassName}AClass`);
+    let jFChangeNavAnchorClass = ({ inClassName }) => {
+        let jVarLocalNavBarId = document.getElementById("NavBarId");
+        let jVarLocalAnchorNeeded = jVarLocalNavBarId.querySelector(`.${inClassName}AClass`);
 
-            if (jVarLocalAnchorNeeded !== null) {
+        if (jVarLocalAnchorNeeded !== null) {
 
-                if (jVarLocalAnchorNeeded.classList.contains("text-white")) {
-                    jVarLocalAnchorNeeded.classList.remove("text-white");
-                };
-
-                jVarLocalAnchorNeeded.classList.add("text-info");
+            if (jVarLocalAnchorNeeded.classList.contains("text-white")) {
+                jVarLocalAnchorNeeded.classList.remove("text-white");
             };
-        };
 
-        jFChangeHeaderActiveClass();
-    </script>
+            jVarLocalAnchorNeeded.classList.add("text-info");
+        };
+    };
+
+    jFChangeHeaderActiveClass();
+</script>
 
     <script src="../../../../Js/Reports/Tabular/Upload/Upload.js" type="module"></script>
 

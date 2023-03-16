@@ -1,3 +1,7 @@
-import { jFCloneFunc as jFCloneFuncAddlisteners } from "./Addlisteners/Addlisteners.js";
+import { StartFunc as StartFunStartFuncs } from "./Addlisteners/StartFuncs.js";
+import { jFUploadFunc as jFUploadFuncAddlistersShow } from "./Addlisteners/AddlistersShow.js";
 
-jFCloneFuncAddlisteners();
+StartFunStartFuncs();
+// // jFCloneFuncAddlisteners().then(FromjFCreateFoldersToDom => {
+//     jFUploadFuncAddlistersShow()
+// });

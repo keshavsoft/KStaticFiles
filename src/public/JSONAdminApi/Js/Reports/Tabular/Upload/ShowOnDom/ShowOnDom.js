@@ -1,7 +1,5 @@
 let StartFunc = ({ JsonData }) => {
     let localJsonData = JsonData;
-    
-
 
     if (localJsonData !== null) {
 

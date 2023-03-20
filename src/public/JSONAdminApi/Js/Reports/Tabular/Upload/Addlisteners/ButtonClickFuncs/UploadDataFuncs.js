@@ -1,4 +1,5 @@
-import { StartFunc as ShowOnDomStartFunc } from '../ShowOnDom/ShowOnDom.js';
+import { StartFunc as ShowOnDomStartFunc } from '../../ShowOnDom/ShowOnDom.js';
+import { StartFunc as StartFuncUploadFunc } from './Addlisteners/UploadFunc.js';
 
 let ButtonClickFunc = async () => {
 
@@ -11,6 +12,7 @@ let ButtonClickFunc = async () => {
     jVarGlobalPresentiveData = jvarLocalJSONData.JsonReports;
 
     ShowOnDomStartFunc({ JsonData: jvarLocalJSONData });
+    StartFuncUploadFunc();
 
 };
 

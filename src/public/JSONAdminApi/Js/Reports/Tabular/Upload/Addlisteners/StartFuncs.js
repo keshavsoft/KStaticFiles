@@ -6,6 +6,4 @@ let StartFunc = () => {
     jVarLocalUploadId.addEventListener("click", ButtonClickFuncUploadDataFuncs)
 };
 
-
-
 export { StartFunc };

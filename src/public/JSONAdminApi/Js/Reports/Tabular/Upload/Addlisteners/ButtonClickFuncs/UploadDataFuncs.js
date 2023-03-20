@@ -2,7 +2,6 @@ import { StartFunc as ShowOnDomStartFunc } from '../../ShowOnDom/ShowOnDom.js';
 import { StartFunc as StartFuncUploadFunc } from './Addlisteners/UploadFunc.js';
 
 let ButtonClickFunc = async () => {
-
     let jvarLocalJSONData = {};
     let jVarLocalSelectFileId = document.getElementById("SelectFileId");
     let jVarLocalSelectedFile = jVarLocalSelectFileId.files[0];
@@ -13,7 +12,6 @@ let ButtonClickFunc = async () => {
 
     ShowOnDomStartFunc({ JsonData: jvarLocalJSONData });
     StartFuncUploadFunc();
-
 };
 
 let fileValidation = (file) => {

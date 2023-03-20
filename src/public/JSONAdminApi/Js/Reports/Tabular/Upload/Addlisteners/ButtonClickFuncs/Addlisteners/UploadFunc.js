@@ -6,9 +6,6 @@ let StartFunc = () => {
     for (let i = 0; i < jVarLocalCloneClassName.length; i++) {
         jVarLocalCloneClassName[i].addEventListener("click", StartFuncFetchFuncs)
     };
-
 };
-
-
 
 export { StartFunc };

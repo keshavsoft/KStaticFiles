@@ -1,3 +1,4 @@
-import { jFCloneFunc as jFCloneFuncAddlisteners } from "./Addlisteners/Addlisteners.js";
+import { StartFunc as StartFunStartFuncs } from "./Addlisteners/StartFuncs.js";
 
-jFCloneFuncAddlisteners();
+StartFunStartFuncs();
+

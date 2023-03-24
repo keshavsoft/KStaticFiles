@@ -18,13 +18,14 @@ for Tally :
 for JSONApi :
 
 1.  copy JSONUser folder from public/Projects to your JSONApi Repo:public
+2.  copy * folders from src/public/JSONUser to your Repo/public/JSONUser
 
-2.  copy JSONReports folder from public/Projects to your JSONApi Repo:public
-3.  copy * folders from src/public/JSONReports to your Repo/public/JSONReports
+3.  copy JSONReports folder from public/Projects to your JSONApi Repo:public
+4.  copy * folders from src/public/JSONReports to your Repo/public/JSONReports
 
-4.  copy JSONUtility folder from public/Projects to your JSONApi Repo:public
+5.  copy JSONUtility folder from public/Projects to your JSONApi Repo:public
 
-5.  copy JSONAdminApi folder from public/Projects to your JSONApi Repo:public
-6.  copy * folders from src/public/JSONAdminApi to your Repo/public/JSONAdminApi
+6.  copy JSONAdminApi folder from public/Projects to your JSONApi Repo:public
+7.  copy * folders from src/public/JSONAdminApi to your Repo/public/JSONAdminApi
 
 

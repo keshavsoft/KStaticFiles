@@ -13,7 +13,8 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalitemname = jVarLocalCurrentTarget.dataset.itemname;
     let jVarLocalscreenname = jVarLocalCurrentTarget.dataset.screenname;
 
-    let jVarLocalCloneName = document.getElementById("CloneName");
+    let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
+    let jVarLocalCloneName = jVarLocalColsestTr.querySelector('[name="CloneName"]');
 
     let jVarLocalCloneNameValue = jVarLocalCloneName.value;
 

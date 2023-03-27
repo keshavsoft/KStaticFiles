@@ -43,8 +43,11 @@ let jFLocalClickFunc = async (event) => {
             jVarLocalNewLocation += `?inFolderName=${jVarLocalFolderName}`
             jVarLocalNewLocation += `&inFileName=${jVarLocalfilename}`
             jVarLocalNewLocation += `&inItemName=${jVarLocalitemname}`
-            jVarLocalNewLocation += `&inScreenName=${jVarLocalCloneNameValue}`
+            jVarLocalNewLocation += `&inScreenName=${jVarLocalscreenname}`
+            jVarLocalNewLocation += `&inDuplicateScreenName=${jVarLocalCloneNameValue}`
             window.location = jVarLocalNewLocation;
+
+
 
             break;
 

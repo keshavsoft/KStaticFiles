@@ -4,12 +4,12 @@ let LocalButtonClickFunc = async ({ inEvent, inUserLocalStorageKey, inFirmDetail
     let jVarLocalDataset = jVarLocalCurrentTarget.dataset;
     let jVarLocalUserName = jVarLocalDataset.username;
     let jVarLocalPassword = jVarLocalDataset.password;
-    console.log("aaaaaaaaaaaa : ");
+    
     let LocalFromFetch = await LocalCheckCredentials({
         inUserName: jVarLocalUserName,
         inPassWord: jVarLocalPassword
     });
-    console.log("bbbbbbb : ", LocalFromFetch);
+
     if (LocalFromFetch.KTF) {
         LocalInsertToLocalStorage({
             inUserName: jVarLocalUserName, inFirmDetails: LocalFromFetch,
@@ -17,10 +17,9 @@ let LocalButtonClickFunc = async ({ inEvent, inUserLocalStorageKey, inFirmDetail
         });
         
         if ("RedirectPage" in LocalFromFetch) {
-            window.location.href = LocalFromFetch.RedirectPage;
+            window.open(LocalFromFetch.RedirectPage, '_newtab');
+            //window.location.href = LocalFromFetch.RedirectPage;
         };
-        //console.log("LocalFromFetch : ", LocalFromFetch);
-        // window.location.href = LocalFromFetch.RedirectPage;
     };
 };
 
@@ -47,7 +46,7 @@ let LocalCheckCredentials = async ({ inUserName, inPassWord }) => {
 
 let StartFunc = ({ inUserLocalStorageKey, inFirmDetailsLocalStorageKey }) => {
     var userSelection = document.querySelectorAll('.LoginButtonClass');
-    // console.log("userSelection : ", userSelection);
+    
     for (let i = 0; i < userSelection.length; i++) {
         userSelection[i].addEventListener("click", async () => {
             await LocalButtonClickFunc({ inEvent: event, inUserLocalStorageKey, inFirmDetailsLocalStorageKey });

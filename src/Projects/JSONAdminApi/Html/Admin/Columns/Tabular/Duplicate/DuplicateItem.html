@@ -185,26 +185,26 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>ScreenName</th>
+                    <th>ItemName</th>
                     <th>Duplicate</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                {{#each this.Screens}}
+                {{#each this.Items}}
                 <tr class="{{RowClass}}">
                     <td class="text-center">
                         {{ForSNo @index}}
                     </td>
                     <td>
-                        {{this.ScreenName}}
+                        {{ItemName}}
                     </td>
                     
                     <td>
                         <input class="form-control" type="text" name="CloneName" id="CloneName" >
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-info CloneButtonClass" data-foldername="{{@../../../key}}" data-filename="{{@../../key}}" data-itemname="{{@../key}}" data-screenname="{{@key}}">
+                        <button type="button" class="btn btn-outline-info CloneButtonClass" data-foldername="{{@../../key}}" data-filename="{{@../key}}" data-itemname="{{@key}}">
                             Duplicate
                         </button>
                     </td>
@@ -432,7 +432,7 @@
           {{#each this.Files}}
           <div class="tab-pane fade {{TabPaneClass}}" id="v-pills-{{../FolderName}}-{{@key}}" role="tabpanel" aria-labelledby="v-pills-{{this.FileNameId}}-tab">
               <div class="accordion">
-                {{> HbsTemplateForItemsOnly}}
+                {{> HbsTemplateForScreensOnly}}
                 </div>
           </div>
           {{/each}}

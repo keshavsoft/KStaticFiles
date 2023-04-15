@@ -11,7 +11,6 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalFolderName = jVarLocalCurrentTarget.dataset.foldername;
     let jVarLocalfilename = jVarLocalCurrentTarget.dataset.filename;
     let jVarLocalitemname = jVarLocalCurrentTarget.dataset.itemname;
-    let jVarLocalscreenname = jVarLocalCurrentTarget.dataset.screenname;
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
     let jVarLocalCloneName = jVarLocalColsestTr.querySelector('[name="CloneName"]');
@@ -19,7 +18,7 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalCloneNameValue = jVarLocalCloneName.value;
 
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableColumns/CreateNew/DuplicateScreen";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableColumns/Duplicate/DuplicateItem";
     let jFetchBody = {
         method: "PATCH",
         headers: {
@@ -30,24 +29,21 @@ let jFLocalClickFunc = async (event) => {
             folderName: jVarLocalFolderName,
             FileName: jVarLocalfilename,
             ItemName: jVarLocalitemname,
-            ScreenName: jVarLocalscreenname,
-            DuplicateScreenName: jVarLocalCloneNameValue
+            inToItemName: jVarLocalCloneNameValue
         })
     }
     let response = await fetch(jFetchUrl, jFetchBody);
+    console.log("response--------------",response);
 
     switch (response.status) {
         case 200:
-            //window.location = "";
+
             let jVarLocalNewLocation = "";
             jVarLocalNewLocation += `?inFolderName=${jVarLocalFolderName}`
             jVarLocalNewLocation += `&inFileName=${jVarLocalfilename}`
             jVarLocalNewLocation += `&inItemName=${jVarLocalitemname}`
-            jVarLocalNewLocation += `&inScreenName=${jVarLocalscreenname}`
-            jVarLocalNewLocation += `&inDuplicateScreenName=${jVarLocalCloneNameValue}`
+            jVarLocalNewLocation += `&inDuplicateItem=${jVarLocalCloneNameValue}`
             window.location = jVarLocalNewLocation;
-
-
 
             break;
 

@@ -71,10 +71,9 @@ let LocalForClassesFromUrl = ({ indataFromApi, inQueryParamsAsObject }) => {
     let jVarLocalFolderName = inQueryParamsAsObject.inFolderName;
     let jVarLocalFileName = inQueryParamsAsObject.inFileName;
     let jVarLocalItemName = inQueryParamsAsObject.inItemName;
-    let jVarLocalScreenName = inQueryParamsAsObject.inScreenName;
-    let jVarLocalCloneNameValue = inQueryParamsAsObject.inDuplicateScreenName;
+    let jVarLocalCloneNameValue = inQueryParamsAsObject.inDuplicateItem;
 
-    Swal.fire(`${jVarLocalCloneNameValue} Screen Duplicated Sucessfully from ${jVarLocalScreenName}..&#128522`)
+    Swal.fire(`${jVarLocalCloneNameValue} iTEM Duplicated Sucessfully from ${jVarLocalItemName}..&#128522`)
 
 
     if ("Folders" in indataFromApi) {
@@ -90,15 +89,17 @@ let LocalForClassesFromUrl = ({ indataFromApi, inQueryParamsAsObject }) => {
                     if ("Items" in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName]) {
                         if (jVarLocalItemName in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items) {
                             indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].ShowOnLoad = true;
+                            indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalCloneNameValue].RowClass = " table-success";
 
-                            if ("Screens" in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName]) {
-                                if (jVarLocalScreenName in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens) {
-                                    indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens[jVarLocalScreenName].CollapseClass = " show";
-                                    indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens[jVarLocalCloneNameValue].RowClass = " table-success";
+
+                            // if ("Screens" in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName]) {
+                            //     if (jVarLocalScreenName in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens) {
+                            //         indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens[jVarLocalScreenName].CollapseClass = " show";
+                            //         indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens[jVarLocalCloneNameValue].RowClass = " table-success";
 
                                   
-                                };
-                            };
+                            //     };
+                            // };
                         };
                     };
                 };

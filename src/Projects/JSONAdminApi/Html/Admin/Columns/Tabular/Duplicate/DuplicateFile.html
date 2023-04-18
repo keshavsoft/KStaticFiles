@@ -12,7 +12,7 @@
     <title>TabularColumnsData</title>
     <!-- Custom styles for this template -->
     <link href="/JSONProject/css/headers.css" rel="stylesheet">
-
+    
 
 </head>
 
@@ -26,7 +26,6 @@
     </svg>
 
     <include src="./src/components/Templates/Admin/Columns/Tabular/Duplicate/Header.html"></include>
-
 
     <main>
         <div class="container">
@@ -47,7 +46,7 @@
     <footer class="footer mt-auto py-3 bg-light fixed-bottom">
     <div class="container">
         <div class="bg-light d-flex justify-content-between">
-            <div>KeshavSoft v4.17</div>
+            <div>KeshavSoft</div>
 
             <div data-BaseString="Last refresh : " id="KLastRefreshDT">Last refresh : </div>
         </div>
@@ -103,26 +102,26 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>ScreenName</th>
+                    <th>Files</th>
                     <th>Duplicate</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                {{#each this.Screens}}
+                {{#each this.Files}}
                 <tr class="{{RowClass}}">
                     <td class="text-center">
                         {{ForSNo @index}}
                     </td>
                     <td>
-                        {{this.ScreenName}}
+                        {{this.FileName}}
                     </td>
                     
                     <td>
                         <input class="form-control" type="text" name="CloneName" id="CloneName" >
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-info CloneButtonClass" data-foldername="{{@../../../key}}" data-filename="{{@../../key}}" data-itemname="{{@../key}}" data-screenname="{{@key}}">
+                        <button type="button" class="btn btn-outline-info CloneButtonClass" data-foldername="{{@../../key}}" data-filename="{{@../key}}" data-itemname="{{@key}}">
                             Duplicate
                         </button>
                     </td>
@@ -137,7 +136,7 @@
       </script>
 
 
-    <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
+      <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
         <table class="table">
             <thead>
                 <tr>
@@ -319,7 +318,7 @@
     {{#each Folders}}
     <div class="tab-pane fade {{this.TabPageClass}}" id="{{this.FolderName}}" role="tabpanel"
         aria-labelledby="{{this.FolderName}}-tab">
-        {{> HbsTemplateForFilesOnly}}
+        {{> HbsTemplateForScreensOnly}}
     </div>
     {{/each}}
 </div>
@@ -350,7 +349,7 @@
           {{#each this.Files}}
           <div class="tab-pane fade {{TabPaneClass}}" id="v-pills-{{../FolderName}}-{{@key}}" role="tabpanel" aria-labelledby="v-pills-{{this.FileNameId}}-tab">
               <div class="accordion">
-                {{> HbsTemplateForItemsOnly}}
+                {{> HbsTemplateForScreensOnly}}
                 </div>
           </div>
           {{/each}}
@@ -494,7 +493,7 @@
         jFChangeHeaderActiveClass();
     </script>
 
-    <script src="../../../../../Js/Columns/Tabular/Duplicate/DuplicateScreen.js" type="module"></script>
+<script src="../../../../../Js/Columns/Tabular/Duplicate/DuplicateFles.js" type="module"></script>
 
 </body>
 

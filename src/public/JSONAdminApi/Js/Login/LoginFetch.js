@@ -1,7 +1,15 @@
+import { StartFunc as StartFuncCheckLogin } from "./Check/CheckLogin.js";
+
 const StartFunc = () => {
     let jVarLocalLoginModalButtonId = document.getElementById("LoginModalButtonId");
 
     jVarLocalLoginModalButtonId.addEventListener("click", jFLocalLoginButtonClick);
+
+    let jVarLocalNavBarloginId = document.getElementById("NavBarloginId");
+
+    jVarLocalNavBarloginId.addEventListener("click", StartFuncCheckLogin);
+
+
 };
 
 const jFLocalLoginButtonClick = () => {

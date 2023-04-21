@@ -1,7 +1,15 @@
+import { StartFunc as StartFuncCheckLogin } from "./Check/CheckLogin.js";
+
 const StartFunc = () => {
     let jVarLocalLoginModalButtonId = document.getElementById("LoginModalButtonId");
 
     jVarLocalLoginModalButtonId.addEventListener("click", jFLocalLoginButtonClick);
+
+    let jVarLocalNavBarloginId = document.getElementById("NavBarloginId");
+
+    jVarLocalNavBarloginId.addEventListener("click", StartFuncCheckLogin);
+
+
 };
 
 const jFLocalLoginButtonClick = () => {
@@ -16,7 +24,9 @@ const jFLocalLoginButtonClick = () => {
 };
 
 const jVarLocalCheckUserNamePassword = async ({ inUserName, inPassword }) => {
-    let jVarLocalUserCheckRoute = "JSONAdminApi";
+    let jVarLocalPathArray = window.location.pathname.split("/");
+
+    let jVarLocalUserCheckRoute = jVarLocalPathArray[1];
     let jVarLocalFetchUrl = `/${jVarLocalUserCheckRoute}/Validate/Users/InUserDataJson/ForUserNameAndPassword/TokenToCookie`;
 
     let response = await fetch(jVarLocalFetchUrl, {
@@ -38,7 +48,8 @@ const jVarLocalCheckUserNamePassword = async ({ inUserName, inPassword }) => {
             modal.hide();
 
             jFLocalFirmDetails({ inUserName, inFirmDetails: FetchDataJson });
-            this.Login.ClientSideCookieFuncs.CheckToken();
+            window.location.href = "";
+            // this.Login.ClientSideCookieFuncs.CheckToken();
         } else {
             document.getElementById("KUserNameInput").classList.add("is-invalid");
         };

@@ -37,15 +37,8 @@
 
     </main>
 
-    <footer class="footer mt-auto py-3 bg-light fixed-bottom">
-        <div class="container">
-            <div class="bg-light d-flex justify-content-between">
-                <div>KeshavSoft</div>
+    <include src="./src/components/Templates/Admin/FooterWithLogin.html"></include>
 
-                <div data-BaseString="Last refresh : " id="KLastRefreshDT">Last refresh : </div>
-            </div>
-        </div>
-    </footer>
 
     <!-- LOGIN  STARTED -->
     <div class="modal fade" id="LoginModalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -183,7 +176,8 @@
 
         jFChangeHeaderActiveClass();
     </script>
-
+    <script src="/JSONAdminApi/Js/Login/Check.js" type="module"></script>
+    <script src="/JSONAdminApi/Js/Login/LoginFetch.js" type="module"></script>
     <script src="../../../../../Js/Columns/Tabular/Duplicate/DuplicateFolder.js" type="module"></script>
 
 </body>

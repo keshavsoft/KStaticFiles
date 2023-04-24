@@ -1,13 +1,18 @@
-let jFUpdateFunc = () => {
+let StartFunc = ({ inProjectName }) => {
     let jVarLocalUpdateClassName = document.getElementsByClassName("CloneButtonClass");
 
     for (let i = 0; i < jVarLocalUpdateClassName.length; i++) {
-        jVarLocalUpdateClassName[i].addEventListener("click", jFLocalClickFunc)
+        jVarLocalUpdateClassName[i].addEventListener("click", async () => {
+            await jFLocalButtonClickFunc({
+                inEvent: event,
+                inProjectName
+            });
+        });
     };
 };
 
-let jFLocalClickFunc = async (event) => {
-    let jVarLocalCurrentTarget = event.currentTarget;
+let jFLocalButtonClickFunc = async ({ inEvent, inProjectName }) => {
+    let jVarLocalCurrentTarget = inEvent.currentTarget;
     let jVarLocalFolderName = jVarLocalCurrentTarget.dataset.foldername;
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
@@ -15,8 +20,7 @@ let jFLocalClickFunc = async (event) => {
 
     let jVarLocalCloneNameValue = jVarLocalCloneName.value;
 
-
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ConfigFolder/Duplicate/DuplicateFolder";
+    let jFetchUrl = `/${inProjectName}/AdminApi/AsTree/Json/UserFolders/ConfigFolder/Duplicate/DuplicateFolder`;
     let jFetchBody = {
         method: "PATCH",
         headers: {
@@ -50,4 +54,4 @@ let jFLocalClickFunc = async (event) => {
     console.log("response : ", response.status);
 };
 
-export { jFUpdateFunc };
+export { StartFunc };

@@ -14,10 +14,9 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalCloneName = jVarLocalColsestTr.querySelector('[name="CloneName"]');
 
     let jVarLocalCloneNameValue = jVarLocalCloneName.value;
-    console.log("kkkkkkkkkkk",jVarLocalFolderName,jVarLocalCloneNameValue);
 
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableColumns/Duplicate/DuplicateFolder";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ConfigFolder/Duplicate/DuplicateFolder";
     let jFetchBody = {
         method: "PATCH",
         headers: {

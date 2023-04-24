@@ -70,10 +70,9 @@ let LocalForApplyClasses = ({ indataFromApi }) => {
 let LocalForClassesFromUrl = ({ indataFromApi, inQueryParamsAsObject }) => {
     let jVarLocalFolderName = inQueryParamsAsObject.inFolderName;
     let jVarLocalFileName = inQueryParamsAsObject.inFileName;
-    let jVarLocalItemName = inQueryParamsAsObject.inItemName;
-    let jVarLocalCloneNameValue = inQueryParamsAsObject.inDuplicateItem;
+    let jVarLocalItemName = inQueryParamsAsObject.inToFileName;
 
-    Swal.fire(`${jVarLocalCloneNameValue} iTEM Duplicated Sucessfully from ${jVarLocalItemName}..&#128522`)
+    Swal.fire(`${jVarLocalItemName} File Duplicated Sucessfully from ${jVarLocalFileName}.&#128522`)
 
 
     if ("Folders" in indataFromApi) {
@@ -85,23 +84,9 @@ let LocalForClassesFromUrl = ({ indataFromApi, inQueryParamsAsObject }) => {
                 if (jVarLocalFileName in indataFromApi.Folders[jVarLocalFolderName].Files) {
                     indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].TabPaneClass = " show active";
                     indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].ButtonClass = " active";
+                    indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].ShowOnLoad = true;
+                    indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalItemName].RowClass = " table-success";
 
-                    if ("Items" in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName]) {
-                        if (jVarLocalItemName in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items) {
-                            indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].ShowOnLoad = true;
-                            indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalCloneNameValue].RowClass = " table-success";
-
-
-                            // if ("Screens" in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName]) {
-                            //     if (jVarLocalScreenName in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens) {
-                            //         indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens[jVarLocalScreenName].CollapseClass = " show";
-                            //         indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens[jVarLocalCloneNameValue].RowClass = " table-success";
-
-                                  
-                            //     };
-                            // };
-                        };
-                    };
                 };
             };
 

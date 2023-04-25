@@ -1,13 +1,15 @@
-let jFUpdateFunc = () => {
+let jFUpdateFunc = ({ inProjectName }) => {
     let jVarLocalUpdateClassName = document.getElementsByClassName("CloneButtonClass");
 
     for (let i = 0; i < jVarLocalUpdateClassName.length; i++) {
-        jVarLocalUpdateClassName[i].addEventListener("click", jFLocalClickFunc)
+        jVarLocalUpdateClassName[i].addEventListener("click", (event) => {
+            jFLocalClickFunc({ inProjectName, inevent: event })
+        });
     };
 };
 
-let jFLocalClickFunc = async (event) => {
-    let jVarLocalCurrentTarget = event.currentTarget;
+let jFLocalClickFunc = async ({ inProjectName, inevent }) => {
+    let jVarLocalCurrentTarget = inevent.currentTarget;
     let jVarLocalFolderName = jVarLocalCurrentTarget.dataset.foldername;
     let jVarLocalfilename = jVarLocalCurrentTarget.dataset.filename;
     let jVarLocalitemname = jVarLocalCurrentTarget.dataset.itemname;
@@ -19,7 +21,7 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalCloneNameValue = jVarLocalCloneName.value;
 
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableColumns/CreateNew/DuplicateScreen";
+    let jFetchUrl = `/${inProjectName}/AdminApi/AsTree/Json/UserFolders/ConfigFolder/UserFileAsFolder/JsonItem/JsonScreen/Duplicate/DuplicateScreen`;
     let jFetchBody = {
         method: "PATCH",
         headers: {

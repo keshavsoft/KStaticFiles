@@ -1,12 +1,10 @@
 import { StartFunc as RowAndColumnsStartFunc } from "./ApplyClasses.js";
 
-let jFCreateFoldersToDom = async () => {
-    let jVarLocalRoute = window.location.pathname.split("/")[1];
-    let jVarLocalFetchUrl = `/${jVarLocalRoute}/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableColumns/CreateNew/DuplicateScreen`;
+let jFCreateFoldersToDom = async ({ inProjectName }) => {
+    let jVarLocalFetchUrl = `/${inProjectName}/AdminApi/AsTree/Json/UserFolders/ConfigFolder/UserFileAsFolder/JsonItem/JsonScreen/Duplicate/DuplicateScreen`;
 
     let jVarLocalFromFetch = await fetch(jVarLocalFetchUrl);
     let dataFromApi = await jVarLocalFromFetch.json();
-console.log("dataFromApi",dataFromApi);
     if (dataFromApi !== null) {
         RowAndColumnsStartFunc({ inDataFromApi: dataFromApi });
 

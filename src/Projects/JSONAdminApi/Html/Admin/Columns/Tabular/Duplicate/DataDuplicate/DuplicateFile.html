@@ -27,8 +27,7 @@
         </symbol>
     </svg>
 
-    <include src="./src/components/Templates/Admin/Columns/Tabular/Duplicate/Header.html"></include>
-
+    <include src="./src/components/Templates/Admin/Columns/Tabular/DataDuplicate/Header.html"></include>
 
     <main>
         <div class="container">
@@ -48,6 +47,43 @@
 
     <include src="./src/components/Templates/Admin/FooterWithLogin.html"></include>
 
+
+    <!-- LOGIN  STARTED -->
+    <div class="modal fade" id="LoginModalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Enter client user credentials</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="LoginFormPopUpId" class="" onsubmit="return false" novalidate="">
+                        <div class="mb-3 form-floating is-valid">
+                            <input type="text" class="form-control" id="KUserNameInput" required="">
+                            <label for="KUserNameInput">User Name</label>
+                            <div class="invalid-feedback">
+                                User Name cannot be empty.
+                            </div>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input type="password" class="form-control" id="KPasswordInput" required="">
+                            <label for="KPasswordInput">Password</label>
+                            <div class="invalid-feedback">
+                                Password cannot be empty.
+                            </div>
+                        </div>
+                        <input type="submit" class=" btn btn-primary"
+                            onclick="jVarGlobalClientObject.Login.LoginCheck()">
+                        <!-- <button type="button" class="btn btn-primary"
+                        onclick="jVarGlobalAdmin.Login.LoginCheck()">Check</button>
+                         -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGIN FINISHED -->
+
     <script src="/ClassesStatic/CommonClass.js"></script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -64,26 +100,26 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>ScreenName</th>
+                    <th>Files</th>
                     <th>Duplicate</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                {{#each this.Screens}}
+                {{#each this.Files}}
                 <tr class="{{RowClass}}">
                     <td class="text-center">
                         {{ForSNo @index}}
                     </td>
                     <td>
-                        {{this.ScreenName}}
+                        {{this.FileName}}
                     </td>
                     
                     <td>
                         <input class="form-control" type="text" name="CloneName" id="CloneName" >
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-info CloneButtonClass" data-foldername="{{@../../../key}}" data-filename="{{@../../key}}" data-itemname="{{@../key}}" data-screenname="{{@key}}">
+                        <button type="button" class="btn btn-outline-info CloneButtonClass" data-foldername="{{@../key}}" data-filename="{{@key}}">
                             Duplicate
                         </button>
                     </td>
@@ -280,7 +316,7 @@
     {{#each Folders}}
     <div class="tab-pane fade {{this.TabPageClass}}" id="{{this.FolderName}}" role="tabpanel"
         aria-labelledby="{{this.FolderName}}-tab">
-        {{> HbsTemplateForFilesOnly}}
+        {{> HbsTemplateForScreensOnly}}
     </div>
     {{/each}}
 </div>
@@ -311,7 +347,7 @@
           {{#each this.Files}}
           <div class="tab-pane fade {{TabPaneClass}}" id="v-pills-{{../FolderName}}-{{@key}}" role="tabpanel" aria-labelledby="v-pills-{{this.FileNameId}}-tab">
               <div class="accordion">
-                {{> HbsTemplateForItemsOnly}}
+                {{> HbsTemplateForScreensOnly}}
                 </div>
           </div>
           {{/each}}
@@ -454,11 +490,13 @@
 
         jFChangeHeaderActiveClass();
     </script>
-
     <script src="/JSONAdminApi/Js/Login/Check.js" type="module"></script>
     <script src="/JSONAdminApi/Js/Login/LoginFetch.js" type="module"></script>
 
-    <script src="../../../../../Js/Columns/Tabular/Duplicate/DuplicateScreen.js" type="module"></script>
+    <!-- <script src="../../../../../Js/Columns/Tabular/DataDuplicate/DuplicateFles.js" type="module"></script> -->
+   
+    <script src="../../../../../../Js/Columns/Tabular/Duplicate/DataDuplicate/DuplicateFles.js"
+    type="module"></script>
 
 </body>
 

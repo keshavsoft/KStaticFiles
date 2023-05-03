@@ -20,7 +20,7 @@ let jFLocalClickFunc = async ({ inProjectName, inevent }) => {
     let jVarLocalCloneNameValue = jVarLocalCloneName.value;
 
 
-    let jFetchUrl = `/${inProjectName}/AdminApi/AsTree/Json/UserFolders/ConfigFolder/UserFileAsFolder/JsonItem/Duplicate/DuplicateItem`;
+    let jFetchUrl = `/${inProjectName}/AdminApi/AsTree/Json/UserFolders/DataFolder/FileinFolder/JsonItem/Duplicate/DuplicateItem`;
     let jFetchBody = {
         method: "PATCH",
         headers: {

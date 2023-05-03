@@ -1,7 +1,7 @@
 import { StartFunc as RowAndColumnsStartFunc } from "./ApplyClasses.js";
 
 let jFCreateFoldersToDom = async ({inProjectName}) => {
-    let jVarLocalFetchUrl = `/${inProjectName}/AdminApi/AsTree/Json/UserFolders/ConfigFolder/UserFileAsFolder/JsonItem/Duplicate/DuplicateItem`;
+    let jVarLocalFetchUrl = `/${inProjectName}/AdminApi/AsTree/Json/UserFolders/DataFolder/FileinFolder/JsonItem/Duplicate/DuplicateItem`;
 
     let jVarLocalFromFetch = await fetch(jVarLocalFetchUrl);
     let dataFromApi = await jVarLocalFromFetch.json();

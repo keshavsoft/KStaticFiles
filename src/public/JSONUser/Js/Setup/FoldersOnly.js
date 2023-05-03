@@ -15,6 +15,8 @@ let jFSetup = async (event) => {
         var myModal = new bootstrap.Modal(document.getElementById('SetupModal'), {
             keyboard: false
         });
+        window.location = "../BoilerPlate/FoldersOnly.html";
+
         myModal.show();
     };
 };

@@ -25,7 +25,8 @@ let LocalButtonClickFunc = async ({ inSubRoute, inUserKey, inFirmKey, inTokenNam
 
     if (data.KTF) {
         //jVarLocalApiFuncs.ShowData();
-        window.location = "Show.html";
+        // window.location = "Show.html";
+        window.location = "../BoilerPlate/FoldersOnly.html";
     };
 };
 

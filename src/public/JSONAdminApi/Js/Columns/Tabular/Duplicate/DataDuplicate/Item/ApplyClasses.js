@@ -46,19 +46,19 @@ let LocalForApplyClasses = ({ indataFromApi }) => {
                     jVarLocalFirstFile.TabPaneClass = " show active";
                     jVarLocalFirstFile.ButtonClass = " active";
 
-                    if ("Items" in jVarLocalFirstFile) {
-                        if (Object.values(jVarLocalFirstFile.Items).length > 0) {
-                            jVarLocalFirstItem = Object.values(jVarLocalFirstFile.Items)[0];
-                            jVarLocalFirstItem.ShowOnLoad = true;
+                    // if ("Items" in jVarLocalFirstFile) {
+                    //     if (Object.values(jVarLocalFirstFile.Items).length > 0) {
+                    //         jVarLocalFirstItem = Object.values(jVarLocalFirstFile.Items)[0];
+                    //         jVarLocalFirstItem.ShowOnLoad = true;
 
-                            if ("Screens" in jVarLocalFirstItem) {
-                                if (Object.values(jVarLocalFirstItem.Screens).length > 0) {
-                                    jVarLocalFirstScreen = Object.values(jVarLocalFirstItem.Screens)[0];
-                                    jVarLocalFirstScreen.CollapseClass = " show";
-                                };
-                            };
-                        };
-                    };
+                    //         if ("Screens" in jVarLocalFirstItem) {
+                    //             if (Object.values(jVarLocalFirstItem.Screens).length > 0) {
+                    //                 jVarLocalFirstScreen = Object.values(jVarLocalFirstItem.Screens)[0];
+                    //                 jVarLocalFirstScreen.CollapseClass = " show";
+                    //             };
+                    //         };
+                    //     };
+                    // };
                 };
 
             };

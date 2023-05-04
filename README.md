@@ -1,8 +1,7 @@
 KeshavSoft v5.4
 
-use npm posthml and posthtml include
-
-to club html files for serving in public of kapi project
+to club html files for serving in public of JSONApi project
+first need to delete the public folder if present.
 
 steps to be followed :
 

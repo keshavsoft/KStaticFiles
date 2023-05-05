@@ -134,6 +134,8 @@
 					</div>
 
 				</div>
+				<div id="KDomId">
+				</div>
 
 				<div class="modal fade" id="SetupModal" tabindex="-1" aria-labelledby="exampleModalLabel"
 					aria-hidden="true">
@@ -187,6 +189,39 @@
 		</div>
 	</div>
 
+	<script id="HbsTemplateForFoldersOnly" type="text/x-handlebars">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Vouchers Name</th>
+                    <th></th>
+                    <th>Upload Report</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each JsonReports}}
+                <tr class="{{RowClass}}">
+                    <td class="text-center">
+                        {{ForSNo @index}}
+                    </td>
+                    <td>
+                        {{@key}}
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-info UploadButtonClass" data-report="{{@key}}">
+                            Upload
+                        </button>
+                    </td>
+                    
+                </tr>
+                {{/each}}
+            </tbody>
+       
+        </table>
+      </script>
 
 	<script id="HbsTemplateForBody" type="text/x-handlebars">
 		{{#each this}}

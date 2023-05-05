@@ -1,22 +1,31 @@
-// import { StartFunc as ShowOnDomStartFunc } from '../../ShowOnDom/ShowOnDom.js';
-// import { StartFunc as StartFuncUploadFunc } from './Addlisteners/UploadFunc.js';
+import { StartFunc as ShowOnDomStartFunc } from '../../ShowOnDom/ShowOnDom.js';
+import { StartFunc as StartFuncZipFile } from './FileTypes/ZipFile.js';
 
 let ButtonClickFunc = async () => {
-    console.log("kkkkkkk");
     let jvarLocalJSONData = {};
     let jVarLocalSelectFileId = document.getElementById("SelectFileId");
     let jVarLocalSelectedFile = jVarLocalSelectFileId.files[0];
-    fileValidation(jVarLocalSelectedFile);
-    let jVarLocalFromFile = await jVarLocalreadFileAsync(jVarLocalSelectedFile);
-    jvarLocalJSONData.JsonReports = JSON.parse(jVarLocalFromFile);
-    jVarGlobalPresentiveData = jvarLocalJSONData.JsonReports;
 
-    ShowOnDomStartFunc({ JsonData: jvarLocalJSONData });
-    StartFuncUploadFunc();
+    switch (jVarLocalSelectedFile.type) {
+        case "application/x-zip-compressed":
+            StartFuncZipFile();
+
+            break;
+
+        default:
+            fileValidation(jVarLocalSelectedFile);
+            let jVarLocalFromFile = await jVarLocalreadFileAsync(jVarLocalSelectedFile);
+            jvarLocalJSONData.JsonReports = JSON.parse(jVarLocalFromFile);
+
+            ShowOnDomStartFunc({ JsonData: jvarLocalJSONData });
+            break;
+    }
+
+
 };
 
 let fileValidation = (file) => {
-    console.log("file", file, file.type, file.type === "application/json");
+    // console.log("file", file, file.type, file.type === "application/json");
 
     if ((file.type === "application/json") === false) {
         alert('Invalid file type');

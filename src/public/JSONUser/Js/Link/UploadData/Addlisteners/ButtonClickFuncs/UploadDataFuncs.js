@@ -3,16 +3,15 @@ import { StartFunc as StartFuncZipFile } from './FileTypes/ZipFile.js';
 
 let ButtonClickFunc = async (event) => {
     let jVarLocalEvent = event;
-    let jVarLocalCurrentTarget=jVarLocalEvent.currentTarget;
-    let jVarLocalClosestTr=jVarLocalCurrentTarget.closest("Tr");
-    let jVarLocalFileSelect=jVarLocalClosestTr.querySelector(".SelectFileClass");
-    console.log("aaaa",jVarLocalFileSelect);
+    let jVarLocalCurrentTarget = jVarLocalEvent.currentTarget;
+    let jVarLocalClosestTr = jVarLocalCurrentTarget.closest("Tr");
+    let jVarLocalFileSelect = jVarLocalClosestTr.querySelector(".SelectFileClass");
     let jvarLocalJSONData = {};
     let jVarLocalSelectedFile = jVarLocalFileSelect.files[0];
 
     switch (jVarLocalSelectedFile.type) {
         case "application/x-zip-compressed":
-            StartFuncZipFile();
+            StartFuncZipFile({ inHtmlSelect: jVarLocalSelectedFile });
 
             break;
 

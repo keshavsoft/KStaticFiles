@@ -1,6 +1,6 @@
 var $result = document.getElementById("result");
 
-let jFLocalToTable = (relativePath, zipEntry, inLoopIndex) => {
+let jFLocalToTable = (zipEntry, inLoopIndex) => {
     let jVarLocalLi = document.createElement("tr");
     let jVarLocalTd1 = document.createElement("td");
     jVarLocalTd1.innerHTML = inLoopIndex;
@@ -40,17 +40,35 @@ const jFLocalhandleFile = (f) => {
 
 const jFLocalloadAsyncThen = (zip) => {
     var $title = document.getElementById("FileNameId");
-    var dateAfter = new Date();
     let jVarLoopIndex = 0;
     let jVarLocalSpan = document.createElement("span");
     jVarLocalSpan.classList.add("small");
     // jVarLocalSpan.innerHTML = " (loaded in " + (dateAfter - dateBefore) + "ms)";
     $title.appendChild(jVarLocalSpan);
 
-    zip.forEach(function (relativePath, zipEntry) {  // 2) print entries
-        jFLocalToTable(relativePath, zipEntry, jVarLoopIndex);
-        jVarLoopIndex += 1;
-    });
+    let jVarLocalHtmld = "KTableBodyId";
+    let jVarLocalKTableBodyId = document.getElementById(jVarLocalHtmld);
+    let jVarLocalTableRows = jVarLocalKTableBodyId.querySelector("tr.table-primary");
+    let jVarLocalDataset = jVarLocalTableRows.dataset;
+    let jVarLocalPkNeeded = jVarLocalDataset.pk;
+
+    console.log("aaaaaaaaaa : ", jVarLocalPkNeeded, jVarLocalTableRows, Object.keys(zip.files)[0]);
+
+    if (Object.keys(zip.files).length > 0) {
+        let jVarLocalZipKey = Object.keys(zip.files)[0].split("/")[0];
+        console.log("jVarLocalZipKey : ", jVarLocalZipKey, jVarLocalPkNeeded);
+
+        if (jVarLocalZipKey === jVarLocalPkNeeded === false) {
+
+            return;
+        };
+
+        zip.forEach(function (relativePath, zipEntry) {  // 2) print entries
+            jFLocalToTable(zipEntry, jVarLoopIndex);
+            jVarLoopIndex += 1;
+        });
+    };
+
 };
 
 const jFLocalloadAsyncThen2ndFunc = (e) => {
@@ -87,9 +105,12 @@ const jFStart = () => {
     };
 };
 
-
 const jFSelectChange = (evt) => {
-    console.log("evt ", evt);
+    let jVarLocalEvent = evt;
+    let jVarLocalCurrentTarget = jVarLocalEvent.currentTarget;
+    let jVarLocalClosestTr = jVarLocalCurrentTarget.closest("Tr");
+    // let jVarLocalFileSelect = jVarLocalClosestTr.querySelector(".SelectFileClass");
+    jVarLocalClosestTr.classList.add("table-primary");
     // remove content
     $result.innerHTML = "";
     // be sure to show the results
@@ -100,64 +121,8 @@ const jFSelectChange = (evt) => {
 
     if (files.length === 1) {
         //allow only file to upload............
-        const formData = new FormData();
-        console.log("ttttttttttt : ", files[0]);
-        formData.append("inFile", files[0]);
-
-    //    fetch("/JSONUser/Login/Users/Admin/ShowUsers/WithFolderCheck", {
-    //         method: "post",
-    //         body: formData
-    //     }).catch((upError) => {
-    //         console.log("upError ", upError);
-    //     });
-
-       jFLocalhandleFile(files[0]);
-    };
-
-
-    // for (var i = 0; i < files.length; i++) {
-    //     const formData = new FormData();
-
-    //     formData.append("inFile", files[i]);
-
-    //     fetch("/JSONUser/Login/Users/Admin/ShowUsers/WithFolderCheck", {
-    //         method: "post",
-    //         body: formData
-    //     }).catch((upError) => {
-    //         console.log("upError ", upError);
-    //     });
-
-    //     jFLocalhandleFile(files[i]);
-    // };
-};
-
-const jFUpLoadButtonClick = (evt) => {
-    console.log("evt ", evt);
-    // remove content
-    $result.innerHTML = "";
-    // be sure to show the results
-    document.getElementById("result_block").classList.remove("hidden");
-    document.getElementById("result_block").classList.add("show");
-
-    var files = evt.target.files;
-
-    if (files.length === 1) {
-        //allow only file to upload............
-        const formData = new FormData();
-        console.log("ttttttttttt : ", files[0]);
-        formData.append("inFile", files[0]);
-
-        fetch("/JSONUser/Login/Users/Admin/ShowUsers/WithFolderCheck", {
-            method: "post",
-            body: formData
-        }).catch((upError) => {
-            console.log("upError ", upError);
-        });
-
         jFLocalhandleFile(files[0]);
     };
-
 };
-
 
 export { jFSelectChange };

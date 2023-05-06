@@ -1,13 +1,20 @@
+let StartFunc = async ({ inHtmlSelect }) => {
+    let jVarLocalSelectedFile = inHtmlSelect;
+    let jVarLocalFromValidation = fileValidation(jVarLocalSelectedFile);
 
-let StartFunc = async () => {
-    console.log("jjjjjjjjjjjjj");
-    let jvarLocalJSONData = {};
-    let jVarLocalSelectFileId = document.getElementById("SelectFileId");
-    let jVarLocalSelectedFile = jVarLocalSelectFileId.files[0];
-    let jVarFromValodation =fileValidation(jVarLocalSelectedFile);
-    console.log("dssd",jVarFromValodation);
-    let jVarLocalFromFile = await jVarLocalreadFileAsync(jVarLocalSelectedFile);
-    jvarLocalJSONData.JsonReports = JSON.parse(jVarLocalFromFile);
+    if (jVarLocalFromValidation) {
+        const formData = new FormData();
+        formData.append("inFile", jVarLocalSelectedFile);
+
+        fetch("/JSONUser/Login/Users/Admin/ShowUsers/WithFolderCheck", {
+            method: "post",
+            body: formData
+        }).catch((upError) => {
+            console.log("upError ", upError);
+        });
+    };
+    // let jVarLocalFromFile = await jVarLocalreadFileAsync(jVarLocalSelectedFile);
+    // jvarLocalJSONData.JsonReports = JSON.parse(jVarLocalFromFile);
 
 };
 
@@ -17,7 +24,9 @@ let fileValidation = (file) => {
     if ((file.type === "application/x-zip-compressed") === false) {
         alert('Invalid file type');
         return false;
-    }
+    };
+
+    return true;
 };
 
 let jVarLocalreadFileAsync = (file) => {

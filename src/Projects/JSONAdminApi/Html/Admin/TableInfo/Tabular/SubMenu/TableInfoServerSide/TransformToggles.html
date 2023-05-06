@@ -46,23 +46,22 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="LoginFormPopUpId" class="" onsubmit="return false" novalidate>
+                    <form id="LoginFormPopUpId" class="" onsubmit="return false" novalidate="">
                         <div class="mb-3 form-floating is-valid">
-                            <input type="text" class="form-control" id="KUserNameInput" required>
+                            <input type="text" class="form-control" id="KUserNameInput" required="">
                             <label for="KUserNameInput">User Name</label>
                             <div class="invalid-feedback">
                                 User Name cannot be empty.
                             </div>
                         </div>
                         <div class="mb-3 form-floating">
-                            <input type="password" class="form-control" id="KPasswordInput" required>
+                            <input type="password" class="form-control" id="KPasswordInput" required="">
                             <label for="KPasswordInput">Password</label>
                             <div class="invalid-feedback">
                                 Password cannot be empty.
                             </div>
                         </div>
-                        <input type="submit" class=" btn btn-primary"
-                            onclick="jVarGlobalClientObject.Login.LoginCheck()">
+                        <input type="submit" id="LoginModalButtonId" class=" btn btn-primary">
                         <!-- <button type="button" class="btn btn-primary"
                         onclick="jVarGlobalAdmin.Login.LoginCheck()">Check</button>
                          -->
@@ -98,9 +97,8 @@
                     <th>#</th>
                     <th>ScreenName</th>
                     <th>ScreenNameForHtmlId</th>
-                    <th>ColumnReOrder</th>
-                    <th>DisplayText</th>
-                    <th>ColClass</th>
+                    <th>TransformToUi</th>
+                    <th>TransformFromReports</th>
                 </tr>
             </thead>
             <tbody>
@@ -118,21 +116,23 @@
                     </td>
                     <td>
                         <div class="form-check  form-switch">
-                            {{#if KTF}}
-                            <input class="form-check-input" type="checkbox" name="KTF" checked>
+                            {{#if TransformToUi}}
+                            <input class="form-check-input" type="checkbox" name="TransformToUi" checked>
                             {{else}}
-                            <input class="form-check-input" type="checkbox" name="KTF">
+                            <input class="form-check-input" type="checkbox" name="TransformToUi">
                             {{/if}}
                         </div>
                     </td>
                     <td>
-                        <input class="form-control" type="text" name="DisplayText" value="{{DisplayText}}" >
-
+                        <div class="form-check  form-switch">
+                            {{#if TransformFromReports}}
+                            <input class="form-check-input" type="checkbox" name="TransformFromReports" checked>
+                            {{else}}
+                            <input class="form-check-input" type="checkbox" name="TransformFromReports">
+                            {{/if}}
+                        </div>
                     </td>
-                    <td>
-                        <input class="form-control" type="text" name="ColClass" value="{{ColClass}}" >
-
-                    </td>
+                    
                     <td>
                         <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../key}}" data-filename="{{@../../key}}" data-itemname="{{@../key}}" data-screenname="{{ScreenName}}">
                             Update
@@ -292,11 +292,11 @@
 
         jFChangeHeaderActiveClass();
     </script>
-<!-- 
-<script src="../../../../Js/TableInfo/Tabular/Toggles/Toggles.js" type="module"></script> -->
-
-<script src="../../../../../../Js/TableInfo/Tabular/SubMenu/SearchRowArray/Label/Label.js" type="module"></script>
-
+ <script src="../../../../../../Js/Login/LoginFetch.js" type="module"></script>
+ <script src="../../../../../../Js/Login/Check.js" type="module"></script>
+<script
+        src="../../../../../../Js/TableInfo/Tabular/SubMenu/TableInfoServerSide/TransformToggles/TransformToggles.js"
+        type="module"></script>
 </body>
 
 </html>

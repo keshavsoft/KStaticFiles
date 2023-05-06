@@ -246,9 +246,10 @@
         </table>
       </script>
 
-	<script id="HbsTemplateForBody" type="text/x-handlebars">
+	  <script id="HbsTemplateForBody" type="text/x-handlebars">
+		{{log "aaaaaaaaaaaaa" this}}
 		{{#each this}}
-		<tr class={{RowClass}}>
+		<tr class="{{RowClass}}" data-pk="{{@key}}">
 			<td class="text-center">
 				{{ForSNo @index}}
 			</td>

@@ -40,28 +40,35 @@ const jFLocalhandleFile = (f) => {
 
 const jFLocalloadAsyncThen = (zip) => {
     var $title = document.getElementById("FileNameId");
-    let jVarLoopIndex = 0;
-    let jVarLocalSpan = document.createElement("span");
-    jVarLocalSpan.classList.add("small");
-    // jVarLocalSpan.innerHTML = " (loaded in " + (dateAfter - dateBefore) + "ms)";
-    $title.appendChild(jVarLocalSpan);
 
     let jVarLocalHtmld = "KTableBodyId";
     let jVarLocalKTableBodyId = document.getElementById(jVarLocalHtmld);
-    let jVarLocalTableRows = jVarLocalKTableBodyId.querySelector("tr.table-primary");
-    let jVarLocalDataset = jVarLocalTableRows.dataset;
+    let jVarLocalTr = jVarLocalKTableBodyId.querySelector("tr.table-primary");
+    let jVarLocalDataset = jVarLocalTr.dataset;
+    
     let jVarLocalPkNeeded = jVarLocalDataset.pk;
-
-    console.log("aaaaaaaaaa : ", jVarLocalPkNeeded, jVarLocalTableRows, Object.keys(zip.files)[0]);
 
     if (Object.keys(zip.files).length > 0) {
         let jVarLocalZipKey = Object.keys(zip.files)[0].split("/")[0];
-        console.log("jVarLocalZipKey : ", jVarLocalZipKey, jVarLocalPkNeeded);
 
         if (jVarLocalZipKey === jVarLocalPkNeeded === false) {
+            let jVarLocalSpan = document.createElement("span");
+            jVarLocalSpan.classList.add("small");
+            jVarLocalSpan.innerHTML = `The supplied zip file should be ${jVarLocalPkNeeded} only`;
+            $title.appendChild(jVarLocalSpan);
 
+            jVarLocalTr.classList.remove("table-primary");
+            jVarLocalTr.classList.add("table-danger");
+        
             return;
         };
+
+
+        let jVarLoopIndex = 0;
+        let jVarLocalSpan = document.createElement("span");
+        jVarLocalSpan.classList.add("small");
+        // jVarLocalSpan.innerHTML = " (loaded in " + (dateAfter - dateBefore) + "ms)";
+        $title.appendChild(jVarLocalSpan);
 
         zip.forEach(function (relativePath, zipEntry) {  // 2) print entries
             jFLocalToTable(zipEntry, jVarLoopIndex);
@@ -80,37 +87,12 @@ const jFLocalloadAsyncThen2ndFunc = (e) => {
     $result.appendChild(jVarLocalLi);
 };
 
-const jFStart = () => {
-    let jFLocalHtmlId = "file";
-    let jFLoalHtmlFile = document.getElementById("file");
-    let jVarLocalCloneClassName = document.getElementsByClassName("SelectFileClass");
-
-    for (let i = 0; i < jVarLocalCloneClassName.length; i++) {
-        jVarLocalCloneClassName[i].addEventListener("change", jFSelectChange)
-    };
-
-    if (jFLoalHtmlFile === null === false) {
-        jFLoalHtmlFile.addEventListener("change", (evt) => {
-            // remove content
-            $result.innerHTML = "";
-            // be sure to show the results
-            document.getElementById("result_block").classList.remove("hidden");
-            document.getElementById("result_block").classList.add("show");
-
-            var files = evt.target.files;
-            for (var i = 0; i < files.length; i++) {
-                jFLocalhandleFile(files[i]);
-            }
-        });
-    };
-};
-
 const jFSelectChange = (evt) => {
     let jVarLocalEvent = evt;
     let jVarLocalCurrentTarget = jVarLocalEvent.currentTarget;
-    let jVarLocalClosestTr = jVarLocalCurrentTarget.closest("Tr");
-    // let jVarLocalFileSelect = jVarLocalClosestTr.querySelector(".SelectFileClass");
-    jVarLocalClosestTr.classList.add("table-primary");
+
+    jFLocalChangeDom({ inCurrentTarget: jVarLocalCurrentTarget });
+
     // remove content
     $result.innerHTML = "";
     // be sure to show the results
@@ -125,4 +107,15 @@ const jFSelectChange = (evt) => {
     };
 };
 
+const jFLocalChangeDom = ({ inCurrentTarget }) => {
+    let jVarLocalClosestTr = inCurrentTarget.closest("tr");
+    let jVarLocalClosestTBody = inCurrentTarget.closest("tbody");
+
+    for (var i = 0, row; row = jVarLocalClosestTBody.rows[i]; i++) {
+        jVarLocalClosestTBody.rows[i].classList.remove("table-primary");
+        jVarLocalClosestTBody.rows[i].classList.remove("table-danger");
+    };
+
+    jVarLocalClosestTr.classList.add("table-primary");
+};
 export { jFSelectChange };

@@ -1,6 +1,5 @@
-import { StartFunc as AddListenersStartFunc } from "./AddListeners.js";
-import { StartFunc as CheckTokenStartFunc } from "../../AdminData/CheckToken.js";
 import { StartFunc as AddListenersPostShowDataStartFunc } from "./AddListenersPostShowData.js";
+import { StartFunc as StartFuncAdminData } from "../../AdminData/StartFunc.js";
 
 let jVarGlobalTokenName = "KUMAToken";
 let jVarGlobalUserKey = "KUMAUserName";
@@ -11,21 +10,29 @@ let jVarGlobalUserLocalStorageKey = "kUserName";
 let jVarGlobalFirmDetailsLocalStorageKey = "FirmDetails";
 
 let StartFunc = async () => {
-    //  console.log("StartFunc : ");
-    AddListenersStartFunc({
+    StartFuncAdminData({
         inSubRoute: jVarGlobalAdminSubRoute,
         inUserKey: jVarGlobalUserKey,
         inFirmKey: jVarGlobalFirmKey,
         inTokenName: jVarGlobalTokenName,
         inModalId: jVarGlobalModalId
     });
+    // inSubRoute, inUserKey, inFirmKey, inTokenName, inModalId 
 
-    CheckTokenStartFunc({
-        inUserKey: jVarGlobalUserKey,
-        inFirmKey: jVarGlobalFirmKey,
-        inTokenName: jVarGlobalTokenName,
-        inModalId: jVarGlobalModalId
-    });
+    // AddListenersStartFunc({
+    //     inSubRoute: jVarGlobalAdminSubRoute,
+    //     inUserKey: jVarGlobalUserKey,
+    //     inFirmKey: jVarGlobalFirmKey,
+    //     inTokenName: jVarGlobalTokenName,
+    //     inModalId: jVarGlobalModalId
+    // });
+
+    // CheckTokenStartFunc({
+    //     inUserKey: jVarGlobalUserKey,
+    //     inFirmKey: jVarGlobalFirmKey,
+    //     inTokenName: jVarGlobalTokenName,
+    //     inModalId: jVarGlobalModalId
+    // });
 
     AddListenersPostShowDataStartFunc({
         inUserLocalStorageKey: jVarGlobalUserLocalStorageKey,

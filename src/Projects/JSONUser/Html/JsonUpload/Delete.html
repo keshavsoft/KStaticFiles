@@ -67,29 +67,8 @@
 	<div class="container-fluid">
 		<div class="row">
 
-			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
-  <div class="position-sticky pt-3 sidebar-sticky">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="../Dashboard.html">
-          <span data-feather="home" class="align-text-bottom"></span>
-          Dashboard
-        </a>
-      </li>
+			<include src="src/components/Projects/JSONUser/JsonUpload/sidebarMenu.html"></include>
 
-      <li class="nav-item">
-        <a class="nav-link active" href="#">
-			
-			
-			<span data-feather="trash-2" class="align-text-bottom"></span>
-          Delete
-        </a>
-      </li>
-    </ul>
-
-
-  </div>
-</nav>
 
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 				<div id="KCont1">
@@ -232,7 +211,7 @@
 			<td>			</td>
 			<td>		</td>
 			<td class="text-right">
-				<a class="btn btn-outline-primary btn-sm GoLiveButtonClass" href="#" data-jsonpk="{{@key}}">Go Live</a>
+				<a class="btn btn-outline-danger btn-sm DeleteClass" href="#" data-jsonpk="{{@key}}">Delete</a>
 			</td>
 		</tr>
 		{{/each}}

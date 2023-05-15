@@ -21,6 +21,7 @@ let ButtonClickFunc = async (event) => {
 };
 
 let StartFunc = async ({ inJsonPk }) => {
+
     let jVarLocalFetchUrl = `/JSONUser/Admin/UserFolder/FromUpload/ShowDatas`;
     let jFetchBody = {
         method: "DELETE",
@@ -38,29 +39,7 @@ let StartFunc = async ({ inJsonPk }) => {
     switch (response.status) {
         case 200:
 
-            let timerInterval
-            Swal.fire({
-                title: `${inJsonPk} Deleted Sucessfully !`,
-                html: 'I will close in <b></b> milliseconds.',
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading()
-                    const b = Swal.getHtmlContainer().querySelector('b')
-                    timerInterval = setInterval(() => {
-                        b.textContent = Swal.getTimerLeft()
-                    }, 100)
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
-            }).then((result) => {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('I was closed by the timer')
-                }
-            })
-            window.location.href = "";
+            window.location = `/JSONUser/Html/JsonUpload/Delete.html?FromDelete=true&inJsonPk=${inJsonPk}`;
 
             break;
 
@@ -71,5 +50,7 @@ let StartFunc = async ({ inJsonPk }) => {
         // code block
     };
 };
+
+
 
 export { ButtonClickFunc };

@@ -46,44 +46,9 @@
         </datalist>
     </main>
 
-    <include src="./src/components/Templates/Admin/Columns/Tabular/Alter/Footer.html"></include>
-
-    <!-- LOGIN  STARTED -->
-    <div class="modal fade" id="LoginModalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter client user credentials</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="LoginFormPopUpId" class="" onsubmit="return false" novalidate>
-                        <div class="mb-3 form-floating is-valid">
-                            <input type="text" class="form-control" id="KUserNameInput" required>
-                            <label for="KUserNameInput">User Name</label>
-                            <div class="invalid-feedback">
-                                User Name cannot be empty.
-                            </div>
-                        </div>
-                        <div class="mb-3 form-floating">
-                            <input type="password" class="form-control" id="KPasswordInput" required>
-                            <label for="KPasswordInput">Password</label>
-                            <div class="invalid-feedback">
-                                Password cannot be empty.
-                            </div>
-                        </div>
-                        <input type="submit" class=" btn btn-primary"
-                            onclick="jVarGlobalClientObject.Login.LoginCheck()">
-                        <!-- <button type="button" class="btn btn-primary"
-                        onclick="jVarGlobalAdmin.Login.LoginCheck()">Check</button>
-                         -->
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- LOGIN FINISHED -->
-
+    <!-- <include src="./src/components/Templates/Admin/Columns/Tabular/Alter/Footer.html"></include> -->
+    <include src="./src/components/Templates/Admin/FooterWithLogin.html"></include>
+   
     <script src="/ClassesStatic/CommonClass.js"></script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -189,96 +154,96 @@
 
                 </script>
 
-                <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForFoldersOnly.html"></include>
-                
-
-                <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForFilesOnly.html"></include>
-
-                <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForItemsOnly.html"></include>
+    <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForFoldersOnly.html"></include>
 
 
-<script>
-    //HbsTemplateForScreensWithSubTableColumnsOnly
-    class jClassForHbs {
-        static FillPartialFromScriptInHtml = ({ inHtmlHbsScriptId }) => {
-            let jVarLocalHbsTemplate = document.getElementById(inHtmlHbsScriptId);
+    <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForFilesOnly.html"></include>
 
-            if (jVarLocalHbsTemplate !== null) {
-                Handlebars.registerPartial(inHtmlHbsScriptId, jVarLocalHbsTemplate.innerHTML);
+    <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForItemsOnly.html"></include>
+
+
+    <script>
+        //HbsTemplateForScreensWithSubTableColumnsOnly
+        class jClassForHbs {
+            static FillPartialFromScriptInHtml = ({ inHtmlHbsScriptId }) => {
+                let jVarLocalHbsTemplate = document.getElementById(inHtmlHbsScriptId);
+
+                if (jVarLocalHbsTemplate !== null) {
+                    Handlebars.registerPartial(inHtmlHbsScriptId, jVarLocalHbsTemplate.innerHTML);
+                };
             };
         };
-    };
 
-    let jVarLocalHbsTemplateForSubTableColumns = document.getElementById("HbsTemplateForSubTableColumns");
-    let jVarLocalHbsTemplateForColumns = document.getElementById("HbsTemplateForColumns");
+        let jVarLocalHbsTemplateForSubTableColumns = document.getElementById("HbsTemplateForSubTableColumns");
+        let jVarLocalHbsTemplateForColumns = document.getElementById("HbsTemplateForColumns");
 
-    let jVarLocalHbsTemplateForFiles = document.getElementById("HbsTemplateForFilesOnly");
-    jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForScreensOnly" });
-    jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForItemsOnly" });
+        let jVarLocalHbsTemplateForFiles = document.getElementById("HbsTemplateForFilesOnly");
+        jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForScreensOnly" });
+        jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForItemsOnly" });
 
-    let jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly = document.getElementById("HbsTemplateForScreensWithSubTableColumnsOnly");
-    let jVarLocalHbsTemplateForColumnsForTogglesOnly = document.getElementById("HbsTemplateForColumnsForTogglesOnly");
-    let jVarLocalHbsTemplateForTableColumnsForTogglesOnly = document.getElementById("HbsTemplateForTableColumnsForTogglesOnly");
-    jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForTableColumnsForAllInOneWithValuesOnly" });
-    let jVarLocalHbsTemplateForTable = document.getElementById("HbsTemplateForTable");
+        let jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly = document.getElementById("HbsTemplateForScreensWithSubTableColumnsOnly");
+        let jVarLocalHbsTemplateForColumnsForTogglesOnly = document.getElementById("HbsTemplateForColumnsForTogglesOnly");
+        let jVarLocalHbsTemplateForTableColumnsForTogglesOnly = document.getElementById("HbsTemplateForTableColumnsForTogglesOnly");
+        jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForTableColumnsForAllInOneWithValuesOnly" });
+        let jVarLocalHbsTemplateForTable = document.getElementById("HbsTemplateForTable");
 
-    Handlebars.registerHelper('ForSNo', function (item) {
-        return item + 1;
-    });
+        Handlebars.registerHelper('ForSNo', function (item) {
+            return item + 1;
+        });
 
-    if (jVarLocalHbsTemplateForSubTableColumns !== null) {
-        Handlebars.registerPartial("HbsTemplateForSubTableColumns", jVarLocalHbsTemplateForSubTableColumns.innerHTML);
-    };
-
-    if (jVarLocalHbsTemplateForColumns !== null) {
-        Handlebars.registerPartial("HbsTemplateForColumns", jVarLocalHbsTemplateForColumns.innerHTML);
-    };
-
-    if (jVarLocalHbsTemplateForFiles !== null) {
-        Handlebars.registerPartial("HbsTemplateForFilesOnly", jVarLocalHbsTemplateForFiles.innerHTML);
-    };
-
-    if (jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly !== null) {
-        Handlebars.registerPartial("HbsTemplateForScreensWithSubTableColumnsOnly", jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly.innerHTML);
-    };
-
-    if (jVarLocalHbsTemplateForColumnsForTogglesOnly !== null) {
-        Handlebars.registerPartial("HbsTemplateForColumnsForTogglesOnly", jVarLocalHbsTemplateForColumnsForTogglesOnly.innerHTML);
-    };
-
-    if (jVarLocalHbsTemplateForTableColumnsForTogglesOnly !== null) {
-        Handlebars.registerPartial("HbsTemplateForTableColumnsForTogglesOnly", jVarLocalHbsTemplateForTableColumnsForTogglesOnly.innerHTML);
-    };
-
-    if (jVarLocalHbsTemplateForTable !== null) {
-        Handlebars.registerPartial("HbsTemplateForTable", jVarLocalHbsTemplateForTable.innerHTML);
-    };
-</script>
-
-
-<script>
-    let jFChangeHeaderActiveClass = () => {
-        let jVarLocalPathArray = window.location.pathname.split("/");
-        let jVarLocalHTMLName = jVarLocalPathArray[jVarLocalPathArray.length - 1];
-        jFChangeNavAnchorClass({ inClassName: jVarLocalHTMLName.split(".")[0] });
-    };
-
-    let jFChangeNavAnchorClass = ({ inClassName }) => {
-        let jVarLocalNavBarId = document.getElementById("NavBarId");
-        let jVarLocalAnchorNeeded = jVarLocalNavBarId.querySelector(`.${inClassName}AClass`);
-
-        if (jVarLocalAnchorNeeded !== null) {
-
-            if (jVarLocalAnchorNeeded.classList.contains("text-white")) {
-                jVarLocalAnchorNeeded.classList.remove("text-white");
-            };
-
-            jVarLocalAnchorNeeded.classList.add("text-info");
+        if (jVarLocalHbsTemplateForSubTableColumns !== null) {
+            Handlebars.registerPartial("HbsTemplateForSubTableColumns", jVarLocalHbsTemplateForSubTableColumns.innerHTML);
         };
-    };
 
-    jFChangeHeaderActiveClass();
-</script>
+        if (jVarLocalHbsTemplateForColumns !== null) {
+            Handlebars.registerPartial("HbsTemplateForColumns", jVarLocalHbsTemplateForColumns.innerHTML);
+        };
+
+        if (jVarLocalHbsTemplateForFiles !== null) {
+            Handlebars.registerPartial("HbsTemplateForFilesOnly", jVarLocalHbsTemplateForFiles.innerHTML);
+        };
+
+        if (jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly !== null) {
+            Handlebars.registerPartial("HbsTemplateForScreensWithSubTableColumnsOnly", jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly.innerHTML);
+        };
+
+        if (jVarLocalHbsTemplateForColumnsForTogglesOnly !== null) {
+            Handlebars.registerPartial("HbsTemplateForColumnsForTogglesOnly", jVarLocalHbsTemplateForColumnsForTogglesOnly.innerHTML);
+        };
+
+        if (jVarLocalHbsTemplateForTableColumnsForTogglesOnly !== null) {
+            Handlebars.registerPartial("HbsTemplateForTableColumnsForTogglesOnly", jVarLocalHbsTemplateForTableColumnsForTogglesOnly.innerHTML);
+        };
+
+        if (jVarLocalHbsTemplateForTable !== null) {
+            Handlebars.registerPartial("HbsTemplateForTable", jVarLocalHbsTemplateForTable.innerHTML);
+        };
+    </script>
+
+
+    <script>
+        let jFChangeHeaderActiveClass = () => {
+            let jVarLocalPathArray = window.location.pathname.split("/");
+            let jVarLocalHTMLName = jVarLocalPathArray[jVarLocalPathArray.length - 1];
+            jFChangeNavAnchorClass({ inClassName: jVarLocalHTMLName.split(".")[0] });
+        };
+
+        let jFChangeNavAnchorClass = ({ inClassName }) => {
+            let jVarLocalNavBarId = document.getElementById("NavBarId");
+            let jVarLocalAnchorNeeded = jVarLocalNavBarId.querySelector(`.${inClassName}AClass`);
+
+            if (jVarLocalAnchorNeeded !== null) {
+
+                if (jVarLocalAnchorNeeded.classList.contains("text-white")) {
+                    jVarLocalAnchorNeeded.classList.remove("text-white");
+                };
+
+                jVarLocalAnchorNeeded.classList.add("text-info");
+            };
+        };
+
+        jFChangeHeaderActiveClass();
+    </script>
 
     <!-- <script>
         let jVarCommonSubRoute = "API";
@@ -653,7 +618,9 @@
 
         CommonFuncsForFolders.CreateFolders();
     </script> -->
-<script src="../../../../../Js/Columns/Tabular/Alter/AllInOneWithValues.js" type="module"></script>
+    <script src="../../../../../Js/Login/LoginFetch.js" type="module"></script>
+    <script src="../../../../../Js/Login/Check.js" type="module"></script>
+    <script src="../../../../../Js/Columns/Tabular/Alter/AllInOneWithValues.js" type="module"></script>
 
 </body>
 

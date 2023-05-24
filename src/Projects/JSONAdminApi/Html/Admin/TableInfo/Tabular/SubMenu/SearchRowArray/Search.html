@@ -25,8 +25,8 @@
         </symbol>
     </svg>
 
-    <!-- <include src="./src/components/Templates/Admin/TableInfo/Tabular/SubMenu/header.html"></include> -->
     <include src="./src/components/Templates/Admin/TableInfo/Tabular/SubMenu/SearchRowArray/header.html"></include>
+
     <main>
         <div class="container">
             <div id="KCont1">
@@ -35,10 +35,8 @@
         
     </main>
 
-    <!-- <include src="./src/components/Templates/Admin/TableInfo/Tabular/SubMenu/Footer.html"></include> -->
     <include src="./src/components/Templates/Admin/FooterWithLogin.html"></include>
 
-   
 
     <script src="/ClassesStatic/CommonClass.js"></script>
 
@@ -57,90 +55,62 @@
 
     <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForItemsOnly.html"></include>
 
-      <script id="HbsTemplateForScreensOnly" type="text/x-handlebars">
+    
+    <script id="HbsTemplateForScreensOnly" type="text/x-handlebars">
         <table class="table">
             <thead>
                 <tr>
-                    <th width="5%"></th>
-                    <th width="90%"></th>
-                    <th width="5%"></th>
+                    <th>#</th>
+                    <th>ScreenName</th>
+                    <th>ScreenNameForHtmlId</th>
+                    <th>KTF</th>
+                    <th>DisplayText</th>
+                    <th>ColClass</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each this.Screens}}
-              
-    <tr class="{{RowClass}}">
-    <td class="text-center">
-    {{ForSNo @index}}
-    </td>
-    <td>
-    
-    <div class="row mb-3">
-        <div class="col row">
-            <label class="col-md-8 col-form-label">ShowInTable</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if ShowInTable}}
-                    <input class="form-check-input" type="checkbox" name="ShowInTable" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="ShowInTable">
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-        <div class="col row">
-            <label class="col-md-8 col-form-label">Insert</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if Insert}}
-                    <input class="form-check-input" type="checkbox" name="Insert" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="Insert">
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="row mb-3">
-        <div class="col row">
-            <label class="col-md-8 col-form-label">CreateNew</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if CreateNew}}
-                    <input class="form-check-input" type="checkbox" name="CreateNew" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="CreateNew">
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-        <div class="col row">
-            <label class="col-md-8 col-form-label">IsTextArea</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if IsTextArea}}
-                    <input class="form-check-input" type="checkbox" name="IsTextArea" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="IsTextArea">
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-    </div>
-    </td>
-    <td>
-    <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../../key}}" data-filename="{{@../../../key}}" data-itemname="{{@../../key}}" data-screenname="{{@../key}}">
-        Update
-    </button>
-    </td>
-    </tr>
-    
+                <tr class="RowClass">
+                    <td class="text-center">
+                        {{ForSNo @index}}
+                    </td>
+                    <td>
+                        {{this.ScreenName}}
+                    </td>
+                    <td>
+                        {{this.ScreenNameForHtmlId}}
+                    </td>
+                    <td>
+                        <div class="form-check  form-switch">
+                            {{#if TableInfoObject.KTF}}
+                            <input class="form-check-input" type="checkbox" name="KTF" checked>
+                            {{else}}
+                            <input class="form-check-input" type="checkbox" name="KTF">
+                            {{/if}}
+                        </div>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="DisplayText" value="{{TableInfoObject.DisplayObject.DisplayText}}" >
+
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="ColClass" value="{{TableInfoObject.DisplayObject.ColClass}}" >
+
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../key}}" data-filename="{{@../../key}}" data-itemname="{{@../key}}" data-screenname="{{ScreenName}}">
+                            Update
+                        </button>
+                    </td>
+                </tr>
                 {{/each}}
             </tbody>
+       
         </table>
-    
-        </script>
+      </script>
+
+
+      
 
     <script>
         //HbsTemplateForScreensWithSubTableColumnsOnly
@@ -165,7 +135,6 @@
         let jVarLocalHbsTemplateForColumnsForTogglesOnly = document.getElementById("HbsTemplateForColumnsForTogglesOnly");
         let jVarLocalHbsTemplateForTableColumnsForTogglesOnly = document.getElementById("HbsTemplateForTableColumnsForTogglesOnly");
 
-        // jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForTableColumnsForAllInOneWithValuesOnly" });
 
         let jVarLocalHbsTemplateForTable = document.getElementById("HbsTemplateForTable");
 
@@ -226,8 +195,7 @@
 
         jFChangeHeaderActiveClass();
     </script>
-
-<script src="../../../../../../Js/Login/LoginFetch.js" type="module"></script>
+    <script src="../../../../../../Js/Login/LoginFetch.js" type="module"></script>
     <script src="../../../../../../Js/Login/Check.js" type="module"></script>
 
 <script src="../../../../../../Js/TableInfo/Tabular/SubMenu/SearchRowArray/Label/Label.js" type="module"></script>

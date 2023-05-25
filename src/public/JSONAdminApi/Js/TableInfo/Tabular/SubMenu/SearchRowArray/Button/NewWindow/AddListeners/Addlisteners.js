@@ -15,21 +15,33 @@ let jFLocalClickFunc = async (event) => {
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
     let jVarLocalKTF = jVarLocalColsestTr.querySelector('[name="KTF"]');
-    let jVarLocalDisplayText = jVarLocalColsestTr.querySelector('[name="DisplayText"]');
+    let jVarLocalSvgPlus = jVarLocalColsestTr.querySelector('[name="SvgPlus"]');
     let jVarLocalColClass = jVarLocalColsestTr.querySelector('[name="ColClass"]');
+    let jVarLocalSvgPlusLarge = jVarLocalColsestTr.querySelector('[name="SvgPlusLarge"]');
+    let jVarLocalNewWindow = jVarLocalColsestTr.querySelector('[name="NewWindow"]');
+    let jVarLocalTable = jVarLocalColsestTr.querySelector('[name="Table"]');
 
     let jVarLocalKTFValue = jVarLocalKTF.checked;
-    let jVarLocalDisplayTextValue = jVarLocalDisplayText.value;
+    let jVarLocalSvgPlusValue = jVarLocalSvgPlus.checked;
     let jVarLocalColClassValue = jVarLocalColClass.value;
+    let jVarLocalSvgPlusLargeValue = jVarLocalSvgPlusLarge.checked;
+    let jVarLocalNewWindowValue = jVarLocalNewWindow.checked;
+    let jVarLocalTableValue = jVarLocalTable.checked;
+
 
     let BodyAsJson = {
         KTF: jVarLocalKTFValue,
-        DisplayText: jVarLocalDisplayTextValue,
-        ColClass: jVarLocalColClassValue
+        SvgPlus: jVarLocalSvgPlusValue,
+        ColClass: jVarLocalColClassValue,
+        SvgPlusLarge: jVarLocalSvgPlusLargeValue,
+        NewWindow: jVarLocalNewWindowValue,
+        Table: jVarLocalTableValue
+
+
     }
 
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableInfo/SubMenu/SearchRowArray/Label";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableInfo/SubMenu/SearchRowArray/Button/NewWindow";
 
     let response = await fetch(jFetchUrl, {
         method: "PATCH",

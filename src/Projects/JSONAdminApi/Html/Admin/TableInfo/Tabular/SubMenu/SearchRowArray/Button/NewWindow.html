@@ -35,43 +35,8 @@
         
     </main>
 
-    <include src="./src/components/Templates/Admin/TableInfo/Tabular/SubMenu/SearchRowArray/Button/Footer.html"></include>
+    <include src="./src/components/Templates/Admin/FooterWithLogin.html"></include>
 
-    <!-- LOGIN  STARTED -->
-    <div class="modal fade" id="LoginModalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter client user credentials</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="LoginFormPopUpId" class="" onsubmit="return false" novalidate>
-                        <div class="mb-3 form-floating is-valid">
-                            <input type="text" class="form-control" id="KUserNameInput" required>
-                            <label for="KUserNameInput">User Name</label>
-                            <div class="invalid-feedback">
-                                User Name cannot be empty.
-                            </div>
-                        </div>
-                        <div class="mb-3 form-floating">
-                            <input type="password" class="form-control" id="KPasswordInput" required>
-                            <label for="KPasswordInput">Password</label>
-                            <div class="invalid-feedback">
-                                Password cannot be empty.
-                            </div>
-                        </div>
-                        <input type="submit" class=" btn btn-primary"
-                            onclick="jVarGlobalClientObject.Login.LoginCheck()">
-                        <!-- <button type="button" class="btn btn-primary"
-                        onclick="jVarGlobalAdmin.Login.LoginCheck()">Check</button>
-                         -->
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- LOGIN FINISHED -->
 
     <script src="/ClassesStatic/CommonClass.js"></script>
 
@@ -98,9 +63,12 @@
                     <th>#</th>
                     <th>ScreenName</th>
                     <th>ScreenNameForHtmlId</th>
-                    <th>ColumnReOrder</th>
-                    <th>DisplayText</th>
                     <th>ColClass</th>
+                    <th>KTF</th>
+                    <th>Svg Plus</th>
+                    <th>Svg PlusLarge</th>
+                    <th>New Window</th>
+                    <th>Table</th>
                 </tr>
             </thead>
             <tbody>
@@ -116,9 +84,15 @@
                     <td>
                         {{this.ScreenNameForHtmlId}}
                     </td>
+                    
+                    
+                    <td>
+                        <input class="form-control" type="text" name="ColClass" value="{{TableInfoObject.DisplayObject.ColClass}}" >
+
+                    </td>
                     <td>
                         <div class="form-check  form-switch">
-                            {{#if KTF}}
+                            {{#if TableInfoObject.KTF}}
                             <input class="form-check-input" type="checkbox" name="KTF" checked>
                             {{else}}
                             <input class="form-check-input" type="checkbox" name="KTF">
@@ -126,12 +100,40 @@
                         </div>
                     </td>
                     <td>
-                        <input class="form-control" type="text" name="DisplayText" value="{{DisplayText}}" >
-
+                        <div class="form-check  form-switch">
+                            {{#if TableInfoObject.DisplayObject.SvgPlus}}
+                            <input class="form-check-input" type="checkbox" name="SvgPlus" checked>
+                            {{else}}
+                            <input class="form-check-input" type="checkbox" name="SvgPlus">
+                            {{/if}}
+                        </div>
                     </td>
                     <td>
-                        <input class="form-control" type="text" name="ColClass" value="{{ColClass}}" >
-
+                        <div class="form-check  form-switch">
+                            {{#if TableInfoObject.DisplayObject.SvgPlusLarge}}
+                            <input class="form-check-input" type="checkbox" name="SvgPlusLarge" checked>
+                            {{else}}
+                            <input class="form-check-input" type="checkbox" name="SvgPlusLarge">
+                            {{/if}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check  form-switch">
+                            {{#if TableInfoObject.DisplayObject.NewWindow}}
+                            <input class="form-check-input" type="checkbox" name="NewWindow" checked>
+                            {{else}}
+                            <input class="form-check-input" type="checkbox" name="NewWindow">
+                            {{/if}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check  form-switch">
+                            {{#if TableInfoObject.DisplayObject.Table}}
+                            <input class="form-check-input" type="checkbox" name="Table" checked>
+                            {{else}}
+                            <input class="form-check-input" type="checkbox" name="Table">
+                            {{/if}}
+                        </div>
                     </td>
                     <td>
                         <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../key}}" data-filename="{{@../../key}}" data-itemname="{{@../key}}" data-screenname="{{ScreenName}}">
@@ -146,67 +148,7 @@
       </script>
 
 
-      <script id="HbsTemplateForScreensOnly11" type="text/x-handlebars">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th width="5%"></th>
-                    <th width="90%"></th>
-                    <th width="5%"></th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each this.Screens}}
-              
-    <tr class="{{RowClass}}">
-    <td class="text-center">
-    {{ForSNo @index}}
-    </td>
-    <td>
-    
-    <div class="row mb-3">
-        <div class="col row">
-            <label class="col-md-8 col-form-label">KTF</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if KTF}}
-                    <input class="form-check-input" type="checkbox" name="KTF" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="KTF">
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-        <div class="col row">
-            <label class="col-md-6 col-form-label">DisplayText</label>
-            <div class="col-6">
-                <input class="form-control" type="text" name="DisplayText" value="{{DisplayText}}" >
-            </div>
-        </div>
-    </div>
-    
-    <div class="row mb-3">
-        <div class="col row">
-            <label class="col-md-8 col-form-label">ColClass</label>
-            <div class="col-7">
-                <input class="form-control" type="text" name="ColClass" value="{{ColClass}}" >
-            </div>
-        </div>
-       
-    </div>
-    </td>
-    <td>
-    <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../../key}}" data-filename="{{@../../../key}}" data-itemname="{{@../../key}}" data-screenname="{{@../key}}">
-        Update
-    </button>
-    </td>
-    </tr>
-    
-                {{/each}}
-            </tbody>
-        </table>
-    
-        </script>
+      
 
     <script>
         //HbsTemplateForScreensWithSubTableColumnsOnly
@@ -292,10 +234,8 @@
 
         jFChangeHeaderActiveClass();
     </script>
-<!-- 
-<script src="../../../../Js/TableInfo/Tabular/Toggles/Toggles.js" type="module"></script> -->
 
-<script src="../../../../../../Js/TableInfo/Tabular/SubMenu/SearchRowArray/Label/Label.js" type="module"></script>
+<script src="../../../../../../../Js/TableInfo/Tabular/SubMenu/SearchRowArray/Button/NewWindow/NewWindow.js" type="module"></script>
 
 </body>
 

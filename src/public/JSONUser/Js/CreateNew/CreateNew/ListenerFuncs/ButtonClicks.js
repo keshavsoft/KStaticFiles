@@ -20,14 +20,39 @@ let LocalButtonClickFunc = async ({ inSubRoute }) => {
     };
 
     let jVarLocalUrl = `/${inSubRoute}/Users/Api/Save`;
-    let response = await fetch(jVarLocalUrl, jVarLocalSettings);
-    let data = await response.json();
 
-    if (data.KTF) {
-        //jVarLocalApiFuncs.ShowData();
-        // window.location = "Show.html";
-        window.location = "../BoilerPlate/FoldersOnly.html";
+    if (jVarLocalFetchPostData.UserName === "") {
+        window.alert("Please Enter UserName");
+
+    } else if (jVarLocalFetchPostData.PassWord === "") {
+        window.alert("Please Enter PassWord");
     };
+
+    if (jVarLocalFetchPostData.UserName === "" === false) {
+        if (jVarLocalFetchPostData.PassWord === "" === false) {
+            
+            await fetch(jVarLocalUrl, jVarLocalSettings).then(response => {
+                if (!response.ok) {
+                    throw new Error(response.statusText);
+                }
+                return response.json();
+            }).then((FetchData) => {
+                if (FetchData.KTF) {
+                    window.location = "../BoilerPlate/FoldersOnly.html";
+                }
+            }).catch((e) => { })
+
+        };
+
+
+    };
+    // let data = await response.json();
+
+    // if (data.KTF) {
+    //     //jVarLocalApiFuncs.ShowData();
+    //     // window.location = "Show.html";
+    //     // window.location = "../BoilerPlate/FoldersOnly.html";
+    // };
 };
 
 

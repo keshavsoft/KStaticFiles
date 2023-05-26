@@ -1,6 +1,6 @@
 import { ReturnUserPK } from "../urlSearchParams.js";
 
-let StartFunc = () => {
+let StartFunc = ({ inSubRoute }) => {
     let LocalFromUrlSearchParams = ReturnUserPK();
     let LocalDompk = document.getElementById("pk");
 
@@ -11,7 +11,9 @@ let StartFunc = () => {
     }
 
     let jVarLocalSaveButtonid = document.getElementById("SaveButtonid");
-    jVarLocalSaveButtonid.addEventListener("click", jFSave);
+    jVarLocalSaveButtonid.addEventListener("click", async () => {
+        await jFSave({ inSubRoute })
+    });
 };
 
 let serializeObject = (form) => {
@@ -29,7 +31,7 @@ let serializeObject = (form) => {
     return pairs;
 };
 
-let jFSave = async () => {
+let jFSave = async ({ inSubRoute }) => {
     var form = document.getElementById("kform1");
     let jVarLocalFetchPostData = serializeObject(form);
     let jVarLocalSettings = {
@@ -41,7 +43,7 @@ let jFSave = async () => {
         body: JSON.stringify(jVarLocalFetchPostData)
     };
 
-    let jVarLocalUrl = "/JSONUser/Users/Api/Save/WithDataPk";
+    let jVarLocalUrl = `/${inSubRoute}/Users/Api/Save/WithDataPk`;
     let response = await fetch(jVarLocalUrl, jVarLocalSettings);
     let data = await response.json();
 

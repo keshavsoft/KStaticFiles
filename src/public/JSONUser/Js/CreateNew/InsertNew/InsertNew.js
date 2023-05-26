@@ -1,8 +1,17 @@
 import { StartFunc as StartFuncButtoClickFunc } from "./Addlistoners/ButtoClickFunc.js";
+import { StartFunc as StartFuncAdminData } from "../../AdminData/StartFunc.js";
 
-let StartFunc = () => {
+let jVarGlobalAdminSubRoute = "JSONUser";
+
+
+let StartFunc = async () => {
     let jVarLocalFromAdmin = await StartFuncAdminData();
-    StartFuncButtoClickFunc();
+    if (jVarLocalFromAdmin) {
+        StartFuncButtoClickFunc({
+            inSubRoute: jVarGlobalAdminSubRoute
+
+        });
+    };
 
 };
 StartFunc();

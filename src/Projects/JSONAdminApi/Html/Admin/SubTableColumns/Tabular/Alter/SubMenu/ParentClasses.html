@@ -5,12 +5,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SubTable ParentClasses</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <title>TabularColumnsData</title>
+
     <!-- Custom styles for this template -->
     <include src="./src/components/Templates/Admin/Columns/HeaderCss.html"></include>
 
@@ -26,6 +27,7 @@
         </symbol>
     </svg>
 
+    <!-- Header path -->
     <include src="./src/components/Templates/Admin/SubTableColumns/Tabular/Alter/SubMenu/Header.html"></include>
 
     <main class="mt-2">
@@ -34,6 +36,8 @@
             </div>
         </div>
 
+
+        <!-- Datalist Select Items -->
         <datalist id="formcontrolDataList">
             <option value="form-control"></option>
         </datalist>
@@ -42,16 +46,13 @@
             <option value="col-md-4"></option>
             <option value="col-md-8"></option>
             <option value="col-md-12"></option>
-
         </datalist>
 
     </main>
-
-    <!-- <include src="./src/components/Templates/Admin/SubTableColumns/Tabular/Alter/Footer.html"></include> -->
+    <!-- login and footer -->
     <include src="./src/components/Templates/Admin/FooterWithLogin.html"></include>
 
-
-
+    <!-- Old CommonClasses -->
     <script src="/ClassesStatic/CommonClass.js"></script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -65,84 +66,8 @@
 
 
 
-
-    <script id="HbsTemplateForScreensOnly" type="text/x-handlebars">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>ScreenName</th>
-                    <th>ScreenNameForHtmlId</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each this.Screens}}
-                <tr>
-                    <td class="text-center">
-                        {{ForSNo @index}}
-                    </td>
-                    <td>
-                        {{this.ScreenName}}
-                    </td>
-                    <td>
-                        {{this.ScreenNameForHtmlId}}
-                    </td>
-                    <td>
-                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#{{../FolderName}}-{{../FileNameWithOutExtension}}-{{../ItemName}}-{{ScreenName}}"
-                        aria-expanded="false" aria-controls="{{../FolderName}}-{{../FileNameWithOutExtension}}-{{../ItemName}}-{{ScreenName}}">
-                        Toggle Columns
-                    </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td colspan=5 >
-                        <div class="collapse {{CollapseClass}}" id="{{../FolderName}}-{{../FileNameWithOutExtension}}-{{../ItemName}}-{{ScreenName}}">
-                            {{> HbsTemplateForSubTableColumns}}
-                        </div>
-                    </td>
-                </tr>
-                {{/each}}
-            </tbody>
-       
-        </table>
-      </script>
-
-
-
-    <script id="HbsTemplateForSubTableColumns" type="text/x-handlebars">
-
-
-        <ul class="nav nav-tabs" role="tablist">
-            {{#each SubTableColumnsObject}}
-          
-            <li class="nav-item" role="presentation">
-                <button class="nav-link {{this.MenuClass}}" id="{{this.FolderName}}-tab" data-bs-toggle="tab"
-                    data-bs-target="#{{@key}}-{{@../key}}-{{@../../key}}-{{@../../../key}}-{{@../../../../key}}" type="button" role="tab" aria-controls="{{this.FolderName}}"
-                    aria-selected="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z" />
-                    </svg>
-                    {{@key}}</button>
-            </li>
-            {{/each}}
-        </ul>
-        <div class="tab-content">
-            {{#each SubTableColumnsObject}}
-            <div class="tab-pane fade {{this.TabPageClass}}" id="{{@key}}-{{@../key}}-{{@../../key}}-{{@../../../key}}-{{@../../../../key}}" role="tabpanel"
-                aria-labelledby="{{this.FolderName}}-tab">
-                {{> HbsTemplateForTableColumnsForTogglesOnly}}
-            </div>
-            {{/each}}
-        </div>
-        
-        </script>
-
-
-
-    <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
+    <!-- HTML template -->
+    <script id="HbsTemplateToShowFetchDataId" type="text/x-handlebars">
                 <table class="table">
                     <thead>
                         <tr>
@@ -229,137 +154,17 @@
             
                 </script>
 
+    <!-- foders hbs -->
+    <include src="./src/components/Templates/Admin/SubTableColumns/HbsTemplatesAndAdd.html"></include>
 
+    <!-- Header Change js -->
+    <script src="../../../../../../Js/Header/headerChange.js" type="module"></script>
 
-    <script id="HbsTemplateForTable" type="text/x-handlebars">
-                        {{#each this.KData}}
-                        <tr class="{{RowClass}}">
-                            <td class="text-center">
-                                {{ForSNo @index}}
-                            </td>
-                            <td>
-                                {{DataAttribute}}
-                            </td>
-                            <td>
-                                {{DisplayName}}
-                            </td>
-                            <td>
-                                <input class="form-control" type="text" name="DefaultValue" value="{{DefaultValue}}" list="DefaultValueDataList">
-                            </td>
-                            <td>
-                                <input class="form-control" type="text" name="TextAlign" value="{{TextAlign}}" list="TextAlignDataList">
-                            </td>
-                            
-                            <td class="text-right">
-                                <button type="button" class="btn btn-outline-info"
-                                data-foldername="{{../ConfigObject.FolderName}}" data-filenamewithoutextension="{{../ConfigObject.FileName}}"
-                        data-itemname="{{../ConfigObject.ItemName}}" data-screenname="{{../ConfigObject.ScreenName}}"    
-                        data-columnname="{{DataAttribute}}"    
-                                onclick="jFUpdateData(event,{{@index}})">
-                                    Update
-                                </button>
-                            </td>
-                        </tr>
-                        {{/each}}
-                     
-
-                </script>
-
-    <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForFoldersOnly.html"></include>
-
-
-    <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForFilesOnly.html"></include>
-
-    <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForItemsOnly.html"></include>
-
-
-    <script>
-        //HbsTemplateForScreensWithSubTableColumnsOnly
-        class jClassForHbs {
-            static FillPartialFromScriptInHtml = ({ inHtmlHbsScriptId }) => {
-                let jVarLocalHbsTemplate = document.getElementById(inHtmlHbsScriptId);
-
-                if (jVarLocalHbsTemplate !== null) {
-                    Handlebars.registerPartial(inHtmlHbsScriptId, jVarLocalHbsTemplate.innerHTML);
-                };
-            };
-        };
-
-        let jVarLocalHbsTemplateForSubTableColumns = document.getElementById("HbsTemplateForSubTableColumns");
-        let jVarLocalHbsTemplateForColumns = document.getElementById("HbsTemplateForColumns");
-
-        let jVarLocalHbsTemplateForFiles = document.getElementById("HbsTemplateForFilesOnly");
-        jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForScreensOnly" });
-        jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForItemsOnly" });
-
-        let jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly = document.getElementById("HbsTemplateForScreensWithSubTableColumnsOnly");
-        let jVarLocalHbsTemplateForColumnsForTogglesOnly = document.getElementById("HbsTemplateForColumnsForTogglesOnly");
-        let jVarLocalHbsTemplateForTableColumnsForTogglesOnly = document.getElementById("HbsTemplateForTableColumnsForTogglesOnly");
-
-        // jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForTableColumnsForAllInOneWithValuesOnly" });
-
-        let jVarLocalHbsTemplateForTable = document.getElementById("HbsTemplateForTable");
-
-        Handlebars.registerHelper('ForSNo', function (item) {
-            return item + 1;
-        });
-
-        if (jVarLocalHbsTemplateForSubTableColumns !== null) {
-            Handlebars.registerPartial("HbsTemplateForSubTableColumns", jVarLocalHbsTemplateForSubTableColumns.innerHTML);
-        };
-
-        if (jVarLocalHbsTemplateForColumns !== null) {
-            Handlebars.registerPartial("HbsTemplateForColumns", jVarLocalHbsTemplateForColumns.innerHTML);
-        };
-
-        if (jVarLocalHbsTemplateForFiles !== null) {
-            Handlebars.registerPartial("HbsTemplateForFilesOnly", jVarLocalHbsTemplateForFiles.innerHTML);
-        };
-
-        if (jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly !== null) {
-            Handlebars.registerPartial("HbsTemplateForScreensWithSubTableColumnsOnly", jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly.innerHTML);
-        };
-
-        if (jVarLocalHbsTemplateForColumnsForTogglesOnly !== null) {
-            Handlebars.registerPartial("HbsTemplateForColumnsForTogglesOnly", jVarLocalHbsTemplateForColumnsForTogglesOnly.innerHTML);
-        };
-
-        if (jVarLocalHbsTemplateForTableColumnsForTogglesOnly !== null) {
-            Handlebars.registerPartial("HbsTemplateForTableColumnsForTogglesOnly", jVarLocalHbsTemplateForTableColumnsForTogglesOnly.innerHTML);
-        };
-
-        if (jVarLocalHbsTemplateForTable !== null) {
-            Handlebars.registerPartial("HbsTemplateForTable", jVarLocalHbsTemplateForTable.innerHTML);
-        };
-    </script>
-
-
-    <script>
-        let jFChangeHeaderActiveClass = () => {
-            let jVarLocalPathArray = window.location.pathname.split("/");
-            let jVarLocalHTMLName = jVarLocalPathArray[jVarLocalPathArray.length - 1];
-            jFChangeNavAnchorClass({ inClassName: jVarLocalHTMLName.split(".")[0] });
-        };
-
-        let jFChangeNavAnchorClass = ({ inClassName }) => {
-            let jVarLocalNavBarId = document.getElementById("NavBarId");
-            let jVarLocalAnchorNeeded = jVarLocalNavBarId.querySelector(`.${inClassName}AClass`);
-
-            if (jVarLocalAnchorNeeded !== null) {
-
-                if (jVarLocalAnchorNeeded.classList.contains("text-white")) {
-                    jVarLocalAnchorNeeded.classList.remove("text-white");
-                };
-
-                jVarLocalAnchorNeeded.classList.add("text-info");
-            };
-        };
-
-        jFChangeHeaderActiveClass();
-    </script>
-
+    <!-- login js -->
     <script src="../../../../../../Js/Login/LoginFetch.js" type="module"></script>
     <script src="../../../../../../Js/Login/Check.js" type="module"></script>
+
+    <!-- HTML js -->
     <script src="../../../../../../Js/SubColumns/Tabular/Alter/SubMenu/ParentClasses.js" type="module"></script>
 
 

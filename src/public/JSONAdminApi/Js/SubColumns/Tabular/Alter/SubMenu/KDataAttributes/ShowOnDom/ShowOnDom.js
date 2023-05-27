@@ -1,4 +1,4 @@
-import { StartFunc as ApplyClassesStartFunc } from "../../../ApplyClasses.js";
+import { StartFunc as ApplyClassesStartFunc } from "../../../../ApplyClasses.js";
 
 let jFCreateFoldersToDom = async () => {
     let jVarLocalRoute = window.location.pathname.split("/")[1];
@@ -6,7 +6,6 @@ let jFCreateFoldersToDom = async () => {
 
     let jVarLocalFromFetch = await fetch(jVarLocalFetchUrl);
     let dataFromApi = await jVarLocalFromFetch.json();
-    console.log("dataFromApi",dataFromApi);
 
     if (dataFromApi !== null) {
         ApplyClassesStartFunc({ inDataFromApi: dataFromApi });

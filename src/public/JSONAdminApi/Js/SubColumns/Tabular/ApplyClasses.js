@@ -32,7 +32,7 @@ let LocalForApplyClasses_19Jan2022 = ({ indataFromApi }) => {
     let jVarLocalFirstFile;
     let jVarLocalFirstItem;
     let jVarLocalFirstScreen;
-    console.log("aaaaaaaaaaaa : ", indataFromApi);
+
     if ("Folders" in indataFromApi) {
         if (Object.values(indataFromApi.Folders).length > 0) {
             jVarLocalFirstFolder = Object.values(indataFromApi.Folders)[0];
@@ -72,7 +72,7 @@ let LocalForApplyClasses = ({ indataFromApi }) => {
     let jVarLocalFirstItem;
     let jVarLocalFirstScreen;
     let jVarLocalsubtablecolumnkey;
-    console.log("aaaaaaaaaaaa : ", indataFromApi);
+
     if ("Folders" in indataFromApi) {
         if (Object.values(indataFromApi.Folders).length > 0) {
             jVarLocalFirstFolder = Object.values(indataFromApi.Folders)[0];
@@ -94,7 +94,6 @@ let LocalForApplyClasses = ({ indataFromApi }) => {
                                 if (Object.values(jVarLocalFirstItem.Screens).length > 0) {
                                     jVarLocalFirstScreen = Object.values(jVarLocalFirstItem.Screens)[0];
                                     jVarLocalFirstScreen.CollapseClass = " show";
-                                    // console.log("jjjjjjjj",jVarLocalFirstScreen);
 
                                     if ("SubTableColumnsObject" in jVarLocalFirstScreen) {
                                         if (Object.values(jVarLocalFirstScreen.SubTableColumnsObject).length > 0) {
@@ -123,8 +122,7 @@ let LocalForClassesFromUrl = ({ indataFromApi, inQueryParamsAsObject }) => {
     let jVarLocalScreenName = inQueryParamsAsObject.inScreenName;
     let jVarLocalColumnName = inQueryParamsAsObject.inColumnName;
     let jVarLocalsubtablecolumnkey = inQueryParamsAsObject.subtablecolumnkey;
-    // let jVarLocalColumnName = inQueryParamsAsObject.inColumnName;
-    console.log("ssssssss : ", jVarLocalsubtablecolumnkey);
+    
     if ("Folders" in indataFromApi) {
         if (jVarLocalFolderName in indataFromApi.Folders) {
             indataFromApi.Folders[jVarLocalFolderName].TabPageClass = " show active";

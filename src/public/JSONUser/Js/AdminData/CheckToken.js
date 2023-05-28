@@ -26,7 +26,7 @@ let StartFunc = async () => {
     let localinModalId = ResponseJsonData.ModalId;
 
     let jVarLocalCookieValue = LocalgetCookie(localinTokenName);
-
+    console.log("jVarLocalCookieValue : ", jVarLocalCookieValue);
     if (jVarLocalCookieValue === null) {
         localStorage.removeItem(localinUserKey);
         localStorage.removeItem(localinFirmKey);

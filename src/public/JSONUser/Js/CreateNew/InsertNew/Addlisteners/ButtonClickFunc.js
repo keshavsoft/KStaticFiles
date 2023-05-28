@@ -11,8 +11,9 @@ let StartFunc = ({ inSubRoute }) => {
     }
 
     let jVarLocalSaveButtonid = document.getElementById("SaveButtonid");
+
     jVarLocalSaveButtonid.addEventListener("click", async () => {
-        await jFSave({ inSubRoute })
+        await jFLocalSave({ inSubRoute })
     });
 };
 
@@ -31,7 +32,7 @@ let serializeObject = (form) => {
     return pairs;
 };
 
-let jFSave = async ({ inSubRoute }) => {
+let jFLocalSave = async ({ inSubRoute }) => {
     var form = document.getElementById("kform1");
     let jVarLocalFetchPostData = serializeObject(form);
     let jVarLocalSettings = {
@@ -48,7 +49,11 @@ let jFSave = async ({ inSubRoute }) => {
     let data = await response.json();
 
     if (data.KTF) {
-        window.location = "../Customers/Show.html";
+        //window.location = "../Customers/Show.html";
+        window.location = "../Link/UploadData.html";
+
+        //http://localhost:4119/JSONUser/Html/Link/UploadData.html
+
     } else {
         Swal.fire(
             data.KReason

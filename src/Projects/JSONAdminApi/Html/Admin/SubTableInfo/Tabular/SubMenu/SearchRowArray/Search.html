@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <title>TabularTableInfoData</title>
+    <title>TableInfo Lable</title>
     <include src="./src/components/Templates/Admin/Columns/HeaderCss.html"></include>
 
 </head>
@@ -25,54 +25,20 @@
         </symbol>
     </svg>
 
-    <include src="./src/components/Templates/Admin/TableInfo/Tabular/SubMenu/header.html"></include>
+    <include src="./src/components/Templates/Admin/TableInfo/Tabular/SubMenu/SearchRowArray/header.html"></include>
 
     <main>
         <div class="container">
             <div id="KCont1">
             </div>
         </div>
-        
+
     </main>
 
-    <include src="./src/components/Templates/Admin/TableInfo/Tabular/SubMenu/Footer.html"></include>
+    <!-- login and footer -->
+    <include src="./src/components/Templates/Admin/FooterWithLogin.html"></include>
 
-    <!-- LOGIN  STARTED -->
-    <div class="modal fade" id="LoginModalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter client user credentials</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="LoginFormPopUpId" class="" onsubmit="return false" novalidate>
-                        <div class="mb-3 form-floating is-valid">
-                            <input type="text" class="form-control" id="KUserNameInput" required>
-                            <label for="KUserNameInput">User Name</label>
-                            <div class="invalid-feedback">
-                                User Name cannot be empty.
-                            </div>
-                        </div>
-                        <div class="mb-3 form-floating">
-                            <input type="password" class="form-control" id="KPasswordInput" required>
-                            <label for="KPasswordInput">Password</label>
-                            <div class="invalid-feedback">
-                                Password cannot be empty.
-                            </div>
-                        </div>
-                        <input type="submit" class=" btn btn-primary"
-                            onclick="jVarGlobalClientObject.Login.LoginCheck()">
-                        <!-- <button type="button" class="btn btn-primary"
-                        onclick="jVarGlobalAdmin.Login.LoginCheck()">Check</button>
-                         -->
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- LOGIN FINISHED -->
-
+    <!-- Old CommonClasses -->
     <script src="/ClassesStatic/CommonClass.js"></script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -83,184 +49,73 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
-    <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForFoldersOnly.html"></include>
 
-
-    <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForFilesOnly.html"></include>
-
-    <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForItemsOnly.html"></include>
-
-      <script id="HbsTemplateForScreensOnly" type="text/x-handlebars">
+    <script id="HbsTemplateToShowFetchDataId" type="text/x-handlebars">
         <table class="table">
             <thead>
                 <tr>
-                    <th width="5%"></th>
-                    <th width="90%"></th>
-                    <th width="5%"></th>
+                    <th>#</th>
+                    <th>ScreenName</th>
+                    <th>ScreenNameForHtmlId</th>
+                    <th>ColumnReOrder</th>
+                    <th>DisplayText</th>
+                    <th>ColClass</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each this.Screens}}
-              
-    <tr class="{{RowClass}}">
-    <td class="text-center">
-    {{ForSNo @index}}
-    </td>
-    <td>
-    
-    <div class="row mb-3">
-        <div class="col row">
-            <label class="col-md-8 col-form-label">ShowInTable</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if ShowInTable}}
-                    <input class="form-check-input" type="checkbox" name="ShowInTable" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="ShowInTable">
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-        <div class="col row">
-            <label class="col-md-8 col-form-label">Insert</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if Insert}}
-                    <input class="form-check-input" type="checkbox" name="Insert" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="Insert">
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="row mb-3">
-        <div class="col row">
-            <label class="col-md-8 col-form-label">CreateNew</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if CreateNew}}
-                    <input class="form-check-input" type="checkbox" name="CreateNew" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="CreateNew">
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-        <div class="col row">
-            <label class="col-md-8 col-form-label">IsTextArea</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if IsTextArea}}
-                    <input class="form-check-input" type="checkbox" name="IsTextArea" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="IsTextArea">
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-    </div>
-    </td>
-    <td>
-    <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../../key}}" data-filename="{{@../../../key}}" data-itemname="{{@../../key}}" data-screenname="{{@../key}}">
-        Update
-    </button>
-    </td>
-    </tr>
-    
+                {{log "inside" this}}
+                <tr>
+                    <td class="text-center">
+                        {{ForSNo @index}}
+                    </td>
+                    <td>
+                        {{this.ScreenName}}
+                    </td>
+                    <td>
+                        {{this.ScreenNameForHtmlId}}
+                    </td>
+                    <td>
+                        <div class="form-check  form-switch">
+                            {{#if KTF}}
+                            <input class="form-check-input" type="checkbox" name="KTF" checked>
+                            {{else}}
+                            <input class="form-check-input" type="checkbox" name="KTF">
+                            {{/if}}
+                        </div>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="DisplayText" value="{{DisplayText}}" >
+
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="ColClass" value="{{ColClass}}" >
+
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../key}}" data-filename="{{@../../key}}" data-itemname="{{@../key}}" data-screenname="{{ScreenName}}">
+                            Update
+                        </button>
+                    </td>
+                </tr>
                 {{/each}}
             </tbody>
+       
         </table>
-    
-        </script>
+      </script>
 
-    <script>
-        //HbsTemplateForScreensWithSubTableColumnsOnly
-        class jClassForHbs {
-            static FillPartialFromScriptInHtml = ({ inHtmlHbsScriptId }) => {
-                let jVarLocalHbsTemplate = document.getElementById(inHtmlHbsScriptId);
+    <!-- foders hbs -->
+    <include src="./src/components/Templates/Admin/SubTableInfo/HbsTemplatesAndAdd.html"></include>
 
-                if (jVarLocalHbsTemplate !== null) {
-                    Handlebars.registerPartial(inHtmlHbsScriptId, jVarLocalHbsTemplate.innerHTML);
-                };
-            };
-        };
+    <!-- Header Change js -->
+    <script src="../../../../Js/Header/headerChange.js" type="module"></script>
 
-        let jVarLocalHbsTemplateForSubTableColumns = document.getElementById("HbsTemplateForSubTableColumns");
-        let jVarLocalHbsTemplateForColumns = document.getElementById("HbsTemplateForColumns");
+    <!-- login js -->
+    <script src="../../../../Js/Login/LoginFetch.js" type="module"></script>
+    <script src="../../../../Js/Login/Check.js" type="module"></script>
 
-        let jVarLocalHbsTemplateForFiles = document.getElementById("HbsTemplateForFilesOnly");
-        jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForScreensOnly" });
-        jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForItemsOnly" });
-
-        let jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly = document.getElementById("HbsTemplateForScreensWithSubTableColumnsOnly");
-        let jVarLocalHbsTemplateForColumnsForTogglesOnly = document.getElementById("HbsTemplateForColumnsForTogglesOnly");
-        let jVarLocalHbsTemplateForTableColumnsForTogglesOnly = document.getElementById("HbsTemplateForTableColumnsForTogglesOnly");
-
-        // jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForTableColumnsForAllInOneWithValuesOnly" });
-
-        let jVarLocalHbsTemplateForTable = document.getElementById("HbsTemplateForTable");
-
-        Handlebars.registerHelper('ForSNo', function (item) {
-            return item + 1;
-        });
-
-        if (jVarLocalHbsTemplateForSubTableColumns !== null) {
-            Handlebars.registerPartial("HbsTemplateForSubTableColumns", jVarLocalHbsTemplateForSubTableColumns.innerHTML);
-        };
-
-        if (jVarLocalHbsTemplateForColumns !== null) {
-            Handlebars.registerPartial("HbsTemplateForColumns", jVarLocalHbsTemplateForColumns.innerHTML);
-        };
-
-        if (jVarLocalHbsTemplateForFiles !== null) {
-            Handlebars.registerPartial("HbsTemplateForFilesOnly", jVarLocalHbsTemplateForFiles.innerHTML);
-        };
-
-        if (jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly !== null) {
-            Handlebars.registerPartial("HbsTemplateForScreensWithSubTableColumnsOnly", jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly.innerHTML);
-        };
-
-        if (jVarLocalHbsTemplateForColumnsForTogglesOnly !== null) {
-            Handlebars.registerPartial("HbsTemplateForColumnsForTogglesOnly", jVarLocalHbsTemplateForColumnsForTogglesOnly.innerHTML);
-        };
-
-        if (jVarLocalHbsTemplateForTableColumnsForTogglesOnly !== null) {
-            Handlebars.registerPartial("HbsTemplateForTableColumnsForTogglesOnly", jVarLocalHbsTemplateForTableColumnsForTogglesOnly.innerHTML);
-        };
-
-        if (jVarLocalHbsTemplateForTable !== null) {
-            Handlebars.registerPartial("HbsTemplateForTable", jVarLocalHbsTemplateForTable.innerHTML);
-        };
-    </script>
-
-
-    <script>
-        let jFChangeHeaderActiveClass = () => {
-            let jVarLocalPathArray = window.location.pathname.split("/");
-            let jVarLocalHTMLName = jVarLocalPathArray[jVarLocalPathArray.length - 1];
-            jFChangeNavAnchorClass({ inClassName: jVarLocalHTMLName.split(".")[0] });
-        };
-
-        let jFChangeNavAnchorClass = ({ inClassName }) => {
-            let jVarLocalNavBarId = document.getElementById("NavBarId");
-            let jVarLocalAnchorNeeded = jVarLocalNavBarId.querySelector(`.${inClassName}AClass`);
-
-            if (jVarLocalAnchorNeeded !== null) {
-
-                if (jVarLocalAnchorNeeded.classList.contains("text-white")) {
-                    jVarLocalAnchorNeeded.classList.remove("text-white");
-                };
-
-                jVarLocalAnchorNeeded.classList.add("text-info");
-            };
-        };
-
-        jFChangeHeaderActiveClass();
-    </script>
-
-<script src="../../../../Js/TableInfo/Tabular/Toggles/Toggles.js" type="module"></script>
+    <!-- HTML js -->
+    <script src="../../../../../../Js/TableInfo/Tabular/SubMenu/SearchRowArray/Label/Label.js" type="module"></script>
 
 </body>
 

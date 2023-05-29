@@ -56,58 +56,48 @@
 
     <!-- HTML template -->
     <script id="HbsTemplateToShowFetchDataId" type="text/x-handlebars">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>ScreenName</th>
-                                        <th>ScreenNameForHtmlId</th>
-                                        <th>ColumnReOrder</th>
-                                        <th>DisplayText</th>
-                                        <th>ColClass</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{#each this.Screens}}
-                                    {{log "inside" this}}
-                                    <tr>
-                                        <td class="text-center">
-                                            {{ForSNo @index}}
-                                        </td>
-                                        <td>
-                                            {{this.ScreenName}}
-                                        </td>
-                                        <td>
-                                            {{this.ScreenNameForHtmlId}}
-                                        </td>
-                                        <td>
-                                            <div class="form-check  form-switch">
-                                                {{#if KTF}}
-                                                <input class="form-check-input" type="checkbox" name="KTF" checked>
-                                                {{else}}
-                                                <input class="form-check-input" type="checkbox" name="KTF">
-                                                {{/if}}
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <input class="form-control" type="text" name="DisplayText" value="{{DisplayText}}" >
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>KTF</th>
+                    <th>DisplayText</th>
+                    <th>ColClass</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center">
+                        {{ForSNo @index}}
+                    </td>
                     
-                                        </td>
-                                        <td>
-                                            <input class="form-control" type="text" name="ColClass" value="{{ColClass}}" >
-                    
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../key}}" data-filename="{{@../../key}}" data-itemname="{{@../key}}" data-screenname="{{ScreenName}}">
-                                                Update
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    {{/each}}
-                                </tbody>
-                           
-                            </table>
-                          </script>
+                    <td>
+                        <div class="form-check  form-switch">
+                            {{#if SearchRowArray.Search.KTF}}
+                            <input class="form-check-input" type="checkbox" name="KTF" checked>
+                            {{else}}
+                            <input class="form-check-input" type="checkbox" name="KTF">
+                            {{/if}}
+                        </div>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="DisplayText"  value="{{SearchRowArray.Search.DisplayObject.DisplayText}}">
+
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="ColClass"  value="{{SearchRowArray.Search.DisplayObject.ColClass}}">
+
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../../key}}" data-filename="{{@../../../key}}" data-itemname="{{@../../key}}" data-screenname="{{@../key}}" data-gridname="{{@key}}">
+                            Update
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+       
+        </table>
+      </script>
 
     <!-- foders hbs -->
     <include src="./src/components/Templates/Admin/SubTableInfo/HbsTemplatesAndAdd.html"></include>
@@ -121,7 +111,7 @@
     <script src="../../../../../../Js/Login/Check.js" type="module"></script>
 
     <!-- HTML js -->
-    <script src="../../../../../../Js/TableInfo/Tabular/SubMenu/SearchRowArray/Label/Label.js" type="module"></script>
+    <script src="../../../../../../Js/SubTableInfo/Tabular/SubMenu/SearchRowArray/Search/Search.js" type="module"></script>
 
 
 </body>

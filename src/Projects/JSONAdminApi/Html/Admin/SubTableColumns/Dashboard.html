@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Sub Table Dashboard</title>
     <!-- Custom styles for this template -->
     <link href="../../../css/headers.css" rel="stylesheet">
 </head>
@@ -24,94 +24,157 @@
             </path>
         </symbol>
     </svg>
-    <header>
-        <div id="NavBarId" class="px-2 py-2 bg-dark text-white">
-            <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="/"
-                        class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                            <use xlink:href="#bootstrap" />
-                        </svg>
-                    </a>
-
-                    <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-                        <li>
-                            <a href="../Dashboard.html" class="nav-link text-white">
-                                <svg class="bi d-block mx-auto mb-1" width="20" height="20" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
-                                </svg>
-                                Admin Dashboard
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./Tabular/CreateNew/CreateNew.html" class="nav-link text-white">
-                                <svg class=" bi d-block mx-auto mb-1" width="20" height="20" viewBox="0 0 16 16">
-                                    <path
-                                        d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z" />
-                                </svg>
-                                Columns
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../SubTableInfo/Tabular/Toggles.html" class="nav-link text-white">
-                                <svg class=" bi d-block mx-auto mb-1" width="20" height="20" viewBox="0 0 16 16">
-                                    <path
-                                        d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z" />
-                                </svg>
-                                Tableinfo
-                            </a>
-                        </li>
-
-
-
-                        <li id="HeaderLoginButtonId">
-                            <a href="#" id="dropdown09" class="nav-link text-white"
-                                onclick="jVarGlobalClientObject.UI.ModalFuncs.Show()">
-                                <svg class="bi d-block mx-auto mb-1" width="20" height="20" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                                Login
-                            </a>
-                        </li>
-                        <li id="HeaderUserIdLi" class="visually-hidden">
-                            <a href="#" id="HeaderUserIdDropDown" data-bs-toggle="dropdown" aria-expanded="false"
-                                class="nav-link text-white dropdown-toggle">
-                                <svg class="bi d-block mx-auto mb-1" width="20" height="20">
-                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                    <path fill-rule="evenodd"
-                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                </svg>
-                                UserName
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="HeaderUserIdDropDown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#"
-                                        onclick="jVarGlobalClientObject.UI.ModalFuncs.Show()">
-                                        Sign out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+    <nav id="NavBarId" class="navbar navbar-expand-md navbar-dark bg-dark d-print-none" aria-label="KeshavSoft">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">KeshavSoft</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#MenuNavItems" aria-controls="MenuNavItems" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="MenuNavItems">
+                <ul class="navbar-nav me-auto" id="MenuNavContainerId">
+                    <li>
+                        <a href="../Dashboard.html" class="nav-link text-white">
+                            <svg class="bi d-block mx-auto mb-1" width="20" height="20" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z">
+                                </path>
+                            </svg>
+                            Admin Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./Tabular/CreateNew/CreateNew.html" class="nav-link text-white">
+                            <svg class=" bi d-block mx-auto mb-1" width="20" height="20" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z">
+                                </path>
+                            </svg>
+                            Columns
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../SubTableInfo/Tabular/Toggles.html" class="nav-link text-white">
+                            <svg class=" bi d-block mx-auto mb-1" width="20" height="20" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z">
+                                </path>
+                            </svg>
+                            Tableinfo
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li id="HeaderLoginButtonId">
+                        <a href="#" class="nav-link text-white" onclick="jVarGlobalClientObject.UI.ModalFuncs.Show()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-x d-block mx-auto mb-1 d-none d-md-block" viewBox="0 0 16 16">
+                                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+                                <path fill-rule="evenodd" d="M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"></path>
+                              </svg>
+                            Login
+                        </a>
+                    </li>
+                    <li id="HeaderUserIdLi" class="visually-hidden nav-item dropdown">
+                        <a href="#" id="HeaderUserIdDropDown" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link text-white dropdown-toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-person d-block mx-auto mb-1 d-none d-md-block" viewBox="0 0 16 16">
+                                <path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"></path>
+                                <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                              </svg>
+                            UserName
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="HeaderUserIdDropDown">
+                            <li><a class="dropdown-item" href="#" onclick="jVarGlobalClientObject.UI.ModalFuncs.Show()">
+                                    <i class="bi bi-power" style="font-size: 1.3rem; color:orangered"></i>
+                                    logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+    
             </div>
         </div>
-    </header>
+    </nav>
+   
+    <main>
+        <div class="container">
+            <div id="KCont1">
+                <section class="pt-4 pt-md-11">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-5 col-lg-6 order-md-2">
+                                <!-- Image -->
+                                <!-- <img src="../../css/startup.svg" class="img-fluid  mw-md-150 mw-lg-130 mb-6 mb-md-0 aos-init " style="width: 400px;" alt="..." data-aos="fade-up" data-aos-delay="100"> -->
+                                <img src="../../../css/startup.svg"
+                                    class="img-fluid  mw-md-150 mw-lg-130 mb-6 mb-md-0 aos-init " style="width: 400px;"
+                                    alt="..." data-aos="fade-up" data-aos-delay="100">
 
-    <div class="container">
-        <!-- Breadcrumb -->
-        <nav class="mb-1 mt-2" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../../UserData/Dashboard.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="../Dashboard.html">Admin</a></li>
-                <li class="breadcrumb-item"><a href="../Dashboard.html">SubTableColumns</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            </div>
+                            <div class="col-12 col-md-7 col-lg-6 order-md-1" data-aos="fade-up">
 
-            </ol>
-        </nav>
+                                <!-- Heading -->
+                                <h2 class="display-3 text-center text-md-start">
+                                    Welcome to <br> <span class="text-primary">Sub Table Admin </span><br>
+
+                                </h2>
+
+                                <!-- Text -->
+                                <p class="lead text-center text-md-start text-muted mb-6 mb-lg-8">
+
+                                    Here, you can change
+                                </p>
+                                <ul class="lead text-md-start text-muted">
+                                    <li>Names</li>
+                                    <li>Create new Sub Table</li>
+                                    <li>Change Config Settings</li>
+                                    <li>change Sub Table Columns widths.... e.t.c</li>
+                                </ul>
+                                <p></p>
+
+                                <!-- Buttons -->
+                                <!-- <div class="text-center text-md-start">
+                            <a class="btn btn-primary shadow lift me-1" id="HeaderLoginButtonId" onclick="jVarGlobalClientObject.UI.ModalFuncs.Show()">
+                              Click to login <i class="fe fe-arrow-right d-none d-md-inline ms-3"></i>
+                            </a>
+                            
+                          </div> -->
+
+                            </div>
+                        </div> <!-- / .row -->
+                    </div> <!-- / .container -->
+                </section>
+            </div>
+        </div>
+    </main>
+     <!-- LOGIN  STARTED -->
+<div class="modal fade" id="LoginModalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Enter client user credentials</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="LoginFormPopUpId" class="" onsubmit="return false" novalidate="">
+                    <div class="mb-3 form-floating is-valid">
+                        <input type="text" class="form-control" id="KUserNameInput" required="">
+                        <label for="KUserNameInput">User Name</label>
+                        <div class="invalid-feedback">
+                            User Name cannot be empty.
+                        </div>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input type="password" class="form-control" id="KPasswordInput" required="">
+                        <label for="KPasswordInput">Password</label>
+                        <div class="invalid-feedback">
+                            Password cannot be empty.
+                        </div>
+                    </div>
+                    <input id="LoginModalButtonId" type="submit" class=" btn btn-primary">
+                </form>
+            </div>
+        </div>
     </div>
+</div>
+<!-- LOGIN FINISHED -->
 
     <footer class="footer mt-auto py-3 bg-light fixed-bottom">
         <div class="container">
@@ -122,25 +185,18 @@
         </div>
     </footer>
 
-    <script src="/ClassesStatic/CommonClass.js"></script>
-<script src="/js/Admin/HeadFocus.js"></script>
-    <!-- <script src="../../../js/FetchFuncs.js"></script> -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
-    <script>
-        let jVarGlobalPresentViewData;
-        let jVarGlobalHBSData = {};
 
-        jVarGlobalClientObject.UI.ModalFuncs.LoadToDOM();
-        jVarGlobalClientObject.Login.ClientSideCookieFuncs.CheckToken();
-        jVarGlobalClientObject.Login.ShowLoginDetailsOnDOM.InHeader();
-        // jVarGlobalClientObject.AdminApi.Items.PullData();
-       // jVarGlobalClientObject.DataApi.Folders.PullData();
-    </script>
+      <!-- login js -->
+      <script src="../../../Js/Login/LoginFetch.js" type="module"></script>
+      <script src="../../../Js/Login/Check.js" type="module"></script>
+  
+
 </body>
 
 </html>

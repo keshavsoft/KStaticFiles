@@ -1,0 +1,25 @@
+<tr>
+    <td class="text-center">{{pk}}</td>
+
+    <td class="text-right">{{BillNumber}}</td>
+    <td>
+        <div class="d-flex">
+            <h6 class="ms-3 my-auto">{{CustomerName}}</h6>
+        </div>
+
+    </td>
+    <td>{{CustomerNumber}}</td>
+    <td>{{Date}}</td>
+    <td class="text-lg">
+        <a href="../Show/Show.html?RowPK={{pk}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+            <i class="fas fa-eye text-secondary"></i>
+        </a>
+        <a href="../../BillPrint/Show/Show.html?RowPK={{pk}}" href="javascript:;" class="mx-3 ">
+            <i class="fa fa-print text-secondary" aria-hidden="true"></i>
+        </a>
+        <a href="javascript:;" class="DeleteButtonClass" data-rowpk="{{pk}}" data-bs-toggle="tooltip"
+            data-bs-original-title="Delete product">
+            <i class="fas fa-trash text-secondary"></i>
+        </a>
+    </td>
+</tr>

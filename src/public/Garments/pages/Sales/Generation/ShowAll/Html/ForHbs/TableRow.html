@@ -1,0 +1,25 @@
+<tr>
+    <td class="text-center">{{sno}}</td>
+    <td>
+        <h6 class="ms-3 my-auto">{{ItemName}}</h6>
+    </td>
+    <td>{{BillPk}}</td>
+    <td>M-{{pk}}</td>
+    <td>{{UnitRate}}</td>
+    <td>{{DisPercentage}}%</td>
+    <td>{{DisRate}}</td>
+    <td>{{GrossAmout}}</td>
+    <td class="text-sm">
+        <a href="/pages/Sales/Bills/Show/Show.html?RowPK={{BillPk}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+            <i class="fas fa-eye text-secondary"></i>
+        </a>
+        <a href="../ItemEdit/ItemEdit.html?RowPK={{pk}}" href="javascript:;" class="mx-3 " data-bs-toggle="tooltip"
+            data-bs-original-title="Edit product">
+            <i class="fas fa-user-edit text-secondary"></i>
+        </a>
+        <a href="javascript:;" class="DeleteButtonClass" data-rowpk="{{pk}}" data-bs-toggle="tooltip"
+            data-bs-original-title="Delete product">
+            <i class="fas fa-trash text-secondary"></i>
+        </a>
+    </td>
+</tr>

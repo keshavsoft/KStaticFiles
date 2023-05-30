@@ -1,0 +1,17 @@
+<tr data-qrcode="{{pk}}">
+    <td class="text-center"> {{KSNo}} </td>
+    <td class="text-center">{{InventorySerial}}</td>
+    <td>{{ProductName}}</td>
+    <td>M-{{pk}}</td>
+    <td>{{CostPrice}}</td>
+    <td>{{PercentageValueAddition}}%</td>
+    <td>{{SalePrice}}</td>
+
+    <td class="text-lg">
+        {{#if isSold}}
+        <span class="badge badge-danger">SOLD</span>
+        {{else}}
+<span class="badge badge-success">in Stock</span>
+{{/if}}
+    </td>
+</tr>

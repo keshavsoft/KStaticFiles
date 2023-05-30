@@ -12,6 +12,9 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalfilename = jVarLocalCurrentTarget.dataset.filename;
     let jVarLocalitemname = jVarLocalCurrentTarget.dataset.itemname;
     let jVarLocalscreenname = jVarLocalCurrentTarget.dataset.screenname;
+    let jVarLocalGridName = jVarLocalCurrentTarget.dataset.gridname;
+
+    console.log("jVarLocalscreenname:",jVarLocalscreenname);
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
     let jVarLocalShowBalance = jVarLocalColsestTr.querySelector('[name="ShowBalance"]');
@@ -28,7 +31,7 @@ let jFLocalClickFunc = async (event) => {
         ShowTotals: jVarLocalShowTotalsValue
     }
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableInfo/SubMenu/FooterType/FromKeys";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/SubTableInfo/SubMenu/FooterType/FromKeys";
 
     let response = await fetch(jFetchUrl, {
         method: "PATCH",
@@ -41,6 +44,7 @@ let jFLocalClickFunc = async (event) => {
             FileName: jVarLocalfilename,
             ItemName: jVarLocalitemname,
             ScreenName: jVarLocalscreenname,
+            GridName:jVarLocalGridName,
             BodyAsJson
         })
     });

@@ -31,16 +31,12 @@ let jFLocalSave = async ({ inSubRoute }) => {
     let jVarLocalFetchPostData = jFLocalPrepareFetchBody();
     let jVarLocalFromFetch = await jFLocalCallFetch({ inSubRoute, inFetchPostData: jVarLocalFetchPostData });
 
-    jFLocalPostFetch({ inFetchData: jVarLocalFromFetch });
+    jFLocalPostFetch({ inFetchData: jVarLocalFromFetch, inDataPk: jVarLocalFetchPostData.pk });
 };
 
-let jFLocalPostFetch = ({ inFetchData }) => {
+let jFLocalPostFetch = ({ inFetchData, inDataPk }) => {
     if (inFetchData.KTF) {
-        //window.location = "../Customers/Show.html";
-        window.location = "../Link/UploadData.html";
-
-        //http://localhost:4119/JSONUser/Html/Link/UploadData.html
-
+        window.location = `../Link/UploadData.html?FromInsertNew=true&DataPk=${inDataPk}`;
     } else {
         Swal.fire(
             inFetchData.KReason

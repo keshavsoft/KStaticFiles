@@ -12,20 +12,6 @@ let StartFunc = ({ inSubRoute }) => {
     };
 
     StartFuncSaveButton({ inSubRoute });
-
-    // let jVarLocalSaveButtonid = document.getElementById("SaveButtonid");
-
-    // jVarLocalSaveButtonid.addEventListener("click", async () => {
-    //     await jFLocalSave({ inSubRoute })
-    // });
-};
-
-let jFLocalSaveButtonAddListener = ({ inSubRoute }) => {
-    let jVarLocalSaveButtonid = document.getElementById("SaveButtonid");
-
-    jVarLocalSaveButtonid.addEventListener("click", async () => {
-        await jFLocalSave({ inSubRoute });
-    });
 };
 
 let serializeObject = (form) => {

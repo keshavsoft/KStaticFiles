@@ -1,4 +1,5 @@
 import { ReturnUserPK } from "../urlSearchParams.js";
+import { StartFunc as StartFuncSaveButton } from "./SaveButton/StartFunc.js";
 
 let StartFunc = ({ inSubRoute }) => {
     let LocalFromUrlSearchParams = ReturnUserPK();
@@ -8,12 +9,22 @@ let StartFunc = ({ inSubRoute }) => {
         LocalDompk.value = LocalFromUrlSearchParams.UserPK;
         let LocalFromDomUserName = document.getElementById("UserName");
         LocalFromDomUserName.focus();
-    }
+    };
 
+    StartFuncSaveButton({ inSubRoute });
+
+    // let jVarLocalSaveButtonid = document.getElementById("SaveButtonid");
+
+    // jVarLocalSaveButtonid.addEventListener("click", async () => {
+    //     await jFLocalSave({ inSubRoute })
+    // });
+};
+
+let jFLocalSaveButtonAddListener = ({ inSubRoute }) => {
     let jVarLocalSaveButtonid = document.getElementById("SaveButtonid");
 
     jVarLocalSaveButtonid.addEventListener("click", async () => {
-        await jFLocalSave({ inSubRoute })
+        await jFLocalSave({ inSubRoute });
     });
 };
 
@@ -34,7 +45,9 @@ let serializeObject = (form) => {
 
 let jFLocalSave = async ({ inSubRoute }) => {
     var form = document.getElementById("kform1");
+
     let jVarLocalFetchPostData = serializeObject(form);
+
     let jVarLocalSettings = {
         method: "post",
         headers: {

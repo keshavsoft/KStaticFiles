@@ -1,3 +1,5 @@
+rmdir public /s /q
+
 xcopy public\Projects\ClientLogin ..\JsonApi\public\ClientLogin\  /s /e /Y
 xcopy public\Projects\JSONAdminApi  ..\JsonApi\public\JSONAdminApi\  /s /e /Y
 xcopy public\Projects\JSONReports  ..\JsonApi\public\JSONReports\  /s /e /Y

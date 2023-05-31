@@ -3,6 +3,10 @@ KeshavSoft v5.21
 to club html files for serving in public of JSONApi project
 first need to delete the public folder if present.
 
+for Developers with automation :
+
+1.  CopyFiles
+
 for Developers :
 
 1.  Delete the public folder in root.

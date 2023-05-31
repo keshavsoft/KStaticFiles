@@ -124,7 +124,37 @@
 
 </script>
 
+	<script>
+		Handlebars.registerHelper('ForSNo', function (item) {
+			return item + 1;
+		});
 
+		feather.replace({ 'aria-hidden': 'true' });
+
+
+		let jFTableSearch = (inEvent) => {
+			let jVarLocalCurrentTarget = inEvent.currentTarget;
+			let jVarLocalClosestCard = jVarLocalCurrentTarget.closest(".card");
+			let jVarLocalTableBodyId = jVarLocalClosestCard.querySelector(".card-body table tbody");
+
+			var filter, table, tr, td, i;
+			filter = jVarLocalCurrentTarget.value;
+
+			for (var i = 0, row; row = jVarLocalTableBodyId.rows[i]; i++) {
+				jVarLocalTableBodyId.rows[i].classList.add("d-none");
+
+				for (var j = 0, col; col = row.cells[j]; j++) {
+					if (col.innerHTML.includes(filter)) {
+
+						jVarLocalTableBodyId.rows[i].classList.remove("d-none");
+
+						break;
+					};
+				}
+			}
+		};
+
+	</script>
 	<script src="../../Js/ForUI/MenuActive.js" type="module"></script>
 	<script src="../../Js/BoilerPlate/FoldersOnly/FoldersOnly.js" type="module"></script>
 

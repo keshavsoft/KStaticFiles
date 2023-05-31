@@ -18,6 +18,7 @@ let jFgetUrlQueryParams = () => {
         // console.log("param : ", param);
         if (param.length === 2) {
             queryParams[param[0]] = param[1];
+
         };
     }
     return queryParams;

@@ -12,46 +12,6 @@ let StartFunc = ({ inSubRoute }) => {
     });
 };
 
-let jFLocalCheckForm_Keshav_31May2023 = ({ inEvent }) => {
-    let jVarLocalEvent = inEvent;
-    let jVarLocalCurrentTarget = jVarLocalEvent.currentTarget;
-    let jVarLocalClosestForm = jVarLocalCurrentTarget.closest("form");
-
-    if (!jVarLocalClosestForm.checkValidity()) {
-        jVarLocalEvent.preventDefault()
-        jVarLocalEvent.stopPropagation();
-
-        jVarLocalClosestForm.classList.add('was-validated');
-        let jVarLocalFocusInput = jVarLocalClosestForm.querySelector("input");
-        let pseudo = window.getComputedStyle(jVarLocalFocusInput, ':before');
-
-        console.log("jVarLocalFocusInput : ", pseudo.getPropertyValue("invalid"), pseudo.getPropertyValue("is-valid"));
-
-        let pseudo1 = window.getComputedStyle(jVarLocalFocusInput, ':after');
-
-        console.log("222222222 : ", pseudo1.getPropertyValue("invalid"), pseudo1.getPropertyValue("is-valid"));
-
-        return false;
-    };
-
-    return true;
-};
-
-let jFLocalCheckForm = ({ inEvent }) => {
-    let jVarLocalpk = document.getElementById("pk");
-
-    if (jVarLocalpk.value === "") {
-        jVarLocalpk.classList.add("is-invalid");
-        jVarLocalpk.focus();
-
-        return false;
-    };
-
-    UserName
-
-    return true;
-};
-
 let serializeObject = (form) => {
     // Create a new FormData object
     const formData = new FormData(form);
@@ -69,24 +29,9 @@ let serializeObject = (form) => {
 
 let jFLocalSave = async ({ inSubRoute }) => {
     let jVarLocalFetchPostData = jFLocalPrepareFetchBody();
-    let jVarLocalFromSaveCheck = jFLocalCheckBeforeFetch({ inFetchPostData: jVarLocalFetchPostData });
-    console.log("jVarLocalFromSaveCheck : ", jVarLocalFromSaveCheck);
-    if (jVarLocalFromSaveCheck) {
-        let jVarLocalFromFetch = await jFLocalCallFetch({ inSubRoute, inFetchPostData: jVarLocalFetchPostData });
+    let jVarLocalFromFetch = await jFLocalCallFetch({ inSubRoute, inFetchPostData: jVarLocalFetchPostData });
 
-        jFLocalPostFetch({ inFetchData: jVarLocalFromFetch });
-    };
-};
-
-let jFLocalCheckBeforeFetch = ({ inFetchPostData }) => {
-    let jVarLocalpk = document.getElementById("pk");
-    var form = document.getElementById("kform1");
-
-
-    if (jVarLocalpk.value === "") {
-
-    };
-    return false;
+    jFLocalPostFetch({ inFetchData: jVarLocalFromFetch });
 };
 
 let jFLocalPostFetch = ({ inFetchData }) => {

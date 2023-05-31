@@ -72,7 +72,6 @@ let jFLocalClickFunc = async (event) => {
         // code block
     };
 
-    console.log("response : ", response.status);
 };
 
 export { jFUpdateFunc };

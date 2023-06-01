@@ -1,7 +1,6 @@
-
-const StartFunc = ({ inProjectName }) => {
+const StartFunc = () => {
     let jVarLocalFolderCreated = getUrlQueryParams({ inGetKey: "NewFolderName" });
-
+    
     let jVarLocalHtmlId = "KCont1";
     let jVarLocalKCont1 = document.getElementById(jVarLocalHtmlId);
     let jVarLocalFindRow = jVarLocalKCont1.querySelector(`tr[data-foldername='${jVarLocalFolderCreated}']`);

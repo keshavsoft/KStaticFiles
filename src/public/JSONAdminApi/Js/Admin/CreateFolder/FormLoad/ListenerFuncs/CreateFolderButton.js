@@ -37,7 +37,8 @@ let jFLocalPostFetch = ({ inFromFetch, inNewFolderName }) => {
 };
 
 let jFLocalPostFetchAsArray = ({ inFromFetch, inNewFolderName }) => {
-    const myUrlWithParams = new URL(window.location.href);
+    //const myUrlWithParams = new URL(window.location.href);
+    const myUrlWithParams = new URL(`${window.location.origin}${window.location.pathname}`);
 
     let jVarLocalFromConfig = inFromFetch.find(element => {
         return element.ConfigFolderCreated
@@ -45,8 +46,6 @@ let jFLocalPostFetchAsArray = ({ inFromFetch, inNewFolderName }) => {
 
     if (jVarLocalFromConfig === undefined === false) {
         myUrlWithParams.searchParams.append("ConfigFolderCreated", true);
-        // const alert = bootstrap.Alert.getOrCreateInstance('#ConfigFolderInsertSuccessId');
-        // alert.close();
     };
 
     let jVarLocalFromData = inFromFetch.find(element => {
@@ -55,15 +54,11 @@ let jFLocalPostFetchAsArray = ({ inFromFetch, inNewFolderName }) => {
 
     if (jVarLocalFromData === undefined === false) {
         myUrlWithParams.searchParams.append("DataFolderCreated", true);
-        // const alert = bootstrap.Alert.getOrCreateInstance('#DataFolderInsertSuccessId');
-        // alert.close();
     };
 
     let jVarLocalAnyCreated = inFromFetch.filter(element => {
         return element.KTF
     });
-
-    // FolderCreated
 
     if (jVarLocalAnyCreated.length > 0) {
         myUrlWithParams.searchParams.append("NewFolderName", inNewFolderName);

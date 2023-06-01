@@ -16,7 +16,7 @@ const StartFunc = () => {
         jFCreateFoldersToDom({ inProjectName: jVarCommonProjectName }).then(() => {
             StartFuncAddlisteners({ inProjectName: jVarCommonProjectName });
 
-            StartFuncAfterDomLoad({});
+            StartFuncAfterDomLoad();
         });
     };
 };

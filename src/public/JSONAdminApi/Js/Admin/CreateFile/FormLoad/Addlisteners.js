@@ -1,14 +1,19 @@
 import { StartFunc as StartFuncCreateFolderButton } from "./ListenerFuncs/CreateFolderButton.js";
 
 let StartFunc = ({ inProjectName }) => {
-    let jVarLocalCreateFolderButtonId = document.getElementById("CreateFileButtonId");
+    let jVarLocalFileCreateClassName = document.getElementsByClassName("CreateFileButtonClass");
 
-    jVarLocalCreateFolderButtonId.addEventListener("click", async () => {
-        await StartFuncCreateFolderButton({
-            inEvent: event,
-            inProjectName
+
+    for (let i = 0; i < jVarLocalFileCreateClassName.length; i++) {
+        jVarLocalFileCreateClassName[i].addEventListener("click", async (event) => {
+            await StartFuncCreateFolderButton({
+                inEvent: event,
+                inProjectName
+            });
         });
-    });
+    };
+
+  
 };
 
 export { StartFunc };

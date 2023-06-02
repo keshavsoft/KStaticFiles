@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <title>TabularColumnsData</title>
+    <title>Create File</title>
     <!-- Custom styles for this template -->
     <link href="/JSONProject/css/headers.css" rel="stylesheet">
 
@@ -32,52 +32,30 @@
 
 
     <main>
+        
         <div class="container">
+            <div id="ConfigFolderInsertSuccessId" class="alert alert-primary alert-dismissible fade show mt-2"
+                role="alert">
+                <strong id="ConfigFolderInsertSuccessStrongId">Holy guacamole!</strong> Config folder creasted
+                Sucessfully.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <div id="DataFolderInsertSuccessId" class="alert alert-primary alert-dismissible fade show mt-2"
+                role="alert">
+                <strong id="DataFolderInsertSuccessStrongId">Holy guacamole!</strong> Data folder creasted Sucessfully.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <div id="KCont1">
             </div>
         </div>
 
-        
+
     </main>
 
     <include src="./src/components/Templates/Admin/FooterWithLogin.html"></include>
 
 
-    <!-- LOGIN  STARTED -->
-    <div class="modal fade" id="LoginModalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter client user credentials</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="LoginFormPopUpId" class="" onsubmit="return false" novalidate="">
-                        <div class="mb-3 form-floating is-valid">
-                            <input type="text" class="form-control" id="KUserNameInput" required="">
-                            <label for="KUserNameInput">User Name</label>
-                            <div class="invalid-feedback">
-                                User Name cannot be empty.
-                            </div>
-                        </div>
-                        <div class="mb-3 form-floating">
-                            <input type="password" class="form-control" id="KPasswordInput" required="">
-                            <label for="KPasswordInput">Password</label>
-                            <div class="invalid-feedback">
-                                Password cannot be empty.
-                            </div>
-                        </div>
-                        <input type="submit" class=" btn btn-primary"
-                            onclick="jVarGlobalClientObject.Login.LoginCheck()">
-                        <!-- <button type="button" class="btn btn-primary"
-                        onclick="jVarGlobalAdmin.Login.LoginCheck()">Check</button>
-                         -->
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- LOGIN FINISHED -->
 
     <script src="/ClassesStatic/CommonClass.js"></script>
 
@@ -90,7 +68,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
 
-    <script id="HbsTemplateForScreensOnly" type="text/x-handlebars">
+    <script id="HbsTemplateForScreensOnly1" type="text/x-handlebars">
         <table class="table">
             <thead>
                 <tr>
@@ -126,6 +104,59 @@
             </tbody>
        
         </table>
+      </script>
+
+      <script id="HbsTemplateForScreensOnly" type="text/x-handlebars">
+        <div class="card mt-3">
+            <div class="card-header text-bg-primary">
+                Create New File
+            </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>FileName</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="CloneName" id="CreateFileInputId" placeholder="Enter the File Name..." autofocus="">
+                                <div class="invalid-feedback">
+                                    Should not be empty!
+                                </div>
+                            </div>
+
+                        </td>
+                        <td>
+                            <button type="button" id="CreateFileButtonId" class="btn btn-outline-info" data-foldername="{{@./key}}">
+                                Create File
+                            </button>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each this.Files}}
+                    <tr>
+                        <td class="text-center">
+                            {{ForSNo @index}}
+                        </td>
+                        <td>
+                            {{this.FileName}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+        </div>
+    </div>
       </script>
 
 
@@ -485,12 +516,9 @@
 
         jFChangeHeaderActiveClass();
     </script>
-    <script src="/JSONAdminApi/Js/Login/Check.js" type="module"></script>
-    <script src="/JSONAdminApi/Js/Login/LoginFetch.js" type="module"></script>
 
-    <!-- <script src="../../../../../Js/Columns/Tabular/Duplicate/DuplicateFles.js" type="module"></script> -->
-    <script src="../../../../../../Js/Columns/Tabular/Duplicate/ConfigDuplicate/DuplicateFles.js"
-    type="module"></script>
+    <script src="../../../Js/Admin/CreateFile/CreateFile.js" type="module"></script>
+
 
 </body>
 

@@ -1,3 +1,5 @@
+import { StartFunc as StartFuncLoginButtonClass } from "./LoginButton/ClickFunc.js";
+
 let LocalButtonClickFunc = async ({ inEvent, inUserLocalStorageKey, inFirmDetailsLocalStorageKey }) => {
     let jVarLocalEvent = inEvent;
     let jVarLocalCurrentTarget = jVarLocalEvent.currentTarget;
@@ -20,6 +22,8 @@ let LocalButtonClickFunc = async ({ inEvent, inUserLocalStorageKey, inFirmDetail
             window.open(LocalFromFetch.RedirectPage, '_newtab');
             //window.location.href = LocalFromFetch.RedirectPage;
         };
+
+        window.open("/JSONApi/Html/UserData/Menu/AsCards/Files.html", '_newtab');
     };
 };
 
@@ -49,7 +53,7 @@ let StartFunc = ({ inUserLocalStorageKey, inFirmDetailsLocalStorageKey }) => {
 
     for (let i = 0; i < userSelection.length; i++) {
         userSelection[i].addEventListener("click", async () => {
-            await LocalButtonClickFunc({ inEvent: event, inUserLocalStorageKey, inFirmDetailsLocalStorageKey });
+            await StartFuncLoginButtonClass({ inEvent: event, inUserLocalStorageKey, inFirmDetailsLocalStorageKey });
         });
     };
 
@@ -83,7 +87,5 @@ let jFLocalTableSearch = (event) => {
         }
     }
 };
-
-// 
 
 export { StartFunc }

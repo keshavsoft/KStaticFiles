@@ -1,7 +1,14 @@
 let StartFunc = async ({ inEvent, inProjectName }) => {
-    if (jFLocalCheckBeforeFetch()) {
-        let jVarLocalBodyData = jFLocalPreparePostData();
-        let jVarLocalFolderName = jVarLocalBodyData.NewFolderName;
+    let localjFLocalCheckBeforeFetch = jFLocalCheckBeforeFetch({ inEvent });
+
+    let jVarLocalCurrentTarget = inEvent.currentTarget;
+    let jVarLocalFolderName = jVarLocalCurrentTarget.dataset.foldername;
+
+
+    if (localjFLocalCheckBeforeFetch) {
+        let jVarLocalBodyData = jFLocalPreparePostData({inEvent});
+        let jVarLocalFileName = jVarLocalBodyData.NewFileName;
+        jVarLocalBodyData.FolderName = jVarLocalFolderName;
 
         let response = await jFLocalCallFetch({
             inBodyData: jVarLocalBodyData,
@@ -10,18 +17,23 @@ let StartFunc = async ({ inEvent, inProjectName }) => {
 
         jFLocalPostFetch({
             inFromFetch: response,
-            inNewFolderName: jVarLocalFolderName
+            inNewFolderName: jVarLocalFolderName,
+            inNewFileName: jVarLocalFileName
         });
     };
 };
 
-let jFLocalCheckBeforeFetch = () => {
-    let jVarLocalHtmlId = "CreateFolderInputId";
+let jFLocalCheckBeforeFetch = ({ inEvent }) => {
+    let jVarLocalHtmlId = "CreateFileInputId";
     let jVarCreateFolderInputId = document.getElementById(jVarLocalHtmlId);
 
-    let jVarLocalFolderName = jVarCreateFolderInputId.value;
+    let jVarLocalCurrentTarget = inEvent.currentTarget;
+    let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
+    let jVarLocalFileName = jVarLocalColsestTr.querySelector('[name="FileName"]');
+    let jVarLocalFileNameValue = jVarLocalFileName.value;
 
-    if (jVarLocalFolderName === "") {
+
+    if (jVarLocalFileNameValue === "") {
         jVarCreateFolderInputId.classList.add("is-invalid");
         jVarCreateFolderInputId.focus();
         return false;
@@ -30,13 +42,13 @@ let jFLocalCheckBeforeFetch = () => {
     return true;
 };
 
-let jFLocalPostFetch = ({ inFromFetch, inNewFolderName }) => {
+let jFLocalPostFetch = ({ inFromFetch, inNewFolderName, inNewFileName }) => {
     if (Array.isArray(inFromFetch)) {
-        jFLocalPostFetchAsArray({ inFromFetch, inNewFolderName });
+        jFLocalPostFetchAsArray({ inFromFetch, inNewFolderName, inNewFileName });
     };
 };
 
-let jFLocalPostFetchAsArray = ({ inFromFetch, inNewFolderName }) => {
+let jFLocalPostFetchAsArray = ({ inFromFetch, inNewFolderName, inNewFileName }) => {
     const myUrlWithParams = new URL(window.location.href);
 
     let jVarLocalFromConfig = inFromFetch.find(element => {
@@ -66,24 +78,25 @@ let jFLocalPostFetchAsArray = ({ inFromFetch, inNewFolderName }) => {
     // FolderCreated
 
     if (jVarLocalAnyCreated.length > 0) {
-        myUrlWithParams.searchParams.append("NewFolderName", inNewFolderName);
+        myUrlWithParams.searchParams.append("NewFileName", inNewFileName);
         window.location.href = myUrlWithParams.href;
     };
 };
 
-let jFLocalPreparePostData = () => {
-    let jVarLocalHtmlId = "CreateFolderInputId";
-    let jVarCreateFolderInputId = document.getElementById(jVarLocalHtmlId);
-
-    let jVarLocalFolderName = jVarCreateFolderInputId.value;
+let jFLocalPreparePostData = ({inEvent}) => {
+    let jVarLocalCurrentTarget = inEvent.currentTarget;
+    let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
+    let jVarLocalFileName = jVarLocalColsestTr.querySelector('[name="FileName"]');
+    let jVarLocalFileNameValue = jVarLocalFileName.value;
 
     return {
-        NewFolderName: jVarLocalFolderName
+        NewFileName: jVarLocalFileNameValue
     };
 };
 
 let jFLocalCallFetch = async ({ inBodyData, inProjectName }) => {
-    let jFetchUrl = `/${inProjectName}/AdminApi/AsTree/Json/UserFolders/ConfigAndDataFolders/CreateNew/CreateFolder`;
+
+    let jFetchUrl = `/${inProjectName}/AdminApi/AsTree/Json/UserFolders/ConfigAndDataFolders/UserFile/CreateNew/CreateFile`;
     let jFetchBody = {
         method: "post",
         headers: {

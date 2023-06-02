@@ -12,53 +12,21 @@ let StartFunc = ({ inSubRoute }) => {
     };
 
     StartFuncSaveButton({ inSubRoute });
+    // jFLocalKeyPress();
 };
 
-let serializeObject = (form) => {
-    // Create a new FormData object
-    const formData = new FormData(form);
+const jFLocalKeyPress = (params) => {
+    let LocalDompk = document.getElementById("pk");
 
-    // Create an object to hold the name/value pairs
-    const pairs = {};
+    LocalDompk.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") { // key code of the keybord key
+            event.preventDefault();
+            let jVarLocalSaveButtonid = document.getElementById("SaveButtonid");
 
-    // Add each name/value pair to the object
-    for (const [name, value] of formData) {
-        pairs[name] = value;
-    };
-
-    return pairs;
-};
-
-let jFLocalSave = async ({ inSubRoute }) => {
-    var form = document.getElementById("kform1");
-
-    let jVarLocalFetchPostData = serializeObject(form);
-
-    let jVarLocalSettings = {
-        method: "post",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jVarLocalFetchPostData)
-    };
-
-    let jVarLocalUrl = `/${inSubRoute}/Users/Api/Save/WithDataPk`;
-    let response = await fetch(jVarLocalUrl, jVarLocalSettings);
-    let data = await response.json();
-
-    if (data.KTF) {
-        //window.location = "../Customers/Show.html";
-        window.location = "../Link/UploadData.html";
-
-        //http://localhost:4119/JSONUser/Html/Link/UploadData.html
-
-    } else {
-        Swal.fire(
-            data.KReason
-        )
-    };
-    return data;
+            jVarLocalSaveButtonid.click();
+            // your code to Run
+        }
+    });
 };
 
 export { StartFunc };

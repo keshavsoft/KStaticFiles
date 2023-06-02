@@ -1,4 +1,4 @@
-import { StartFunc as StartFuncButtoClickFunc } from "./Addlisteners/ButtonClickFunc.js";
+import { StartFunc as StartFuncAddlisteners } from "./Addlisteners/StartFunc.js";
 import { StartFunc as StartFuncAdminData } from "../../AdminData/StartFunc.js";
 import FromConfigKeys from '../../ConfigKeys.json' assert { type: 'json' };
 
@@ -8,7 +8,7 @@ let StartFunc = async () => {
     let jVarLocalFromAdmin = await StartFuncAdminData();
 
     if (jVarLocalFromAdmin) {
-        StartFuncButtoClickFunc({
+        StartFuncAddlisteners({
             inSubRoute: jVarGlobalAdminSubRoute
         });
     };

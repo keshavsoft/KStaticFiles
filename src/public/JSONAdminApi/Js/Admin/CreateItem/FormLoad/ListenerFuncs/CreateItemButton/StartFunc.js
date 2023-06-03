@@ -3,16 +3,8 @@ import { StartFunc as StartFuncPreparePostData } from "./PreparePostData.js";
 let StartFunc = async ({ inEvent, inProjectName }) => {
     let localjFLocalCheckBeforeFetch = jFLocalCheckBeforeFetch({ inEvent });
 
-    let jVarLocalCurrentTarget = inEvent.currentTarget;
-    let jVarLocalFolderName = jVarLocalCurrentTarget.dataset.foldername;
-    let jVarLocalFileName = jVarLocalCurrentTarget.dataset.filename;
-
     if (localjFLocalCheckBeforeFetch) {
         let jVarLocalBodyData = StartFuncPreparePostData({ inEvent });
-
-        // let jVarLocalItemName = jVarLocalBodyData.NewItemName;
-        // jVarLocalBodyData.FolderName = jVarLocalFolderName;
-        // jVarLocalBodyData.FileName = jVarLocalFileName;
 
         let response = await jFLocalCallFetch({
             inBodyData: jVarLocalBodyData,
@@ -36,8 +28,8 @@ let jFLocalCheckBeforeFetch = ({ inEvent }) => {
     let jVarLocalFileNameValue = jVarLocalFileName.value;
 
     if (jVarLocalFileNameValue === "") {
-        jVarCreateFolderInputId.classList.add("is-invalid");
-        jVarCreateFolderInputId.focus();
+        jVarLocalFileName.classList.add("is-invalid");
+        jVarLocalFileName.focus();
         return false;
     };
 

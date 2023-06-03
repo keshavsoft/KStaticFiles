@@ -3,7 +3,6 @@ import { StartFunc as StartFuncCreateFolderButton } from "./ListenerFuncs/Create
 let StartFunc = ({ inProjectName }) => {
     let jVarLocalFileCreateClassName = document.getElementsByClassName("CreateFileButtonClass");
 
-
     for (let i = 0; i < jVarLocalFileCreateClassName.length; i++) {
         jVarLocalFileCreateClassName[i].addEventListener("click", async (event) => {
             await StartFuncCreateFolderButton({
@@ -12,8 +11,6 @@ let StartFunc = ({ inProjectName }) => {
             });
         });
     };
-
-  
 };
 
 export { StartFunc };

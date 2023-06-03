@@ -1,4 +1,3 @@
-import { StartFunc as StartFuncAddlisteners } from "./Addlisteners.js";
 import { jFCreateFoldersToDom } from "./ShowOnDom.js";
 import ApiConfigJson from '../ApiConfig.json' assert {type: 'json'};
 import { StartFunc as StartFuncAdminData } from "../../AdminData/StartFunc.js";
@@ -11,12 +10,8 @@ const StartFunc = () => {
     let jVarLocalFromAdmin = StartFuncAdminData();
 
     if (jVarLocalFromAdmin) {
-        // StartFuncFormLoad({ inProjectName: jVarCommonProjectName });
-
         jFCreateFoldersToDom({ inProjectName: jVarCommonProjectName }).then(() => {
-            // StartFuncAddlisteners({ inProjectName: jVarCommonProjectName });
             StartFuncFormLoad({ inProjectName: jVarCommonProjectName });
-
 
             StartFuncAfterDomLoad({});
         });

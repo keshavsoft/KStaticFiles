@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <title>Create Item</title>
+    <title>Create Screen</title>
     <!-- Custom styles for this template -->
     <link href="/JSONProject/css/headers.css" rel="stylesheet">
 
@@ -31,6 +31,7 @@
     <include src="./src/components/Projects/JSONAdminApi/Admin/CreateNew/HeaderWithModals.html"></include>
 
 
+
     <main>
         <div class="container">
             <div id="ConfigFolderInsertSuccessId" class="alert alert-primary alert-dismissible fade show mt-2"
@@ -45,10 +46,10 @@
                 <strong id="DataFolderInsertSuccessStrongId">Holy guacamole!</strong> Data folder creasted Sucessfully.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+            
             <div id="KCont1">
             </div>
         </div>
-
     </main>
 
     <include src="./src/components/Templates/Admin/FooterWithLogin.html"></include>
@@ -64,19 +65,17 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
 
-    
-
-      <script id="HbsTemplateForScreensOnly" type="text/x-handlebars">
+    <script id="HbsTemplateForScreensOnly" type="text/x-handlebars">
         <div class="card mt-3">
             <div class="card-header text-bg-primary">
-                Create New File
+                Create New Screen
             </div>
         <div class="card-body">
             <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>ItemName</th>
+                        <th>Screen Name</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -85,7 +84,7 @@
                         <td>
 
                             <div class="form-group">
-                                <input class="form-control" type="text" name="ItemName" id="CreateFileInputId" placeholder="Enter the File Name..." autofocus="">
+                                <input class="form-control" type="text" name="ScreenName" id="CreateFileInputId" placeholder="Enter the Screen Name..." autofocus="">
                                 <div class="invalid-feedback">
                                     Should not be empty!
                                 </div>
@@ -94,20 +93,20 @@
                         </td>
                         <td>
                             <button type="button" class="btn btn-outline-info CreateFileButtonClass"
-                             data-foldername="{{@../key}}" data-filename="{{@./key}}">
-                                Create Item
+                             data-foldername="{{@../../key}}" data-filename="{{@../key}}" data-screenname="{{@./key}}">
+                                Create Screen
                             </button>
                         </td>
                     </tr>
                 </thead>
                 <tbody>
-                    {{#each this.Items}}
+                    {{#each this.Screens}}
                     <tr>
                         <td class="text-center">
                             {{ForSNo @index}}
                         </td>
                         <td>
-                            {{ItemName}}
+                            {{this.ScreenName}}
                         </td>
                     </tr>
                     {{/each}}
@@ -334,7 +333,7 @@
           {{#each this.Files}}
           <div class="tab-pane fade {{TabPaneClass}}" id="v-pills-{{../FolderName}}-{{@key}}" role="tabpanel" aria-labelledby="v-pills-{{this.FileNameId}}-tab">
               <div class="accordion">
-                {{> HbsTemplateForScreensOnly}}
+                {{> HbsTemplateForItemsOnly}}
                 </div>
           </div>
           {{/each}}
@@ -478,10 +477,12 @@
         jFChangeHeaderActiveClass();
     </script>
 
+    <script src="/JSONAdminApi/Js/Login/Check.js" type="module"></script>
+    <script src="/JSONAdminApi/Js/Login/LoginFetch.js" type="module"></script>
 
-
-    <script src="../../../Js/Admin/CreateItem/CreateItem.js" type="module"></script>
-
+    <!-- <script src="../../../../../Js/Columns/Tabular/Duplicate/DuplicateScreen.js" type="module"></script> -->
+    <script src="../../../../../../Js/Columns/Tabular/Duplicate/ConfigDuplicate/DuplicateScreen.js"
+        type="module"></script>
 
 </body>
 
